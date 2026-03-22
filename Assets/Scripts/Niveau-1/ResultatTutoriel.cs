@@ -2,6 +2,8 @@
 // auteur : sammuel
 // date : 08 Mars 2026
 
+// desc : un levier au début
+
 using UnityEngine;
 using System;
 using System.Collections;
@@ -13,7 +15,7 @@ public class ResultatTutoriel : MonoBehaviour
 {
     // ** on déclare les variables **
 
-        // booléens tuto
+        [Header("booléens tuto")]
         bool reussiTuto = false;
         bool echecTuto = false;
 

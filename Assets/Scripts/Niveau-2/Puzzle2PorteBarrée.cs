@@ -1,51 +1,55 @@
-// script pour gérer le résultat du tutoriel (niveau 1)
+// script pour gérer la porte barrée avec l'objet clé.
 // auteur : sammuel
 // date : 07 Mars 2026
 
+// desc : le joueur avance, récupère la clé qui disparaît de la scène,
+//        ce qui déclenche l’ouverture de la porte et fait apparaître une question historique
+
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Puzzle2PorteBarrée : MonoBehaviour
 {
     // ** on déclare les variables **
 
-        // booléen clé
-        bool aLaCle = false;
+        [Header("réf à la cé")]
+        bool laCle = false;
+
+        [Header("réf à la porte")]
+        public GameObject porte;
+
+        [Header("question en ui")]
+        public GameObject panneauQuestion;
 
     void Start()
     {
-        //
-    }
-
-
-    void Update()
-    {
-        //
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        // si le joueur touche un objet avec le tag "clé"
-        if (other.CompareTag("clé"))
+        // ** on cache le panneau ** 
+        if (panneauQuestion != null)
         {
-            aLaCle = true; // le joueur a récupéré la clé
-            Debug.Log("Clé récupérée !");
-
-            // on peut désactiver l'objet clé pour qu'il disparaisse
-            Destroy(other.gameObject);
+            panneauQuestion.SetActive(false);
         }
+    }
 
-        // si le joueur touche une porte
-        if (other.CompareTag("porte1"))
+    void OnTriggerEnter2D(Collider2D objet)
+    {
+        // ** si le joueur touche la clé **
+        if (objet.CompareTag("clé"))
         {
-            if (aLaCle)
+            laCle = true;
+
+            // ** on détruit la clé **
+            Destroy(objet.gameObject);
+
+            // ** on ouvre cette porte barrée **
+            if (porte != null)
             {
-                Debug.Log("Porte déverrouillée !");
-                // ici tu peux jouer une animation d'ouverture
-                other.gameObject.SetActive(false); // ou animation, ou désactiver le collider
+                porte.SetActive(false);
             }
-            else
+
+            //  ** on affiche la question sur l'histoire **
+            if (panneauQuestion != null)
             {
-                Debug.Log("La porte est verrouillée. Trouve la clé !");
+                panneauQuestion.SetActive(true);
             }
         }
     }

@@ -13,16 +13,16 @@ public class GestionCamera : MonoBehaviour
 {
     // ** on déclare les variables **
 
-        // vitesse de la caméra
+        [Header("vitesse de la caméra")]
         public float vitesseCam = 5f;
 
-        // controle de la cam
+        [Header("controle de la cam")]
         bool cameraCtrl = false;
 
-        // position initiale 
+        [Header("position initiale")]
         Vector3 pI;
 
-        // rotation initiale
+        [Header("rotation initiale")]
         Quaternion rI;
 
 
@@ -53,7 +53,8 @@ public class GestionCamera : MonoBehaviour
         // ** on manipule avec les flèches les mouvements de la cam **
         if (cameraCtrl)
         {
-            // ** on déclare les variables qui stockent le mouvement de la cam **
+            // ** on déclare les variables
+            // qui stockent le mouvement de la cam **
 
                 // X = gauche (left) / droite (right)
                 float mouvtX = 0;
@@ -69,7 +70,8 @@ public class GestionCamera : MonoBehaviour
             if (Input.GetKey(KeyCode.DownArrow))
                 mouvtZ = -1;
 
-            // ** on déplace la cam selon les touches directionnelles à la vitesse définie **
+            // ** on déplace la cam selon les touches
+            // directionnelles à la vitesse définie **
             Vector3 mouvement = new Vector3(mouvtX, 0, mouvtZ);
             transform.Translate(mouvement * vitesseCam * Time.deltaTime, Space.World);
         }
