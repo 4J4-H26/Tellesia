@@ -2,12 +2,12 @@
 // auteur : sammuel
 // date : 10 Mars 2026
 
-// desc : Nova est confronté à une question historique après avoir ouvert la porte du niveau 2
+// desc : ** Nova est confronté à une question historique après avoir ouvert la porte du niveau 2
 //        les trois portes sont présentées A B C correspondant à trois choix de réponse
 //        Nova doit marcher vers la porte correspondant à sa réponse
 //        la porte choisie s'ouvre,
 //        et si c'est la bonne réponse = le joueur passe au niveau suivant
-//        si réponse pas bonne = le niveau est réinitialisé
+//        si réponse pas bonne = le niveau est réinitialisé **
 
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;

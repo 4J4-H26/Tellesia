@@ -2,8 +2,8 @@
 // auteur : sammuel
 // date : 20 Mars 2026
 
-// desc : on détecte quand un cube est placé sur son support
-//        puis on informe le manager de puzzle pour vérifier la combinaison
+// desc : ** on détecte quand un cube est placé sur son support
+//        puis on informe le manager de puzzle pour vérifier la combinaison **
 
 using UnityEngine;
 

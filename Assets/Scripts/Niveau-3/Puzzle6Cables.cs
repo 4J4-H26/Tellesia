@@ -2,8 +2,8 @@
 // auteur : sammuel
 // date : 14 Mars 2026
 
-// desc : Nova devra connecter les cables en évitant les obstacles 
-//        sinon faudra recommencer au début
+// desc : ** Nova devra connecter les cables en évitant les obstacles 
+//        sinon faudra recommencer au début **
 
 
 using System.Collections.Generic;

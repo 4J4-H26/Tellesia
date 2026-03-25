@@ -2,8 +2,8 @@
 // auteur : sammuel
 // date : 19 Mars 2026
 
-// desc : on gère le placement des deux cubes et vérifie leur combinaison correcte
-//        puis ça ouvre la porte quand le puzzle est résolu
+// desc : ** on gère le placement des deux cubes et vérifie leur combinaison correcte
+//        puis ça ouvre la porte quand le puzzle est résolu **
 
 
 using UnityEngine;
@@ -65,8 +65,8 @@ public class Puzzle8Code : MonoBehaviour
 
         // ** on permet d'ouvrir la porte is on a la bonne combinaison (images)
         //    pour les 2 cubes **
-        if (info1.imageActuelle == bonneImageCube1 &&
-            info2.imageActuelle == bonneImageCube2)
+        if (info1.img == bonneImageCube1 &&
+            info2.img == bonneImageCube2)
         {
             OuvrirPorte();
         }

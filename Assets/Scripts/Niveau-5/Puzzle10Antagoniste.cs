@@ -1,14 +1,22 @@
+// script pour gérer le puzzle du code
+// auteur : sammuel
+// date : 
+
+// desc : **
+
+
 using UnityEngine;
 
 public class Puzzle10Antagoniste : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // ** on déclare les variables **
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         

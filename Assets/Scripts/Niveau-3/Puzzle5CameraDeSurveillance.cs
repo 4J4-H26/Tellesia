@@ -2,9 +2,9 @@
 // auteur : sammuel
 // date : 12 Mars 2026
 
-// desc : Nova doit éviter l'angle de la caméra de surveillance
+// desc : ** Nova doit éviter l'angle de la caméra de surveillance
 //        si Nova entre dans la zone de lumière,
-//        le niveau recommence depuis le début
+//        le niveau recommence depuis le début **
 
 using UnityEngine;
 using UnityEngine.SceneManagement;

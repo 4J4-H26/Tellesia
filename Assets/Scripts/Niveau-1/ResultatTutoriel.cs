@@ -2,7 +2,7 @@
 // auteur : sammuel
 // date : 08 Mars 2026
 
-// desc : un levier au début
+// desc : ** un levier au début **
 
 using UnityEngine;
 using System;

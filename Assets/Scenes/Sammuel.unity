@@ -373,6 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 271636978}
+  - component: {fileID: 271636979}
   m_Layer: 0
   m_Name: Puzzle2
   m_TagString: Untagged
@@ -395,8 +396,23 @@ Transform:
   m_Children:
   - {fileID: 379777846}
   - {fileID: 199257606}
+  - {fileID: 1042544861}
   m_Father: {fileID: 118954102}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &271636979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271636977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c454415986afea4685a65f6096210ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: "Assembly-CSharp::Puzzle2PorteBarr\xE9e"
+  porte: {fileID: 199257605}
+  panneauQuestion: {fileID: 0}
 --- !u!1 &315448653
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d2d4d7eeb26c54ab7a29e448df52d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubes
-  imageActuelle: 0
+  img: 0
   estCube1: 1
 --- !u!1 &803706225
 GameObject:
@@ -1017,7 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d2d4d7eeb26c54ab7a29e448df52d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cubes
-  imageActuelle: 0
+  img: 0
   estCube1: 0
 --- !u!1 &884302122
 GameObject:
@@ -1428,6 +1444,37 @@ Transform:
   m_Children:
   - {fileID: 884302123}
   m_Father: {fileID: 1471811651}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1042544860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1042544861}
+  m_Layer: 0
+  m_Name: panneau-question
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1042544861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042544860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 271636978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1049980474
 GameObject:
@@ -2802,6 +2849,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8313391213810515451, guid: c49ccc951e73a4f4788b7aa586207b50, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7477525916071848610}
+    - targetCorrespondingSourceObject: {fileID: 8313391213810515451, guid: c49ccc951e73a4f4788b7aa586207b50, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7477525916071848611}
   m_SourcePrefab: {fileID: 100100000, guid: c49ccc951e73a4f4788b7aa586207b50, type: 3}
 --- !u!1 &7477525916071848609 stripped
 GameObject:
@@ -2833,8 +2883,22 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &7477525916071848611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477525916071848609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8db992fd1e84d4b96b563539c963ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Nova
+  contientLaCarte: 0
+  vitesse: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

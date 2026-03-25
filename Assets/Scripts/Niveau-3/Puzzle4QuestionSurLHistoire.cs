@@ -2,9 +2,9 @@
 // auteur : sammuel
 // date : 10 Mars 2026
 
-// desc : nova doit répondre à une question
+// desc : ** Nova doit répondre à une question
 //        et si la réponse est correcte
-//        la porte du puzzle se débloque
+//        la porte du puzzle se débloque **
 
 using UnityEngine;
 

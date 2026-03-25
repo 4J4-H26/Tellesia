@@ -2,9 +2,9 @@
 // auteur : sammuel
 // date : 10 Mars 2026
 
-// desc : script qui est attaché à chaque porte correspondant à un choix A, B ou C
+// desc : ** script qui est attaché à chaque porte correspondant à un choix A, B ou C
 //        et quand le joueur (Nova) touche la porte, elle appelle le script de la question pour 
-//        vérifier si la réponse est correcte et ouvrir la porte correspondante (3ème porte)
+//        vérifier si la réponse est correcte et ouvrir la porte correspondante (3ème porte) **
 
 using UnityEngine;
 
