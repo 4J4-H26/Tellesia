@@ -832,6 +832,7 @@ MonoBehaviour:
   lines:
   - Allo je m'appelle Nova.
   - Et voici ma bulle de dialogue.
+  - Bla bla bla bla.
   textSpeed: 0.1
   buttonNext: {fileID: 51335313}
 --- !u!114 &1141754757

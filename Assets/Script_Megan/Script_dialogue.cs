@@ -18,26 +18,14 @@ public class Script_dialogue : MonoBehaviour
     {
         textComponent.text = string.Empty;
         StartDialogue();
+
+        buttonNext.onClick.AddListener(NextButtonClicked);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("buttonNext"))
-        {
-            Debug.Log("changer de dialogue");
-            if(textComponent.text == lines[index])
-            {
-                textSpeed = 0.1f;
-                NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                textComponent.text = lines[index];
-            }
-        }
-
+        
         if (Input.GetKeyDown(KeyCode.S))
         {
             textSpeed = 0f;
@@ -73,4 +61,23 @@ public class Script_dialogue : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    void NextButtonClicked()
+{
+    Debug.Log("changer de dialogue");
+
+     // sécurité
+    if (index >= lines.Length) return;
+
+    if (textComponent.text == lines[index])
+    {
+        textSpeed = 0.1f;
+        NextLine();
+    }
+    else
+    {
+        StopAllCoroutines();
+        textComponent.text = lines[index];
+    }
+}
 }
