@@ -9,6 +9,9 @@ TagManager:
   - porte
   - Cube1
   - Cube2
+  - Carte
+  - allie
+  - bonbon
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -83,7 +83,67 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: export_personnage(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:Personnage2
+      parentName: export_personnage(Clone)
+      position: {x: 0.08735681, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:pCylinder1
+      parentName: Desjardins_Megan_Textures:Personnage2
+      position: {x: 0.0052710366, y: 1.2697595, z: -0.1834576}
+      rotation: {x: -0.04102197, y: 0, z: -0, w: 0.99915826}
+      scale: {x: 9.380701, y: 19.906034, z: 9.380701}
+    - name: Desjardins_Megan_Textures:pCylinder1
+      parentName: Desjardins_Megan_Textures:pCylinder1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:Personnage2
+      parentName: Desjardins_Megan_Textures:Personnage2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:Personnage2_1
+      parentName: Desjardins_Megan_Textures:Personnage2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:Personnage2_3
+      parentName: Desjardins_Megan_Textures:Personnage2
+      position: {x: 0.009204771, y: 0, z: -0.014110144}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:Personnage2_4
+      parentName: Desjardins_Megan_Textures:Personnage2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:Personnage2_5
+      parentName: Desjardins_Megan_Textures:Personnage2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:Personnage2_6
+      parentName: Desjardins_Megan_Textures:Personnage2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:sweep3
+      parentName: export_personnage(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Desjardins_Megan_Textures:sweep3
+      parentName: Desjardins_Megan_Textures:sweep3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -98,9 +158,9 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
