@@ -13,60 +13,68 @@ using UnityEngine.SceneManagement;
 
 public class ResultatTutoriel : MonoBehaviour
 {
-    // ** on déclare les variables **
+    [Header("booléens tuto")]
+    bool reussiTuto = false;
+    bool echecTuto = false;
+    public bool levierActive = false;
 
-        [Header("booléens tuto")]
-        bool reussiTuto = false;
-        bool echecTuto = false;
+    bool finDeclenchee = false;
+    bool resultatFinal;
 
-    void Start()
-    {
-        //
-    }
+    public Nova nova;
+    public Nova nova2;
 
     void Update()
     {
-
-        // ** on applique la condition de reussite **
-        if (reussite())
+        if (!finDeclenchee)
         {
-            reussiTuto = true;
-            finTuto(true);
-        }
+            if (reussite())
+            {
+                reussiTuto = true;
+                lancerFin(true);
+            }
 
-        // ** on applique la condition d'échec **
-        if (echec())
-        {
-            echecTuto = true;
-            finTuto(false);
+            if (echec())
+            {
+                echecTuto = true;
+                lancerFin(false);
+            }
         }
-
     }
 
-    void finTuto(bool tutoReussi)
+    void lancerFin(bool tutoReussi)
     {
-        if (tutoReussi)
+        finDeclenchee = true;
+        resultatFinal = tutoReussi;
+
+        if (nova != null)
+            nova.enabled = false;
+
+        if (nova2 != null)
+            nova2.enabled = false;
+
+        Invoke("executerFin", 2f);
+    }
+
+    void executerFin()
+    {
+        if (resultatFinal)
         {
-            // ** on charge le niveau suivant **
-            SceneManager.LoadScene("Niveau2");
+            SceneManager.LoadScene("Scene2");
         }
         else
         {
-            // ** on recharge la scène du tuto **
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
     bool reussite()
     {
-        // ** les leviers **
-        return false; 
+        return levierActive;
     }
 
     bool echec()
     {
-        // ** les leviers **
-        return false; 
+        return false;
     }
-
 }

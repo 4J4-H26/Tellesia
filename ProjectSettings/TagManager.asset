@@ -11,7 +11,9 @@ TagManager:
   - Cube2
   - Carte
   - allie
-  - bonbon
+  - porte-niveau1
+  - Sphere
+  - LevierDeCommande
   layers:
   - Default
   - TransparentFX

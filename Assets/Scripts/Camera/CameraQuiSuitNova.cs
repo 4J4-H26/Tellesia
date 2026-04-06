@@ -9,18 +9,16 @@ using UnityEngine;
 
 public class CameraQuiSuitNova : MonoBehaviour
 {
-    public Transform cible; // Nova
+    public Transform cible;
     private Vector3 offset;
 
     void Start()
     {
-        // On garde EXACTEMENT la position actuelle de la caméra
         offset = transform.position - cible.position;
     }
 
     void LateUpdate()
     {
-        // On suit Nova sans changer l’angle
         transform.position = cible.position + offset;
     }
 }

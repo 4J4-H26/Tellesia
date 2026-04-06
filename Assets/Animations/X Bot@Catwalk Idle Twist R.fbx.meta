@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 96d89a08cc21a4d4bbedb4adb25592ca
+guid: f50c7e59da9a01845865f8af63badefe
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -52,8 +52,8 @@ ModelImporter:
     weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
-    skinWeightsMode: 1
-    maxBonesPerVertex: 15
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
     generateMeshLods: 0
@@ -83,67 +83,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton:
-    - name: export_personnage(Clone)
-      parentName: 
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:Personnage2
-      parentName: export_personnage(Clone)
-      position: {x: 0.08735681, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:pCylinder1
-      parentName: Desjardins_Megan_Textures:Personnage2
-      position: {x: 0.0052710366, y: 1.2697595, z: -0.1834576}
-      rotation: {x: -0.04102197, y: 0, z: -0, w: 0.99915826}
-      scale: {x: 9.380701, y: 19.906034, z: 9.380701}
-    - name: Desjardins_Megan_Textures:pCylinder1
-      parentName: Desjardins_Megan_Textures:pCylinder1
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:Personnage2
-      parentName: Desjardins_Megan_Textures:Personnage2
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:Personnage2_1
-      parentName: Desjardins_Megan_Textures:Personnage2
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:Personnage2_3
-      parentName: Desjardins_Megan_Textures:Personnage2
-      position: {x: 0.009204771, y: 0, z: -0.014110144}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:Personnage2_4
-      parentName: Desjardins_Megan_Textures:Personnage2
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:Personnage2_5
-      parentName: Desjardins_Megan_Textures:Personnage2
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:Personnage2_6
-      parentName: Desjardins_Megan_Textures:Personnage2
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:sweep3
-      parentName: export_personnage(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Desjardins_Megan_Textures:sweep3
-      parentName: Desjardins_Megan_Textures:sweep3
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
+    skeleton: []
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -154,7 +94,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
