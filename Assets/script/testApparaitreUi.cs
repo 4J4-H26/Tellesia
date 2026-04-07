@@ -1,3 +1,8 @@
+//------------------------------------------*
+// Author : Stella Roy
+// Description : Ce script permet d'apparaître et faire disparaître le UI avec input de la touche E
+//------------------------------------------*
+
 using System;
 using UnityEngine;
 
@@ -5,9 +10,6 @@ public class testApparaitreUi : MonoBehaviour
 {
 
     [SerializeField] public GameObject interfaceUItest;
-
-    //you can assign this key in the inspector as your inventory key
-    //the default is I key in this case
     public KeyCode UIInputKey = KeyCode.E;
 
     private bool UIouvert;
@@ -21,7 +23,6 @@ public class testApparaitreUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if you press the inventory key, it will enable/disable the inventory menu appropriately
         if (Input.GetKeyDown(UIInputKey))
         {
             if (UIouvert)
