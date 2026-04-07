@@ -6,16 +6,20 @@
 // https://www.youtube.com/watch?v=OFC_UUaS4gs
 //------------------------------------------*
 using UnityEngine;
+using TMPro;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Script_jigsaw_start : MonoBehaviour
 {
     //------------------------------------------*
     // VARIABLES
     //------------------------------------------*
-    [Range(2, 6)];
-    [SerializeField] private int difficulty 4;
+    [Range(2, 6)]
+    [SerializeField] private int difficulty = 4;
 
-    [SerializeField] private List<Texture2D> imageTectures;
+    [SerializeField] private List<Texture2D> imageTextures;
     [SerializeField] private Transform levelSelectPanel;
     [SerializeField] private Image levelSelectPrefab;
 
@@ -42,7 +46,7 @@ public class Script_jigsaw_start : MonoBehaviour
     // Fonction startGame
     // Description : 
     //------------------------------------------*
-    public void startGame(Texture2D jigsawTexture){
+    /*public void startGame(Texture2D jigsawTexture){
         // Garde les pièces dans un tableau
         pieces = new List<Transform>();
 
@@ -54,7 +58,7 @@ public class Script_jigsaw_start : MonoBehaviour
         }
     }
 
-    Vector2Int GetDimensions(Texture2D jigsawTexture, int difficulty){
+    /**Vector2Int GetDimensions(Texture2D jigsawTexture, int difficulty){
          Vector2Int dimensions = Vector2Int.zero;
 
          //Faire des pièce carrées
@@ -65,5 +69,5 @@ public class Script_jigsaw_start : MonoBehaviour
              dimensions.x = difficulty * jigsawTexture.width / jigsawTexture.height;
              dimensions.y = difficulty;
          }
-    }
+    }*/
 }
