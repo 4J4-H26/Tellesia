@@ -49,8 +49,6 @@ public class Nova : MonoBehaviour
 
     void Update()
     {
-
-
         // ** on a le input clavier (flèches + WASD) **
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -85,7 +83,6 @@ public class Nova : MonoBehaviour
                 vitesseRotation * Time.deltaTime
             );
         }
-
 
         if (Input.GetKeyDown(KeyCode.E) && carteProche != null)
         {
