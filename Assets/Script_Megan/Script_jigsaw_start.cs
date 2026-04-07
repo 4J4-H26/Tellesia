@@ -18,6 +18,8 @@ public class Script_jigsaw_start : MonoBehaviour
     //------------------------------------------*
     [Range(2, 6)]
     [SerializeField] private int difficulty = 4;
+    [SerializeField] private Transform gameHolder;
+    [SerializeField] private Transform piecePrefab;
 
     [SerializeField] private List<Texture2D> imageTextures;
     [SerializeField] private Transform levelSelectPanel;
@@ -25,6 +27,8 @@ public class Script_jigsaw_start : MonoBehaviour
 
     private List<Transform> pieces;
     private Vector2Int dimensions;
+    private float width;
+    private float height;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,28 +50,48 @@ public class Script_jigsaw_start : MonoBehaviour
     // Fonction startGame
     // Description : 
     //------------------------------------------*
-    /*public void startGame(Texture2D jigsawTexture){
+    public void startGame(Texture2D jigsawTexture){
         // Garde les pièces dans un tableau
         pieces = new List<Transform>();
 
         // Calculer la taille des pièces (avec la difficulté)
         dimensions = GetDimensions(jigsawTexture, difficulty);
 
+        Vector2Int GetDimensions(Texture2D jigsawTexture, int difficulty)
+        {
+            Vector2Int dimensions = Vector2Int.zero;
 
+            //Faire des pièce carrées
+            if (jigsawTexture.width < jigsawTexture.height)
+            {
+                dimensions.x = difficulty;
+                dimensions.y = (difficulty * jigsawTexture.height) / jigsawTexture.width;
+            }
+            else
+            {
+                dimensions.x = difficulty * jigsawTexture.width / jigsawTexture.height;
+                dimensions.y = difficulty;
+            }
             return dimensions;
+
+            CreateJigsawPieces(jigsawTexture);
         }
     }
 
-    /**Vector2Int GetDimensions(Texture2D jigsawTexture, int difficulty){
-         Vector2Int dimensions = Vector2Int.zero;
+    //------------------------------------------*
+    // Fonction createJigsawPieces
+    // Description : 
+    //------------------------------------------*
+    void CreateJigsawPieces(Texture2D jigsawTexture)
+    {
+        // Créer les pièces selon leur dimensions
+        height = 1f / dimensions.y;
+        float aspect = (float)jigsawTexture.width / jigsawTexture.height;
+        width = aspect / dimensions.x;
 
-         //Faire des pièce carrées
-         if(jigsawTexture.width < jigsawTexture.height) {
-             dimensions.x = difficulty;
-             dimensions.y = (difficulty * jigsawTexture.height) / jigsawTexture.width;
-         }else{
-             dimensions.x = difficulty * jigsawTexture.width / jigsawTexture.height;
-             dimensions.y = difficulty;
-         }
-    }*/
+        for (int row = 0; row < dimensions.y; row++)
+        {
+            //for(int col = 0; col < )
+        }
+    }
 }
