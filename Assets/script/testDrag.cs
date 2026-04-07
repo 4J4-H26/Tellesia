@@ -1,3 +1,9 @@
+//------------------------------------------*
+// Author : Stella Roy
+// Description : Ce script permet de drag le levier vers le bas
+// À arranger: La position du levier qui ferme le script?
+//------------------------------------------*
+
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
