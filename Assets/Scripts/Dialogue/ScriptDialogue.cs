@@ -12,7 +12,8 @@ using UnityEngine.UI;
 public enum QuiParle
 {
     Nova,
-    Ella
+    Ella,
+    Vide
 }
 
 [System.Serializable]
@@ -20,6 +21,12 @@ public class LignesDialogue
 {
     public QuiParle speaker;
     public string text;
+}
+
+[System.Serializable]
+public class Segment
+{
+    public int[] lignes;
 }
 
 public class ScriptDialogue : MonoBehaviour
@@ -30,6 +37,7 @@ public class ScriptDialogue : MonoBehaviour
     public GameObject dialogueCanvas;
     public TextMeshProUGUI textComponent;
     public LignesDialogue[] lines;
+    public float[] delaisParLigne;
     public float textSpeed;
     public Button buttonNext;
 
@@ -37,22 +45,37 @@ public class ScriptDialogue : MonoBehaviour
 
     public TextMeshProUGUI nom;
 
+    public Nova nova;
+
+    private bool dialogueActif = false;
+
+    [Header("Programmes de dialogues séparés")]
+    public Segment[] segments;
+    public float[] delaisSegment;
+
+    [Header("Options Canvas")]
+    public float delaiReapparition = 5f;                  
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         textComponent.text = string.Empty;
         dialogueCanvas.SetActive(true);
+
+        if (nova != null) nova.SetCanMove(false);
+
         StartDialogue();
 
         buttonNext.onClick.AddListener(NextButtonClicked);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && dialogueActif)
         {
-            BarreEspace();
+            NextButtonClicked();
         }
     }
     //------------------------------------------*
@@ -64,10 +87,50 @@ public class ScriptDialogue : MonoBehaviour
     // Description : Cette fonction permet de commencer la fonction 
     // (plus tard déclencher avec une interaction/event)
     //------------------------------------------*
-    void StartDialogue()
+    public void StartDialogue()
     {
         index = 0;
-        StartCoroutine(TypeLine());
+        dialogueActif = true;
+
+        if (nova != null) nova.SetCanMove(false);
+
+        StartCoroutine(TypeLine()); 
+    }
+
+  
+ 
+
+
+    void EndSegment(int segmentIndex)
+    {
+        dialogueActif = false;
+        if (nova != null) nova.SetCanMove(true);
+
+        if (segmentIndex + 1 < segments.Length)
+        {
+            StartCoroutine(SegmentProgrammé(segmentIndex + 1));
+        }
+        else
+        {
+            dialogueCanvas.SetActive(false);
+        }
+    }
+    IEnumerator SegmentProgrammé(int segmentIndex)
+    {
+        if (delaisSegment != null && segmentIndex < delaisSegment.Length)
+            yield return new WaitForSeconds(delaisSegment[segmentIndex]);
+
+        if (dialogueCanvas != null)
+            dialogueCanvas.SetActive(true);
+
+        for (int i = 0; i < segments[segmentIndex].lignes.Length; i++)
+        {
+            index = segments[segmentIndex].lignes[i];
+            if (!string.IsNullOrEmpty(lines[index].text))
+                yield return StartCoroutine(TypeLine());
+        }
+
+        EndSegment(segmentIndex);
     }
 
     //------------------------------------------*
@@ -80,11 +143,14 @@ public class ScriptDialogue : MonoBehaviour
         string currentText = lines[index].text;
         QuiParle currentSpeaker = lines[index].speaker;
 
-        if (string.IsNullOrEmpty(currentText))
+        if (string.IsNullOrWhiteSpace(currentText) || currentSpeaker == QuiParle.Vide)
         {
             dialogueCanvas.SetActive(false);
             yield break;
         }
+
+        textComponent.text = "";
+        nom.text = "";
 
         dialogueCanvas.SetActive(true);
 
@@ -120,16 +186,33 @@ public class ScriptDialogue : MonoBehaviour
     //------------------------------------------*
     void NextLine()
     {
-        if (index < lines.Length - 1)
+        StopAllCoroutines();
+
+        do
         {
             index++;
-            StopAllCoroutines();
-            StartCoroutine(TypeLine());
-        }
-        else
-        {
-            dialogueCanvas.SetActive(false); 
-        }
+
+            if (index >= lines.Length)
+            {
+                EndDialogue();
+                return;
+            }
+
+        } while (
+            lines[index].speaker == QuiParle.Vide ||
+            string.IsNullOrWhiteSpace(lines[index].text)
+        );
+
+        dialogueCanvas.SetActive(true);
+        StartCoroutine(TypeLine());
+    }
+    IEnumerator PasserLignesVidesAvecDelai()
+    {
+        dialogueCanvas.SetActive(false);
+
+        yield return new WaitForSeconds(delaiReapparition);
+
+        NextLine();
     }
 
     //------------------------------------------*
@@ -141,25 +224,56 @@ public class ScriptDialogue : MonoBehaviour
     {
         if (index >= lines.Length) return;
 
-        if (textComponent.text == lines[index].text)
+        if (!dialogueCanvas.activeSelf)
+        {
+            NextLine();
+            return;
+        }
+
+        LignesDialogue currentLine = lines[index];
+
+
+        if (currentLine.speaker == QuiParle.Vide || string.IsNullOrWhiteSpace(currentLine.text))
+        {
+            StopAllCoroutines(); 
+            StartCoroutine(PasserLignesVidesAvecDelai());
+            return;
+        }
+
+        if (textComponent.text == currentLine.text)
         {
             NextLine();
         }
         else
         {
             StopAllCoroutines();
-            textComponent.text = lines[index].text;
+            textComponent.text = currentLine.text;
         }
     }
-
     //------------------------------------------*
-    // Fonction NextButtonClicked()
-    // Description : Cette fonction permet de détecter avec la barre d'espacement et de
-    // lancer la fonction NextLine ou de finir d'écrire le texte qui est entrain de s'écrire
-    //------------------------------------------*
-    void BarreEspace()
+    // Fonction EndDialogue()
+    // Description : Cette fonction termine le dialogue en cours,
+    // désactive le Canvas et redonne la possibilité de déplacer Nova
+    //------------------------------------------
+    void EndDialogue()
     {
-        NextButtonClicked();
+        dialogueActif = false;
+
+        if (nova != null)
+            nova.SetCanMove(true);
+
+        if (segments != null && segments.Length > 1)
+        {
+
+            if (dialogueCanvas != null)
+                dialogueCanvas.SetActive(true);
+
+            StartCoroutine(SegmentProgrammé(1));
+        }
+        else if (dialogueCanvas != null)
+        {
+            dialogueCanvas.SetActive(false);
+        }
     }
 
 }

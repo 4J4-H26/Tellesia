@@ -44,8 +44,13 @@ public class Nova : MonoBehaviour
     public GameObject levierCourant;
     public GameObject Porte;
 
+    private bool canMove = true;
+
+
     void Update()
     {
+        if (!canMove) return;
+
         // ** on a le input clavier (flèches + WASD) **
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -95,6 +100,10 @@ public class Nova : MonoBehaviour
             fleche.transform.Rotate(Vector3.up * 100f * Time.deltaTime);
         }
     }
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
+    }
 
     void OnCollisionStay(Collision collision)
     {
@@ -118,6 +127,7 @@ public class Nova : MonoBehaviour
         {
             levierCourant = collision.gameObject;
         }
+
 
         if (collision.gameObject.CompareTag("porte-niveau1"))
         {
