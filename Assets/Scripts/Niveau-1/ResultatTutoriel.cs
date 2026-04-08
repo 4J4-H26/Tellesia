@@ -22,7 +22,7 @@ public class ResultatTutoriel : MonoBehaviour
     bool resultatFinal;
 
     public Nova nova;
-    public Nova nova2;
+
 
     void Update()
     {
@@ -49,9 +49,6 @@ public class ResultatTutoriel : MonoBehaviour
 
         if (nova != null)
             nova.enabled = false;
-
-        if (nova2 != null)
-            nova2.enabled = false;
 
         Invoke("executerFin", 2f);
     }

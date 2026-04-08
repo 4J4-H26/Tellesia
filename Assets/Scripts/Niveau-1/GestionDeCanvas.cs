@@ -13,7 +13,7 @@ public class GestionDeCanvas : MonoBehaviour
     [Header("Références")]
     public GameObject canvasUI;  
     public Nova nova;            
-    public Nova nova2;          
+         
 
     [Header("Paramètres")]
     public float dureeAffichage = 5f;
@@ -28,7 +28,7 @@ public class GestionDeCanvas : MonoBehaviour
 
   
         if (nova != null) nova.enabled = false;
-        if (nova2 != null) nova2.enabled = false;
+
 
         if (canvasUI != null) canvasUI.SetActive(true);
 
@@ -42,7 +42,6 @@ public class GestionDeCanvas : MonoBehaviour
         if (canvasUI != null) canvasUI.SetActive(false);
 
         if (nova != null) nova.enabled = true;
-        if (nova2 != null) nova2.enabled = true;
 
         Time.timeScale = 1f;
 

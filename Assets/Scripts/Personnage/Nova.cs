@@ -28,9 +28,6 @@ public class Nova : MonoBehaviour
     private GameObject carteProche;
 
     [Header("UI Puzzle")]
-    public GameObject uiLevier;
-    public GameObject porte;
-    public GameObject uiSphere;
 
 
     private bool puzzleActif = false;
@@ -121,17 +118,7 @@ public class Nova : MonoBehaviour
         {
             levierCourant = collision.gameObject;
         }
-        if (collision.gameObject.CompareTag("Sphere"))
-        {
-            flecheActive = false;
 
-            if (fleche != null)
-            {
-                fleche.SetActive(false); 
-            }
-
-            StartCoroutine(AfficherUI(5f));
-        }
         if (collision.gameObject.CompareTag("porte-niveau1"))
         {
             Porte = collision.gameObject;
@@ -141,28 +128,6 @@ public class Nova : MonoBehaviour
             }
         }
 
-    }
-
-    private IEnumerator AfficherUI(float duree)
-    {
-        yield return new WaitForSeconds(1f);
-
-        uiSphere.SetActive(true);
-
-        yield return new WaitForSeconds(duree);
-
-        uiSphere.SetActive(false);
-
-        if (levierCourant != null)
-        {
-            Renderer rend = levierCourant.GetComponent<Renderer>();
-            if (rend != null)
-            {
-                Material mat = new Material(rend.material); 
-                mat.color = Color.purple;
-                rend.material = mat;
-            }
-        }
     }
 
 
