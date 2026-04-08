@@ -10,30 +10,25 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class Script_jigsaw_start : MonoBehaviour
 {
     //------------------------------------------*
     // VARIABLES
     //------------------------------------------*
-    [Range(2, 6)]
-    [SerializeField] private int difficulty = 4;
-    [SerializeField] private Transform gameHolder;
+    [SerializeField] private Transform gameTransform;
     [SerializeField] private Transform piecePrefab;
 
-    [SerializeField] private List<Texture2D> imageTextures;
-    [SerializeField] private Transform levelSelectPanel;
-    [SerializeField] private Image levelSelectPrefab;
+    private int emptyLocation;
+    private int size;
 
-    private List<Transform> pieces;
-    private Vector2Int dimensions;
-    private float width;
-    private float height;
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // UI caché
+        size = 3;
+        CreateGamePieces(0.05f);
     }
 
     // Update is called once per frame
@@ -50,48 +45,43 @@ public class Script_jigsaw_start : MonoBehaviour
     // Fonction startGame
     // Description : 
     //------------------------------------------*
-    public void startGame(Texture2D jigsawTexture){
-        // Garde les pièces dans un tableau
-        pieces = new List<Transform>();
-
-        // Calculer la taille des pièces (avec la difficulté)
-        dimensions = GetDimensions(jigsawTexture, difficulty);
-
-        Vector2Int GetDimensions(Texture2D jigsawTexture, int difficulty)
-        {
-            Vector2Int dimensions = Vector2Int.zero;
-
-            //Faire des pièce carrées
-            if (jigsawTexture.width < jigsawTexture.height)
-            {
-                dimensions.x = difficulty;
-                dimensions.y = (difficulty * jigsawTexture.height) / jigsawTexture.width;
-            }
-            else
-            {
-                dimensions.x = difficulty * jigsawTexture.width / jigsawTexture.height;
-                dimensions.y = difficulty;
-            }
-            return dimensions;
-
-            CreateJigsawPieces(jigsawTexture);
-        }
-    }
-
-    //------------------------------------------*
-    // Fonction createJigsawPieces
-    // Description : 
-    //------------------------------------------*
-    void CreateJigsawPieces(Texture2D jigsawTexture)
+    private void CreateGamePieces(float gapThickness)
     {
-        // Créer les pièces selon leur dimensions
-        height = 1f / dimensions.y;
-        float aspect = (float)jigsawTexture.width / jigsawTexture.height;
-        width = aspect / dimensions.x;
-
-        for (int row = 0; row < dimensions.y; row++)
+        //La largeur de chaque pièce
+        float width = 1 / (float)size;
+        for(int row = 0; row < size; row++)
         {
-            //for(int col = 0; col < )
+            for(int col = 0; col < size; col++)
+            {
+                Transform piece = Instantiate(piecePrefab, gameTransform);
+                // Les pièces vont de -1 à +1
+                piece.localPosition = new Vector3(-1 + (2 * width * col) * width,
+                                                  +1 - (2 * width * row) - width,
+                                                  0);
+                piece.localScale = ((2 * width) - gapThickness) * Vector3.one;
+                piece.name = $"{(row * size) + col}";
+                // Espace vide en bas à droite
+                if((row == size - 1) && (col == size - 1))
+                {
+                    emptyLocation = (size * size) - 1;
+                    piece.gameObject.SetActive(false);
+                }
+                else
+                {
+                    // Étendre la texture sur toutes les pièces avec les UV
+                    // Ordre des UV : (0,1) (1,1) (0,0) (1,0)
+                    float gap = gapThickness;
+                    Mesh mesh = piece.GetComponent<MeshFilter>().mesh;
+                    Vector2[] uv = new Vector2[4];
+                    uv[0] = new Vector2((width * col) + gap, 1 - ((width * (row + 1)) - gap));
+                    uv[1] = new Vector2((width * (col + 1)) - gap, 1 - ((width * (row + 1)) - gap));
+                    uv[2] = new Vector2((width * col) + gap, 1 - ((width * (row + 1)) - gap));
+                    uv[3] = new Vector2((width * (col + 1)) - gap, 1 - ((width * row) + gap));
+                    //Assigner les UV au mesh
+                    mesh.uv = uv;
+                }
+            }
         }
-    }
+    }//fin CreateGamePieces
+
 }
