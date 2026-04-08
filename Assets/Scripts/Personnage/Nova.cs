@@ -38,10 +38,12 @@ public class Nova : MonoBehaviour
     public float vitesseRotation = 360f;
 
     [Header("Fleche")]
-    public GameObject fleche;  
+    public GameObject Flèche1;
+    public GameObject Flèche2;
+    public GameObject Flèche3;
     private bool flecheActive = false;
 
-    public GameObject levierCourant;
+   // public GameObject levierCourant;
     public GameObject Porte;
 
     private bool canMove = true;
@@ -97,7 +99,7 @@ public class Nova : MonoBehaviour
         if (flecheActive)
         {
             // rotation continue
-            fleche.transform.Rotate(Vector3.up * 100f * Time.deltaTime);
+            Flèche1.transform.Rotate(Vector3.up * 100f * Time.deltaTime);
         }
     }
     public void SetCanMove(bool value)
@@ -123,10 +125,10 @@ public class Nova : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("LevierDeCommande"))
-        {
-            levierCourant = collision.gameObject;
-        }
+      //  if (collision.gameObject.CompareTag("LevierDeCommande"))
+      //  {
+       //     levierCourant = collision.gameObject;
+       // }
 
 
         if (collision.gameObject.CompareTag("porte-niveau1"))

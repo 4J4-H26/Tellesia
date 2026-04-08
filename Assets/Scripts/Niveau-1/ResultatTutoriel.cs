@@ -21,8 +21,11 @@ public class ResultatTutoriel : MonoBehaviour
     bool finDeclenchee = false;
     bool resultatFinal;
 
+    [Header("Nova")]
     public Nova nova;
 
+    [Header("Canvas UI Levier de commande")]
+    public GameObject Canvas;
 
     void Update()
     {

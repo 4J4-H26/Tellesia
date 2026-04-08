@@ -13,7 +13,8 @@ TagManager:
   - allie
   - porte-niveau1
   - Sphere
-  - LevierDeCommande
+  - resolu
+  - nonResolu
   layers:
   - Default
   - TransparentFX
