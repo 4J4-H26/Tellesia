@@ -51,6 +51,7 @@ public class Nova : MonoBehaviour
     private Vector3 direction;
     private GameObject carteProche;
 
+
     void Update()
     {
         if (!canMove) return;
@@ -108,6 +109,7 @@ public class Nova : MonoBehaviour
     {
         canMove = value;
     }
+
 
     void OnCollisionStay(Collision collision)
     {

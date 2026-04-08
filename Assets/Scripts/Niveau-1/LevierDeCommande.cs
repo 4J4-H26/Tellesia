@@ -11,29 +11,49 @@ using UnityEngine;
 
 public class GestionLevierDeCommande : MonoBehaviour
 {
-    [Header("états booléens (tags)")]
-    public bool resolu;
-    public bool nonResolu;
+    [Header("Le Canvas UI de Leviers")]
+    public GameObject Canvas;
 
-    [Header("Les leviers")]
-    public GameObject LevierDeCommande1;
-    public GameObject LevierDeCommande2;
-    public GameObject LevierDeCommande3;
+    [Header("réf")]
+    private bool NovaDansLaZoneDeLevier;
 
-    [Header("Les flèche")]
-    public GameObject Flèche1;
-    public GameObject Flèche2;
-    public GameObject Flèche3;
+    [Header("état")]
+    private bool canvasOuvert;
+
+    [Header("Nova")]
+    public Nova nova;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Canvas.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (NovaDansLaZoneDeLevier && Input.GetKeyDown(KeyCode.E)) 
+        {
+            canvasOuvert = !canvasOuvert;
+            Canvas.SetActive(canvasOuvert);
+            if (nova != null)
+                nova.enabled = !canvasOuvert;
+        } 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Nova"))
+        {
+            NovaDansLaZoneDeLevier = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Nova"))
+        {
+            NovaDansLaZoneDeLevier = false;
+            canvasOuvert = false;
+            Canvas.SetActive(false);
+        }
     }
 }
