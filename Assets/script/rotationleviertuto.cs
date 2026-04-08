@@ -27,6 +27,12 @@ public class rotationLevierTUto : MonoBehaviour
         animRotation.enabled = true;
         levierTuto.tag = "reussit";
         Debug.Log(levierTuto.tag);
-        //canvaLevierTuto.enabled = false(temps);
+        Invoke("disableUI", 1.5f);
+        
+    }
+
+    void disableUI()
+    {
+        canvaLevierTuto.enabled = false;
     }
 }
