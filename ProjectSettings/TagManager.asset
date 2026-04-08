@@ -3,23 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-<<<<<<< Updated upstream
-  - Nova
-  - "cl\xE9"
-  - porte
-  - Cube1
-  - Cube2
-  - Carte
-  - allie
-  - porte-niveau1
-  - Sphere
-  - resolu
-  - nonResolu
-=======
-  - reussit
-  - aResoudre
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
