@@ -613,6 +613,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   serializedVersion: 6
   m_Component:
   - component: {fileID: 883926859}
@@ -696,6 +697,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883926858}
   m_CullTransparentMesh: 1
+>>>>>>> Stashed changes
+=======
+--- !u!223 &535639231 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 4916467587950172245, guid: 7b606260575cb87459744917565f0693, type: 3}
+  m_PrefabInstance: {fileID: 3480843599415368777}
+  m_PrefabAsset: {fileID: 0}
 >>>>>>> Stashed changes
 --- !u!1 &997385688
 GameObject:
@@ -795,6 +803,7 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 --- !u!1 &1065903820 stripped
 GameObject:
@@ -889,6 +898,8 @@ Transform:
   - {fileID: 2023722488}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &1402833324
 GameObject:
@@ -1679,6 +1690,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     - target: {fileID: 2341188941074770171, guid: 7b606260575cb87459744917565f0693, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0174367
@@ -1691,10 +1703,13 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.0174367
       objectReference: {fileID: 0}
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 3309766393145966580, guid: 7b606260575cb87459744917565f0693, type: 3}
       propertyPath: m_Name
       value: UI_Levier_tuto
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 3309766393145966580, guid: 7b606260575cb87459744917565f0693, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1758,6 +1773,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7743493349142386975, guid: f195256803b0af34985e688af42fed1d, type: 3}
+>>>>>>> Stashed changes
+=======
+    - target: {fileID: 7743493349142386975, guid: 7b606260575cb87459744917565f0693, type: 3}
 >>>>>>> Stashed changes
       propertyPath: m_Pivot.x
       value: 0
@@ -1840,10 +1858,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_RemovedGameObjects: []
 =======
     m_RemovedGameObjects:
     - {fileID: 2851419780990692607, guid: f195256803b0af34985e688af42fed1d, type: 3}
+>>>>>>> Stashed changes
+=======
+    m_RemovedGameObjects: []
 >>>>>>> Stashed changes
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -15,7 +15,11 @@ GameObject:
   - component: {fileID: 5000618286152281269}
   - component: {fileID: 7084343088074890755}
   m_Layer: 5
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
   m_Name: levier_robot
+=======
+  m_Name: levier_tuto
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,18 +31,32 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
   m_GameObject: {fileID: 5029398838372654327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+=======
+  m_GameObject: {fileID: 60375632349291009}
+  m_LocalRotation: {x: 0, y: 0, z: 0.31343725, w: 0.9496089}
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
   m_Father: {fileID: 67695551269062873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 49, y: 165}
   m_SizeDelta: {x: 362, y: 152}
+=======
+  m_Father: {fileID: 7743493349142386975}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 36.533}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -313, y: 6}
+  m_SizeDelta: {x: 254, y: 670}
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2946609069055083993
 CanvasRenderer:
@@ -101,8 +119,13 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+=======
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -122,7 +145,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
       - m_Target: {fileID: 5000618286152281269}
+=======
+      - m_Target: {fileID: 5318353164752687490}
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
         m_TargetAssemblyTypeName: rotationLevierTUto, Assembly-CSharp
         m_MethodName: clickRotation
         m_Mode: 1
@@ -134,19 +161,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
       - m_Target: {fileID: 7084343088074890755}
+=======
+      - m_Target: {fileID: 1763675842413408081}
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: Play
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
           m_IntArgument: 1
+=======
+          m_IntArgument: 0
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
 --- !u!114 &5000618286152281269
+=======
+--- !u!114 &5318353164752687490
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,7 +223,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
 --- !u!1 &7276954071439934679
+=======
+--- !u!1 &1428150694287822047
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,6 +235,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
   - component: {fileID: 67695551269062873}
   - component: {fileID: 4990651058070571761}
   - component: {fileID: 2218247636445449720}
@@ -199,25 +243,121 @@ GameObject:
   - component: {fileID: 2712045028815590996}
   m_Layer: 5
   m_Name: UI_Levier_robot 1
+=======
+  - component: {fileID: 5848227749002658555}
+  - component: {fileID: 1537221423378456316}
+  - component: {fileID: 7531835820415485492}
+  m_Layer: 5
+  m_Name: levier_base
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
 --- !u!224 &67695551269062873
+=======
+--- !u!224 &5848227749002658555
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
   m_GameObject: {fileID: 7276954071439934679}
+=======
+  m_GameObject: {fileID: 1428150694287822047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0174367, y: 1.0174367, z: 1.0174367}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7743493349142386975}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 45, y: -195}
+  m_SizeDelta: {x: 927, y: 449}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1537221423378456316
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428150694287822047}
+  m_CullTransparentMesh: 1
+--- !u!114 &7531835820415485492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428150694287822047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9c0d8098b4a526e4595aca157e1f281f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3309766393145966580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7743493349142386975}
+  - component: {fileID: 4916467587950172245}
+  - component: {fileID: 6413958595346934978}
+  - component: {fileID: 970236584146642819}
+  m_Layer: 5
+  m_Name: UI_Levier_tuto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7743493349142386975
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309766393145966580}
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
   - {fileID: 3843688821463203350}
   - {fileID: 2033012753917110191}
+=======
+  - {fileID: 7508628708490495304}
+  - {fileID: 5848227749002658555}
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -288,6 +428,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+<<<<<<< Updated upstream:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_robot 1.prefab
 --- !u!114 &2712045028815590996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,3 +518,5 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+=======
+>>>>>>> Stashed changes:Assets/UI_Levier/Puzzles_Niveau/UI_Levier_tuto.prefab
