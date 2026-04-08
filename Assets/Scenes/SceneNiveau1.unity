@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 460113023}
   - component: {fileID: 460113022}
   - component: {fileID: 460113021}
+  - component: {fileID: 460113024}
   m_Layer: 0
   m_Name: LevierDeCommande2
   m_TagString: nonResolu
@@ -457,6 +458,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460113019}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &460113024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460113019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e49cc21d4bcb5429b500263a8ede49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GestionLevierDeCommande
+  Canvas: {fileID: 2054417476}
+  nova: {fileID: 1310883697}
 --- !u!1 &508151611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1086,7 @@ GameObject:
   - component: {fileID: 797463673}
   - component: {fileID: 797463672}
   - component: {fileID: 797463671}
+  - component: {fileID: 797463674}
   m_Layer: 0
   m_Name: LevierDeCommande1
   m_TagString: nonResolu
@@ -1171,6 +1187,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797463669}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &797463674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797463669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e49cc21d4bcb5429b500263a8ede49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GestionLevierDeCommande
+  Canvas: {fileID: 2054417476}
+  nova: {fileID: 1310883697}
 --- !u!1 &1033792616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1233,7 @@ MonoBehaviour:
   levierActive: 0
   nova: {fileID: 1310883697}
   Canvas: {fileID: 2054417476}
+  Porte: {fileID: 0}
 --- !u!4 &1033792618
 Transform:
   m_ObjectHideFlags: 0
@@ -1422,6 +1453,7 @@ GameObject:
   - component: {fileID: 1289582853}
   - component: {fileID: 1289582852}
   - component: {fileID: 1289582851}
+  - component: {fileID: 1289582854}
   m_Layer: 0
   m_Name: LevierDeCommande3
   m_TagString: nonResolu
@@ -1522,6 +1554,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289582849}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1289582854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289582849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e49cc21d4bcb5429b500263a8ede49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GestionLevierDeCommande
+  Canvas: {fileID: 2054417476}
+  nova: {fileID: 1310883697}
 --- !u!4 &1310883695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 883408739895277883, guid: 9b35fa0ddef3bcb4292a16e5234d2efc, type: 3}
@@ -1974,7 +2020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d01d56de533267418299308e9e7fe6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GestionDeCanvas
-  canvasUI: {fileID: 0}
+  canvasUI: {fileID: 2054417476}
   nova: {fileID: 1310883697}
   dureeAffichage: 5
 --- !u!4 &1784846322
@@ -2775,10 +2821,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 507129110093276033, guid: 9b35fa0ddef3bcb4292a16e5234d2efc, type: 3}
+      propertyPath: m_TagString
+      value: Nova
+      objectReference: {fileID: 0}
     - target: {fileID: 2376999969922468591, guid: 9b35fa0ddef3bcb4292a16e5234d2efc, type: 3}
       propertyPath: Porte
       value: 
       objectReference: {fileID: 1778192826}
+    - target: {fileID: 2376999969922468591, guid: 9b35fa0ddef3bcb4292a16e5234d2efc, type: 3}
+      propertyPath: Canvas
+      value: 
+      objectReference: {fileID: 2054417476}
     - target: {fileID: 2376999969922468591, guid: 9b35fa0ddef3bcb4292a16e5234d2efc, type: 3}
       propertyPath: fleche
       value: 
@@ -2807,6 +2861,18 @@ PrefabInstance:
       propertyPath: levierCourant
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2376999969922468591, guid: 9b35fa0ddef3bcb4292a16e5234d2efc, type: 3}
+      propertyPath: LevierDeCommande1
+      value: 
+      objectReference: {fileID: 797463669}
+    - target: {fileID: 2376999969922468591, guid: 9b35fa0ddef3bcb4292a16e5234d2efc, type: 3}
+      propertyPath: LevierDeCommande2
+      value: 
+      objectReference: {fileID: 460113019}
+    - target: {fileID: 2376999969922468591, guid: 9b35fa0ddef3bcb4292a16e5234d2efc, type: 3}
+      propertyPath: LevierDeCommande3
+      value: 
+      objectReference: {fileID: 1289582849}
     - target: {fileID: 2655686479443056301, guid: 9b35fa0ddef3bcb4292a16e5234d2efc, type: 3}
       propertyPath: m_Name
       value: NOVA
@@ -2908,6 +2974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ELLA
       objectReference: {fileID: 0}
+    - target: {fileID: 1094944257823405499, guid: e7ecf05726cbe134487b230f28d9da10, type: 3}
+      propertyPath: m_TagString
+      value: allie
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2926,5 +2996,5 @@ SceneRoots:
   - {fileID: 8533151916285783414}
   - {fileID: 1118673797}
   - {fileID: 776668794}
-  - {fileID: 1337823591}
   - {fileID: 2054417480}
+  - {fileID: 1337823591}
