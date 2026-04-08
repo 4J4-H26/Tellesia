@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
+<<<<<<< Updated upstream
   - Nova
   - "cl\xE9"
   - porte
@@ -15,6 +16,10 @@ TagManager:
   - Sphere
   - resolu
   - nonResolu
+=======
+  - reussit
+  - aResoudre
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

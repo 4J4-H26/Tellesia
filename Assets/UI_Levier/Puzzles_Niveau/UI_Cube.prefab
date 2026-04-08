@@ -29,7 +29,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.79374, y: 0.79374, z: 0.79374}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6357753181521369390}
   m_Father: {fileID: 8401375396155740120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -107,7 +108,6 @@ RectTransform:
   - {fileID: 1668458167336971478}
   - {fileID: 8070791444396661451}
   - {fileID: 2213527830727873535}
-  - {fileID: 6357753181521369390}
   - {fileID: 6902423451432363268}
   - {fileID: 5151407307617304780}
   m_Father: {fileID: 0}
@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 2213527830727873535}
   - component: {fileID: 9177698415502267068}
   - component: {fileID: 717674551824084441}
+  - component: {fileID: 8020264406317598848}
   m_Layer: 5
   m_Name: cube3
   m_TagString: Untagged
@@ -205,7 +206,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2317590196307177771}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -214,7 +215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 442, y: -13}
+  m_AnchoredPosition: {x: 442, y: -13.000008}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9177698415502267068
@@ -252,6 +253,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &8020264406317598848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317590196307177771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f6858659e31a0439730dab24fd153a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::dragCube
 --- !u!1 &2518259981639586199
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,16 +362,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5143214549396294723}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.79374, y: 0.79374, z: 0.79374}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8401375396155740120}
+  m_Father: {fileID: 5151407307617304780}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 335.00018, y: -326}
+  m_AnchoredPosition: {x: 558.1177, y: 0.000061035156}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3991898320342815204
