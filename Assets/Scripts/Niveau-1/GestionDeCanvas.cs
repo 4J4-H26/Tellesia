@@ -14,7 +14,6 @@ public class GestionDeCanvas : MonoBehaviour
     public GameObject canvasUI;  
     public Nova nova;            
          
-
     [Header("Paramètres")]
     public float dureeAffichage = 5f;
 

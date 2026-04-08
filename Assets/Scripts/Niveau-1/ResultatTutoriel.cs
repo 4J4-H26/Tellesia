@@ -27,6 +27,10 @@ public class ResultatTutoriel : MonoBehaviour
     [Header("Canvas UI Levier de commande")]
     public GameObject Canvas;
 
+    [Header("Porte")]
+    public GameObject Porte;
+    private bool porteActive = false;
+
     void Update()
     {
         if (!finDeclenchee)

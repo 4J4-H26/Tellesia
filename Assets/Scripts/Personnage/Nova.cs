@@ -18,36 +18,38 @@ public class Nova : MonoBehaviour
     [Header("réf`à la carte")]
     public bool contientLaCarte = false;
 
-
     [Header("Déplacement")]
     public float vitesse = 2f;
 
-
-    private Vector3 direction;
-
-    private GameObject carteProche;
-
     [Header("UI Puzzle")]
 
-
-    private bool puzzleActif = false;
-
+    [Header("Résultat du Tuto")]
     public ResultatTutoriel resultatTuto;
 
     [Header("Rotation")]
     public float vitesseRotation = 360f;
 
-    [Header("Fleche")]
+    [Header("Flèches")]
     public GameObject Flèche1;
     public GameObject Flèche2;
     public GameObject Flèche3;
-    private bool flecheActive = false;
 
-   // public GameObject levierCourant;
+    [Header("Les leviers")]
+    public GameObject LevierDeCommande1;
+    public GameObject LevierDeCommande2;
+    public GameObject LevierDeCommande3;
+
+    [Header("Le Canvas UI de Leviers")]
+    public GameObject Canvas;
+
+    [Header("LaPorte")]
     public GameObject Porte;
 
+    private bool puzzleActif = false;
+    private bool flecheActive = false;
     private bool canMove = true;
-
+    private Vector3 direction;
+    private GameObject carteProche;
 
     void Update()
     {
