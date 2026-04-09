@@ -49,12 +49,19 @@ public class ScriptDialogue : MonoBehaviour
 
     private bool dialogueActif = false;
 
+    bool isTyping = false;
+    public bool autoNext = true;
+
     [Header("Programmes de dialogues séparés")]
     public Segment[] segments;
     public float[] delaisSegment;
 
     [Header("Options Canvas")]
-    public float delaiReapparition = 5f;                  
+    public float delaiReapparition = 5f;
+
+    [Header("Images des Sprites pour qui qui parle")]
+    public GameObject ImageSpriteElla1;
+    public GameObject ImageSpriteNova1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -143,6 +150,12 @@ public class ScriptDialogue : MonoBehaviour
         string currentText = lines[index].text;
         QuiParle currentSpeaker = lines[index].speaker;
 
+        if (ImageSpriteElla1 != null)
+            ImageSpriteElla1.SetActive(currentSpeaker == QuiParle.Ella);
+
+        if (ImageSpriteNova1 != null)
+            ImageSpriteNova1.SetActive(currentSpeaker == QuiParle.Nova);
+
         if (string.IsNullOrWhiteSpace(currentText) || currentSpeaker == QuiParle.Vide)
         {
             dialogueCanvas.SetActive(false);
@@ -171,10 +184,20 @@ public class ScriptDialogue : MonoBehaviour
         nom.text = currentSpeaker.ToString();
         textComponent.text = "";
 
+        isTyping = true;
+
         foreach (char c in currentText.ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
+        }
+
+        isTyping = false;
+
+        if (autoNext && delaisParLigne != null && index < delaisParLigne.Length)
+        {
+            yield return new WaitForSeconds(delaisParLigne[index]);
+            NextLine();
         }
     }
 
@@ -224,10 +247,12 @@ public class ScriptDialogue : MonoBehaviour
     {
         if (index >= lines.Length) return;
 
-        if (!dialogueCanvas.activeSelf)
+        if (isTyping)
         {
-            NextLine();
-            return;
+            StopAllCoroutines();
+            textComponent.text = lines[index].text;
+            isTyping = false;
+            return; 
         }
 
         LignesDialogue currentLine = lines[index];

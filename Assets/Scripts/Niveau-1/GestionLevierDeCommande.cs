@@ -9,7 +9,7 @@
 
 using UnityEngine;
 
-public class LevierDeCommande : MonoBehaviour
+public class GestionLevierDeCommande : MonoBehaviour
 {
     [Header("états booléens (tags)")]
     public bool resolu;

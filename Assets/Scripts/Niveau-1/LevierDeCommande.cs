@@ -9,7 +9,7 @@
 
 using UnityEngine;
 
-public class GestionLevierDeCommande : MonoBehaviour
+public class LevierDeCommande : MonoBehaviour
 {
     [Header("Le Canvas UI de Leviers")]
     public GameObject Canvas;
@@ -49,8 +49,6 @@ public class GestionLevierDeCommande : MonoBehaviour
             canvasOuvert = true;
             Canvas.SetActive(true);
 
-            if (nova != null)
-                nova.enabled = false; 
         }
     }
 
@@ -58,18 +56,11 @@ public class GestionLevierDeCommande : MonoBehaviour
     {
         if (other.CompareTag("Nova"))
         {
-            Debug.Log("SORTIE DU LEVIER");
-
             NovaDansLaZoneDeLevier = false;
 
             canvasOuvert = false;
             Canvas.SetActive(false);
 
-            if (nova != null)
-            {
-                nova.enabled = true;
-                Debug.Log("Nova réactivé");
-            }
         }
     }
 }
