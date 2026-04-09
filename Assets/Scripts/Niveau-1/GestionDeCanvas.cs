@@ -6,44 +6,25 @@
 
 
 using UnityEngine;
-using System.Collections;
 
 public class GestionDeCanvas : MonoBehaviour
 {
     [Header("Références")]
-    public GameObject canvasUI;  
-    public Nova nova;            
-         
-    [Header("Paramètres")]
-    public float dureeAffichage = 5f;
+    public GameObject canvasUI;
+    public Nova nova;
 
     private bool canvasActif = false;
-    public void AfficherCanvas()
+
+    public void ToggleCanvas()
     {
-        if (canvasActif) return;
+        canvasActif = !canvasActif;
 
-        canvasActif = true;
-        Time.timeScale = 0f;
+        if (canvasUI != null)
+            canvasUI.SetActive(canvasActif);
 
-  
-        if (nova != null) nova.enabled = false;
+        if (nova != null)
+            nova.enabled = !canvasActif;
 
-
-        if (canvasUI != null) canvasUI.SetActive(true);
-
-        StartCoroutine(CacherCanvasAprèsDelay(dureeAffichage));
-    }
-
-    private IEnumerator CacherCanvasAprèsDelay(float delay)
-    {
-        yield return new WaitForSecondsRealtime(delay);
-
-        if (canvasUI != null) canvasUI.SetActive(false);
-
-        if (nova != null) nova.enabled = true;
-
-        Time.timeScale = 1f;
-
-        canvasActif = false;
+        Time.timeScale = canvasActif ? 0f : 1f;
     }
 }

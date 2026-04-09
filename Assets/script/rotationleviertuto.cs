@@ -14,12 +14,17 @@ public class rotationLevierTUto : MonoBehaviour
 
     public float temps = 1f;
 
+    [Header("Nova")]
+    public Nova nova;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         levierTuto = levierTuto.GetComponent<Button>();
         animRotation.enabled = false;
         Debug.Log(levierTuto.tag);
+        if (nova != null)
+            nova.enabled = false;
     }
 
     public void clickRotation()
@@ -34,5 +39,7 @@ public class rotationLevierTUto : MonoBehaviour
     void disableUI()
     {
         canvaLevierTuto.enabled = false;
+        if (nova != null)
+            nova.enabled = true;
     }
 }

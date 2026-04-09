@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - nonResolu
+  - Carte
+  - porte-niveau1
+  - allie
+  - Nova
+  - reussit
   layers:
   - Default
   - TransparentFX

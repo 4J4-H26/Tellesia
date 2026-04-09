@@ -32,28 +32,44 @@ public class GestionLevierDeCommande : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (NovaDansLaZoneDeLevier && Input.GetKeyDown(KeyCode.E)) 
+        if (NovaDansLaZoneDeLevier && Input.GetKeyDown(KeyCode.E))
         {
             canvasOuvert = !canvasOuvert;
             Canvas.SetActive(canvasOuvert);
             if (nova != null)
                 nova.enabled = !canvasOuvert;
-        } 
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Nova"))
-        {
-            NovaDansLaZoneDeLevier = true;
         }
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Nova"))
+        if (other.CompareTag("Nova"))
         {
+            NovaDansLaZoneDeLevier = true;
+
+            canvasOuvert = true;
+            Canvas.SetActive(true);
+
+            if (nova != null)
+                nova.enabled = false; 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Nova"))
+        {
+            Debug.Log("SORTIE DU LEVIER");
+
             NovaDansLaZoneDeLevier = false;
+
             canvasOuvert = false;
             Canvas.SetActive(false);
+
+            if (nova != null)
+            {
+                nova.enabled = true;
+                Debug.Log("Nova réactivé");
+            }
         }
     }
 }
