@@ -24,28 +24,34 @@ public class ResultatTutoriel : MonoBehaviour
     [Header("Nova")]
     public Nova nova;
 
-    [Header("Canvas UI Levier de commande")]
-    public GameObject Canvas;
-
     [Header("Porte")]
     public GameObject Porte;
-    private bool porteActive = false;
+
+    [Header("Les leviers")]
+    public GameObject LevierDeCommande1;
+    public GameObject LevierDeCommande2;
+    public GameObject LevierDeCommande3;
+
+    bool messageAffiche = false;
 
     void Update()
     {
-        if (!finDeclenchee)
+        if (!finDeclenchee && levierActive) 
         {
             if (reussite())
             {
-                reussiTuto = true;
                 lancerFin(true);
             }
-
-            if (echec())
+            else if (!messageAffiche)
             {
-                echecTuto = true;
-                lancerFin(false);
+                Debug.Log("pas encore complet faut activer tous les leviers");
+                messageAffiche = true;
             }
+        }
+
+        if (!levierActive)
+        {
+            messageAffiche = false;
         }
     }
 
@@ -64,21 +70,30 @@ public class ResultatTutoriel : MonoBehaviour
     {
         if (resultatFinal)
         {
-            SceneManager.LoadScene("Scene2");
-        }
-        else
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("SceneNiveau2");
         }
     }
 
     bool reussite()
     {
-        return levierActive;
+        return LevierDeCommande1.CompareTag("reussit") &&
+               LevierDeCommande2.CompareTag("reussit") &&
+               LevierDeCommande3.CompareTag("reussit");
     }
 
-    bool echec()
+    private void OnTriggerEnter(Collider other)
     {
-        return false;
+        if (other.CompareTag("Nova"))
+        {
+            levierActive = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Nova"))
+        {
+            levierActive = false;
+        }
     }
 }

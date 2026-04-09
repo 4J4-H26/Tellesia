@@ -1925,8 +1925,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ResultatTutoriel
   levierActive: 0
   nova: {fileID: 1310883697}
-  Canvas: {fileID: 0}
-  Porte: {fileID: 0}
+  Porte: {fileID: 1778192826}
+  LevierDeCommande1: {fileID: 797463669}
+  LevierDeCommande2: {fileID: 460113019}
+  LevierDeCommande3: {fileID: 1289582849}
 --- !u!4 &1033792618
 Transform:
   m_ObjectHideFlags: 0
@@ -3111,7 +3113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1784846321
 MonoBehaviour:
   m_ObjectHideFlags: 0
