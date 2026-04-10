@@ -127,24 +127,8 @@ public class Nova : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-      //  if (collision.gameObject.CompareTag("LevierDeCommande"))
-      //  {
-       //     levierCourant = collision.gameObject;
-       // }
 
-
-        if (collision.gameObject.CompareTag("porte-niveau1"))
-        {
-            Porte = collision.gameObject;
-            if (resultatTuto != null)
-            {
-                resultatTuto.levierActive = true;
-            }
-        }
-
-    }
+    
 
 
 

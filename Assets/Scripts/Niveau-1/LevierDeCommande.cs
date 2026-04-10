@@ -35,32 +35,40 @@ public class LevierDeCommande : MonoBehaviour
         if (NovaDansLaZoneDeLevier && Input.GetKeyDown(KeyCode.E))
         {
             canvasOuvert = !canvasOuvert;
+
             Canvas.SetActive(canvasOuvert);
+
             if (nova != null)
-                nova.enabled = !canvasOuvert;
+                nova.SetCanMove(!canvasOuvert);
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Nova"))
+        if (collision.gameObject.CompareTag("Nova") && gameObject.tag != "reussit")
         {
             NovaDansLaZoneDeLevier = true;
 
             canvasOuvert = true;
             Canvas.SetActive(true);
 
+            if (nova != null)
+                nova.SetCanMove(false);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.CompareTag("Nova"))
+        if (collision.gameObject.CompareTag("Nova") && gameObject.tag != "reussit")
         {
             NovaDansLaZoneDeLevier = false;
 
             canvasOuvert = false;
             Canvas.SetActive(false);
 
+            if (nova != null)
+                nova.SetCanMove(true);
         }
     }
 }

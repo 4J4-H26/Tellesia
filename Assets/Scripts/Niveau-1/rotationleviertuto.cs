@@ -13,12 +13,19 @@ public class rotationleviertuto : MonoBehaviour
     public Animator animRotation;
     public float temps = 1f;
 
-    [Header("Nova")]
-    public Nova nova;
 
     [Header("Les leviers de commande 3D")]
 
     public GameObject levierActif;
+
+    public Nova nova;
+
+    private bool interactionEnCours = false;
+
+
+    [Header("Les flèches")]
+
+    public GameObject fleche1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,12 +38,18 @@ public class rotationleviertuto : MonoBehaviour
 
     public void SetLevierActif(GameObject levier)
     {
+        if (interactionEnCours) return;
+
         levierActif = levier;
 
-        if (levierActif != null)
+        if (levierActif != null && levierActif.tag != "reussit")
+        {
             canvaLevierTuto.enabled = true;
-        else
-            canvaLevierTuto.enabled = false;
+            interactionEnCours = true;
+
+            if (nova != null)
+                nova.SetCanMove(false);
+        }
     }
 
     public void clickRotation()
@@ -51,9 +64,31 @@ public class rotationleviertuto : MonoBehaviour
 
         levierActif.tag = "reussit";
 
-        Debug.Log(levierActif.name + " est reussi !");
+      //  Debug.Log(levierActif.name + " est reussi !");
 
         levierTuto.tag = "reussit";
 
+        if (fleche1 != null)
+            fleche1.SetActive(false);
+
+        Invoke("disableUI", 1.5f);
+    }
+    void disableUI()
+    {
+        canvaLevierTuto.enabled = false;
+
+        if (nova != null)
+            nova.SetCanMove(true);
+    }
+
+    public void FermerUI()
+    {
+        canvaLevierTuto.enabled = false;
+
+        levierActif = null;
+        interactionEnCours = false;
+
+        if (nova != null)
+            nova.SetCanMove(true);
     }
 }
