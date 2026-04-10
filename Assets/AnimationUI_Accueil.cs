@@ -17,7 +17,7 @@
 //     public class animationMenuBouttons:
 //     {
 //         public void{
-//             transform.LeanMoveLocal.
+//             LeanTwean.move
 //         }
 //     }
 // }
