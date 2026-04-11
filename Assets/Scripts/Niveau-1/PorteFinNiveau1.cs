@@ -14,15 +14,14 @@ public class PorteFinNiveau1 : MonoBehaviour
 
     bool finDeclenchee = false;
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //    if (other.CompareTag("Nova") && tuto.porteActive && !finDeclenchee)
-    //    {
-    //        lancerFin();
-    //  }
-    private void OnCollisionEnter(Collision collision)
+    public CameraQuiSuitNova cam;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Nova") && tuto.porteActive && !finDeclenchee)
+        if (other.CompareTag("Nova")
+            && gameObject.CompareTag("porte-niveau1")
+            && tuto.porteActive
+            && !finDeclenchee)
         {
             lancerFin();
         }
@@ -33,9 +32,18 @@ public class PorteFinNiveau1 : MonoBehaviour
         finDeclenchee = true;
 
         if (nova != null)
-            nova.enabled = false;
+        {
+            nova.ActiverAutoMove();
+        }
 
-        Invoke("chargerScene", 2f);
+        if (cam != null)
+        {
+            cam.StopSuivre();
+        }
+
+        GetComponent<Collider>().enabled = false;
+
+        Invoke("chargerScene", 2.5f);
     }
 
     void chargerScene()

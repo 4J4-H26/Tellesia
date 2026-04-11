@@ -27,9 +27,6 @@ public class rotationleviertuto : MonoBehaviour
 
     public GameObject fleche1;
 
-    // [Header("Effets - lumières")]
-    // public GameObject lumière;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,15 +56,12 @@ public class rotationleviertuto : MonoBehaviour
     {
         if (levierActif == null)
         {
-            Debug.LogWarning("Aucun levier actif !");
             return;
         }
 
         animRotation.enabled = true;
 
         levierActif.tag = "reussit";
-
-      //  Debug.Log(levierActif.name + " est reussi !");
 
         levierTuto.tag = "reussit";
 

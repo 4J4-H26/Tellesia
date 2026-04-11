@@ -32,6 +32,7 @@ public class Nova : MonoBehaviour
 
     [Header("LaPorte")]
     public GameObject Porte;
+    public Animator porteAnim;
 
     private bool canMove = true;
     private Vector3 direction;
@@ -46,16 +47,44 @@ public class Nova : MonoBehaviour
 
     public bool animationToucherTerminee { get; private set; }
 
+    private bool autoMove = false;
+    private bool porteOuverte = false;
+    private bool enSortie = false;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         cam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
         anim.applyRootMotion = false;
-    }
 
+        if (porteAnim == null)
+        {
+            Porte = GameObject.FindGameObjectWithTag("porte-niveau1-anim");
+
+            if (Porte != null)
+            {
+                porteAnim = Porte.GetComponent<Animator>();
+            }
+        }
+    }
     void Update()
     {
+        if (enSortie) return;
+
+
+        bool tousReussis =
+           LevierDeCommande1.CompareTag("reussit") &&
+           LevierDeCommande2.CompareTag("reussit") &&
+           LevierDeCommande3.CompareTag("reussit");
+
+        if (tousReussis && !porteOuverte && porteAnim != null)
+        {
+            porteOuverte = true;
+            porteAnim.SetTrigger("Ouvrir");
+        }
+
+
         bool estEnTrainDeToucher = anim.GetCurrentAnimatorStateInfo(0).IsName("toucher");
 
         if (!canMove || estEnTrainDeToucher)
@@ -94,14 +123,26 @@ public class Nova : MonoBehaviour
         }
     }
     void FixedUpdate()
+
     {
         bool estEnTrainDeToucher = anim.GetCurrentAnimatorStateInfo(0).IsName("toucher");
 
-        if (!canMove || estEnTrainDeToucher) return;
+        if (estEnTrainDeToucher) return;
 
-        Vector3 move = direction * vitesse * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + new Vector3(move.x, 0, move.z));
+        if (autoMove)
+        {
+            Vector3 move = transform.forward * vitesse * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + move);
+            anim.SetBool("enMarche", true);
+            return;
+        }
+
+        if (!canMove) return;
+
+        Vector3 moveNormal = direction * vitesse * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + new Vector3(moveNormal.x, 0, moveNormal.z));
     }
+
 
     public void SetCanMove(bool value)
     {
@@ -111,6 +152,13 @@ public class Nova : MonoBehaviour
     public bool IsMovementLocked()
     {
         return !canMove;
+    }
+
+    public void ActiverAutoMove()
+    {
+        canMove = false;
+        autoMove = true;
+        anim.SetTrigger("Sortie");
     }
 
     void OnCollisionEnter(Collision collision)
@@ -132,18 +180,22 @@ public class Nova : MonoBehaviour
             aDejaTouche3 = true;
             TriggerTouch();
         }
+    }
 
-        if (collision.gameObject.CompareTag("porte-niveau1"))
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.transform.root.CompareTag("porte-niveau1")) return;
+
+        bool tousReussis =
+            LevierDeCommande1.CompareTag("reussit") &&
+            LevierDeCommande2.CompareTag("reussit") &&
+            LevierDeCommande3.CompareTag("reussit");
+
+        Debug.Log("Porte touchée + check levier = " + tousReussis);
+
+        if (tousReussis)
         {
-            bool tousReussis =
-                LevierDeCommande1.CompareTag("reussit") &&
-                LevierDeCommande2.CompareTag("reussit") &&
-                LevierDeCommande3.CompareTag("reussit");
-
-            if (tousReussis)
-            {
-                anim.SetTrigger("Sortie");
-            }
+            enSortie = true;
         }
     }
 

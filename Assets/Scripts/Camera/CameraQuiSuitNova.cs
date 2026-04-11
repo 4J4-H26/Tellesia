@@ -12,6 +12,8 @@ public class CameraQuiSuitNova : MonoBehaviour
     public Transform cible;
     private Vector3 offset;
 
+    private bool suivre = true; 
+
     void Start()
     {
         offset = transform.position - cible.position;
@@ -19,6 +21,13 @@ public class CameraQuiSuitNova : MonoBehaviour
 
     void LateUpdate()
     {
+        if (!suivre) return; 
+
         transform.position = cible.position + offset;
+    }
+
+    public void StopSuivre()
+    {
+        suivre = false;
     }
 }

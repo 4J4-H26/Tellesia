@@ -21,15 +21,12 @@ public class ResultatTutoriel : MonoBehaviour
         if (reussite())
         {
             if (!porteActive)
-                Debug.Log("Porte activée !");
-
             porteActive = true;
         }
         else
         {
             if (!messageAffiche)
             {
-                // Debug.Log("Il manque des leviers");
                 messageAffiche = true;
             }
         }
