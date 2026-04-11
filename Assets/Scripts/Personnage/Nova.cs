@@ -113,7 +113,6 @@ public class Nova : MonoBehaviour
         return !canMove;
     }
 
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("ZoneLevierDeCommande1") && !aDejaTouche)
@@ -136,7 +135,15 @@ public class Nova : MonoBehaviour
 
         if (collision.gameObject.CompareTag("porte-niveau1"))
         {
-            anim.SetTrigger("Sortie");
+            bool tousReussis =
+                LevierDeCommande1.CompareTag("reussit") &&
+                LevierDeCommande2.CompareTag("reussit") &&
+                LevierDeCommande3.CompareTag("reussit");
+
+            if (tousReussis)
+            {
+                anim.SetTrigger("Sortie");
+            }
         }
     }
 
