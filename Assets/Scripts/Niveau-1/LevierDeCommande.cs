@@ -23,6 +23,11 @@ public class LevierDeCommande : MonoBehaviour
     [Header("Nova")]
     public Nova nova;
 
+    private float timer;
+    private float delaiAvantOuverture = 2.5f;
+    private bool enAttenteOuverture;
+    private bool animationDejaTraitee;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,6 +37,37 @@ public class LevierDeCommande : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (NovaDansLaZoneDeLevier && nova != null && nova.animationToucherTerminee && !enAttenteOuverture && !canvasOuvert && !animationDejaTraitee)
+        {
+            animationDejaTraitee = true;
+
+            enAttenteOuverture = true;
+            timer = 0f;
+        }
+
+        if (enAttenteOuverture)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= delaiAvantOuverture)
+            {
+                enAttenteOuverture = false;
+                timer = 0f;
+
+                if (NovaDansLaZoneDeLevier)
+                {
+                    canvasOuvert = true;
+                    Canvas.SetActive(true);
+
+                    if (nova != null)
+                    {
+                        nova.SetCanMove(false);
+                        nova.ResetToucher(); 
+                    }
+                }
+            }
+        }
+
         if (NovaDansLaZoneDeLevier && Input.GetKeyDown(KeyCode.E))
         {
             canvasOuvert = !canvasOuvert;
@@ -48,15 +84,10 @@ public class LevierDeCommande : MonoBehaviour
         if (collision.gameObject.CompareTag("Nova") && gameObject.tag != "reussit")
         {
             NovaDansLaZoneDeLevier = true;
-
+            Invoke(nameof(OuvrirCanvas), 2f);
             canvasOuvert = true;
-            Canvas.SetActive(true);
-
-            if (nova != null)
-                nova.SetCanMove(false);
         }
     }
-
 
     private void OnCollisionExit(Collision collision)
     {
@@ -64,11 +95,18 @@ public class LevierDeCommande : MonoBehaviour
         {
             NovaDansLaZoneDeLevier = false;
 
-            canvasOuvert = false;
-            Canvas.SetActive(false);
+            enAttenteOuverture = false;
+            timer = 0f;
 
-            if (nova != null)
-                nova.SetCanMove(true);
+            animationDejaTraitee = false;
         }
+    }
+
+    private void OuvrirCanvas()
+    {
+        Canvas.SetActive(true);
+
+        if (nova != null)
+            nova.SetCanMove(false);
     }
 }

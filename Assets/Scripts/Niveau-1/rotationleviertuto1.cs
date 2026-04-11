@@ -24,6 +24,9 @@ public class rotationleviertuto1 : MonoBehaviour
     [Header("Les flèches")]
     public GameObject fleche2;
 
+   // [Header("Effets - lumières")]
+   // public GameObject lumière;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

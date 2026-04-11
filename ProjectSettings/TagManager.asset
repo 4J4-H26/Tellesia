@@ -10,6 +10,11 @@ TagManager:
   - allie
   - Nova
   - reussit
+  - "cl\xE9"
+  - porte
+  - ZoneLevierDeCommande1
+  - ZoneLevierDeCommande2
+  - ZoneLevierDeCommande3
   layers:
   - Default
   - TransparentFX

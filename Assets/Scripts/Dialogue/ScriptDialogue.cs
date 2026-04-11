@@ -271,8 +271,6 @@ public class ScriptDialogue : MonoBehaviour
 
         dialogueCanvas.SetActive(true);
 
-        // yield return new WaitForSeconds(2f);
-
         isPaused = false;
 
 
@@ -311,7 +309,7 @@ public class ScriptDialogue : MonoBehaviour
 
         } while (string.IsNullOrWhiteSpace(lines[index].text));
 
-        if (oldIndex == 5)
+        if (oldIndex == 7) // ***********************************************************************************************************************************
         {
             StartCoroutine(AttendreLeviers());
             return;

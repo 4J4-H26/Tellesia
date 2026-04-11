@@ -4,13 +4,7 @@
 
 // desc : ** Nova **
 
-
 using UnityEngine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Nova : MonoBehaviour
 {
@@ -29,58 +23,66 @@ public class Nova : MonoBehaviour
     [Header("Rotation")]
     public float vitesseRotation = 360f;
 
-    [Header("Flèches")]
-    public GameObject Flèche1;
-    public GameObject Flèche2;
-    public GameObject Flèche3;
 
     [Header("Les leviers")]
     public GameObject LevierDeCommande1;
     public GameObject LevierDeCommande2;
     public GameObject LevierDeCommande3;
 
-    [Header("Le Canvas UI de Leviers")]
-    public GameObject Canvas;
 
     [Header("LaPorte")]
     public GameObject Porte;
 
-    private bool puzzleActif = false;
-    private bool flecheActive = false;
     private bool canMove = true;
     private Vector3 direction;
     private GameObject carteProche;
+    private Animator anim;
+    private Transform cam;
+    private Rigidbody rb;
 
+    private bool aDejaTouche = false;
+    private bool aDejaTouche2 = false;
+    private bool aDejaTouche3 = false;
+
+    public bool animationToucherTerminee { get; private set; }
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        cam = Camera.main.transform;
+        rb = GetComponent<Rigidbody>();
+        anim.applyRootMotion = false;
+    }
 
     void Update()
     {
-        if (!canMove) return;
+        bool estEnTrainDeToucher = anim.GetCurrentAnimatorStateInfo(0).IsName("toucher");
 
-        // ** on a le input clavier (flèches + WASD) **
+        if (!canMove || estEnTrainDeToucher)
+        {
+            anim.SetBool("enMarche", false);
+            direction = Vector3.zero;
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        Transform cam = Camera.main.transform;
-
-        // on récupère les directions de la caméra
         Vector3 forward = cam.forward;
         Vector3 right = cam.right;
 
-        // on enlève la composante Y pour rester au sol
         forward.y = 0;
         right.y = 0;
 
         forward.Normalize();
         right.Normalize();
 
-        // direction basée sur la caméra
-        direction = forward * vertical + right * horizontal;
-        
+        direction = (forward * vertical + right * horizontal).normalized;
 
-        // déplacement 
-        transform.Translate(direction * vitesse * Time.deltaTime, Space.World);
+        bool estEnMarche = direction.sqrMagnitude > 0.01f;
+        anim.SetBool("enMarche", estEnMarche);
 
-        if (direction.sqrMagnitude > 0.01f)
+        if (estEnMarche)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
@@ -90,46 +92,76 @@ public class Nova : MonoBehaviour
                 vitesseRotation * Time.deltaTime
             );
         }
-
-        if (Input.GetKeyDown(KeyCode.E) && carteProche != null)
-        {
-            contientLaCarte = true;
-            Destroy(carteProche);
-            carteProche = null;
-
-        }
-
-        if (flecheActive)
-        {
-            // rotation continue
-            Flèche1.transform.Rotate(Vector3.up * 100f * Time.deltaTime);
-        }
     }
+    void FixedUpdate()
+    {
+        bool estEnTrainDeToucher = anim.GetCurrentAnimatorStateInfo(0).IsName("toucher");
+
+        if (!canMove || estEnTrainDeToucher) return;
+
+        Vector3 move = direction * vitesse * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + new Vector3(move.x, 0, move.z));
+    }
+
     public void SetCanMove(bool value)
     {
         canMove = value;
     }
 
-
-    void OnCollisionStay(Collision collision)
+    public bool IsMovementLocked()
     {
-        if (collision.gameObject.CompareTag("Carte"))
+        return !canMove;
+    }
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("ZoneLevierDeCommande1") && !aDejaTouche)
         {
-            carteProche = collision.gameObject;
+            aDejaTouche = true;
+            TriggerTouch();
+        }
+
+        if (collision.gameObject.CompareTag("ZoneLevierDeCommande2") && !aDejaTouche2)
+        {
+            aDejaTouche2 = true;
+            TriggerTouch();
+        }
+
+        if (collision.gameObject.CompareTag("ZoneLevierDeCommande3") && !aDejaTouche3)
+        {
+            aDejaTouche3 = true;
+            TriggerTouch();
+        }
+
+        if (collision.gameObject.CompareTag("porte-niveau1"))
+        {
+            anim.SetTrigger("Sortie");
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Carte"))
-        {
-            carteProche = null;
-        }
+        if (collision.gameObject.CompareTag("ZoneLevierDeCommande1"))
+            aDejaTouche = false;
+
+        if (collision.gameObject.CompareTag("ZoneLevierDeCommande2"))
+            aDejaTouche2 = false;
+
+        if (collision.gameObject.CompareTag("ZoneLevierDeCommande3"))
+            aDejaTouche3 = false;
+    }
+
+    void TriggerTouch()
+    {
+        animationToucherTerminee = false;
+        anim.SetTrigger("toucher");
     }
 
 
-    
-
-
+    public void ResetToucher()
+    {
+        animationToucherTerminee = false;
+    }
 
 }
