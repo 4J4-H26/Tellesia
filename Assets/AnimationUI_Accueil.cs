@@ -2,10 +2,12 @@
 
 // public class AnimationUI_Accueil : MonoBehaviour
 // {
+//     public GameObject Fenetre;
+    
 //     // Start is called once before the first execution of Update after the MonoBehaviour is created
 //     void Start()
 //     {
-//         animationMenuBouttons;
+        
 //     }
 
 //     // Update is called once per frame
@@ -14,10 +16,11 @@
         
 //     }
 
-//     public class animationMenuBouttons:
+//     public class animationMenuBouttons()
 //     {
-//         public void{
-//             LeanTwean.move
+//         public void (){
+//             LeanTween
+            
 //         }
 //     }
 // }
