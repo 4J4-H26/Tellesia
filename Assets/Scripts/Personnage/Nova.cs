@@ -51,6 +51,9 @@ public class Nova : MonoBehaviour
     private bool porteOuverte = false;
     private bool enSortie = false;
 
+    [Header("Le son de la porte")]
+    public AudioSource sonPorte;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -82,6 +85,9 @@ public class Nova : MonoBehaviour
         {
             porteOuverte = true;
             porteAnim.SetTrigger("Ouvrir");
+
+            if (sonPorte != null)
+                sonPorte.Play();
         }
 
 

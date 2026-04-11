@@ -43,7 +43,7 @@ public class PorteFinNiveau1 : MonoBehaviour
 
         GetComponent<Collider>().enabled = false;
 
-        Invoke("chargerScene", 2.5f);
+        Invoke("chargerScene", 3f);
     }
 
     void chargerScene()

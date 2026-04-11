@@ -27,6 +27,9 @@ public class rotationleviertuto : MonoBehaviour
 
     public GameObject fleche1;
 
+    [Header("Le son")]
+    public AudioSource sonLevier;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,6 +64,10 @@ public class rotationleviertuto : MonoBehaviour
 
         animRotation.enabled = true;
 
+        if (sonLevier != null)
+            sonLevier.Play();
+        Invoke("StopSon", 0.6f);
+
         levierActif.tag = "reussit";
 
         levierTuto.tag = "reussit";
@@ -78,6 +85,7 @@ public class rotationleviertuto : MonoBehaviour
             nova.SetCanMove(true);
     }
 
+
     public void FermerUI()
     {
         canvaLevierTuto.enabled = false;
@@ -87,5 +95,9 @@ public class rotationleviertuto : MonoBehaviour
 
         if (nova != null)
             nova.SetCanMove(true);
+    }
+    void StopSon()
+    {
+        sonLevier.Stop();
     }
 }
