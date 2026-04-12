@@ -165,6 +165,7 @@ public class Nova : MonoBehaviour
         canMove = false;
         autoMove = true;
         anim.SetTrigger("Sortie");
+        FindFirstObjectByType<ChangementCam>().ActiverCameraCinematique();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -197,11 +198,10 @@ public class Nova : MonoBehaviour
             LevierDeCommande2.CompareTag("reussit") &&
             LevierDeCommande3.CompareTag("reussit");
 
-        Debug.Log("Porte touchée + check levier = " + tousReussis);
-
         if (tousReussis)
         {
             enSortie = true;
+            
         }
     }
 

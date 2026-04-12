@@ -36,7 +36,6 @@ public class rotationleviertuto : MonoBehaviour
         levierTuto = levierTuto.GetComponent<Button>();
         animRotation.enabled = false;
 
-        Debug.Log(levierTuto.tag);
     }
 
     public void SetLevierActif(GameObject levier)

@@ -12,7 +12,7 @@ public class CameraQuiSuitNova : MonoBehaviour
     public Transform cible;
     private Vector3 offset;
 
-    private bool suivre = true; 
+    private bool suivre = true;
 
     void Start()
     {

@@ -12,10 +12,13 @@ public class LeRayCast : MonoBehaviour
 {
     [Header("Références")]
     public Transform Nova;
-    public LayerMask wallMask;
+    public LayerMask Murs;
 
     [Header("Réglages")]
     [Range(0f, 1f)] public float transparence = 0f;
+
+    [Header("Effet Fade")]
+    public float vitesse = 5f;
 
     private HashSet<Renderer> mursCaches = new HashSet<Renderer>();
 
@@ -30,7 +33,7 @@ public class LeRayCast : MonoBehaviour
             transform.position,
             direction.normalized,
             distance,
-            wallMask
+            Murs
         );
 
         HashSet<Renderer> mursActuels = new HashSet<Renderer>();
@@ -38,7 +41,7 @@ public class LeRayCast : MonoBehaviour
         foreach (RaycastHit hit in hits)
         {
 
-            if (((1 << hit.collider.gameObject.layer) & wallMask) == 0)
+            if (((1 << hit.collider.gameObject.layer) & Murs) == 0)
                 continue;
 
             Renderer r = hit.collider.GetComponentInChildren<Renderer>();
@@ -61,28 +64,27 @@ public class LeRayCast : MonoBehaviour
         mursCaches = mursActuels;
     }
 
-    void SetAlpha(Renderer r, float alpha)
+    void SetAlpha(Renderer r, float targetAlpha)
     {
         foreach (Material mat in r.materials)
         {
             if (mat == null) continue;
 
-            Material instanceMat = mat;
+            Color c = mat.color;
 
-            Color c = instanceMat.color;
-            c.a = alpha;
-            instanceMat.color = c;
+            c.a = Mathf.Lerp(c.a, targetAlpha, Time.deltaTime * vitesse);
+            mat.color = c;
 
-            instanceMat.SetFloat("_Mode", 2);
-            instanceMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            instanceMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            instanceMat.SetInt("_ZWrite", 0);
+            mat.SetFloat("_Mode", 2);
+            mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            mat.SetInt("_ZWrite", 0);
 
-            instanceMat.DisableKeyword("_ALPHATEST_ON");
-            instanceMat.EnableKeyword("_ALPHABLEND_ON");
-            instanceMat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            mat.DisableKeyword("_ALPHATEST_ON");
+            mat.EnableKeyword("_ALPHABLEND_ON");
+            mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
 
-            instanceMat.renderQueue = 3000;
+            mat.renderQueue = 3000;
         }
     }
 }

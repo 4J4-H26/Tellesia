@@ -2,7 +2,8 @@
 // auteur : sammuel
 // date : 09 avril 2026
 
-// desc : ** un levier au début **
+// desc : ** gestion de la porte du niveau 1 à la toute fin
+//           qui permet au personnage d'aller au niveau 2 **
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,7 +44,7 @@ public class PorteFinNiveau1 : MonoBehaviour
 
         GetComponent<Collider>().enabled = false;
 
-        Invoke("chargerScene", 3f);
+        Invoke("chargerScene", 1f);
     }
 
     void chargerScene()

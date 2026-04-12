@@ -32,8 +32,6 @@ public class rotationleviertuto1 : MonoBehaviour
     {
         levierTuto = levierTuto.GetComponent<Button>();
         animRotation.enabled = false;
-
-        Debug.Log(levierTuto.tag);
     }
 
     public void SetLevierActif(GameObject levier)
@@ -56,7 +54,6 @@ public class rotationleviertuto1 : MonoBehaviour
     {
         if (levierActif == null)
         {
-            Debug.LogWarning("Aucun levier actif !");
             return;
         }
 
@@ -66,9 +63,7 @@ public class rotationleviertuto1 : MonoBehaviour
             sonLevier.Play();
 
         Invoke("StopSon", 0.6f);
-
         levierActif.tag = "reussit";
-
         levierTuto.tag = "reussit";
 
         if (fleche2 != null)
