@@ -21,13 +21,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Cube-Noir
   - Water
   - UI
   - Wall
   - Ground
-  - 
-  - 
+  - Ignore-Light
+  - Personnage
   - 
   - 
   - 
