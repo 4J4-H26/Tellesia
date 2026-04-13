@@ -259,7 +259,7 @@ public class ScriptDialogue : MonoBehaviour
         dialogueCanvas.SetActive(false);
 
         if (nova != null)
-            nova.SetCanMove(true);
+        nova.SetCanMove(true);
 
         while (!TousLeviersReussis())
         {
@@ -269,10 +269,11 @@ public class ScriptDialogue : MonoBehaviour
         if (nova != null)
             nova.SetCanMove(false);
 
+        yield return null;
+
         dialogueCanvas.SetActive(true);
 
         isPaused = false;
-
 
         if (index >= lines.Length)
         {
@@ -390,10 +391,10 @@ public class ScriptDialogue : MonoBehaviour
 
         dialogueCanvas.SetActive(false);
 
-        if (nova != null)
-            nova.SetCanMove(true);
+       if (nova != null)
+         nova.SetCanMove(true);
 
-        yield return new WaitForSeconds(duree);
+            yield return new WaitForSeconds(duree);
 
 
         if (nova != null)

@@ -3626,13 +3626,16 @@ MonoBehaviour:
     text: "Tu peux maintenant te rendre \xE0 la porte pour acc\xE9der au niveau suivant."
     image: 1
   delaisParLigne:
+  - 6
+  - 8
+  - 6
+  - 7
   - 10
   - 10
+  - 6
   - 10
-  - 10
-  - 10
-  - 10
-  - 10
+  - 5
+  - 0
   textSpeed: 0.025
   buttonNext: {fileID: 1896001656}
   nom: {fileID: 508151613}
@@ -3646,7 +3649,7 @@ MonoBehaviour:
   ImageSpriteNova3: {fileID: 2136770016}
   pauses:
   - entreElement: 4
-    duree: 5
+    duree: 7
   LevierDeCommande1: {fileID: 1835522771}
   LevierDeCommande2: {fileID: 897732381}
   LevierDeCommande3: {fileID: 1288929351}
@@ -7829,7 +7832,6 @@ GameObject:
   - component: {fileID: 1200717563}
   - component: {fileID: 1200717562}
   - component: {fileID: 1200717561}
-  - component: {fileID: 1200717564}
   - component: {fileID: 1200717565}
   m_Layer: 0
   m_Name: Main Camera
@@ -7912,19 +7914,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1269046303}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1200717564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200717560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ed85b4bd0f48442b336fabe5a083ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Camera
-  vitesseCam: 1
 --- !u!114 &1200717565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11840,7 +11829,7 @@ MonoBehaviour:
   cameraCinematique: {fileID: 1958163662}
   scriptCameraSuivi: {fileID: 1269046304}
   cibleCinematique: {fileID: 1968339206}
-  vitesse: 5
+  vitesse: 0.5
 --- !u!4 &1840064284
 Transform:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class ChangementCam : MonoBehaviour
 
     [Header("Follow cinématique")]
     public Transform cibleCinematique;
-    public float vitesse = 5f;
+    public float vitesse = 0.5f;
 
     void LateUpdate()
     {
