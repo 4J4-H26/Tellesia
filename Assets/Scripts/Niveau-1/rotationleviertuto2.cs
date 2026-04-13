@@ -6,7 +6,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class rotationleviertuto2 : MonoBehaviour
+public class Rotationleviertuto2 : MonoBehaviour
 {
     public Canvas canvaLevierTuto;
     public Button levierTuto;

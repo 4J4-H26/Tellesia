@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class LevierZone2 : MonoBehaviour
 {
-    public rotationleviertuto2 uiLevier; 
+    public Rotationleviertuto2 uiLevier; 
 
     private void OnTriggerEnter(Collider other)
     {
