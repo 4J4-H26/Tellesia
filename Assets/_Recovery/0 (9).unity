@@ -7832,6 +7832,7 @@ GameObject:
   - component: {fileID: 1200717563}
   - component: {fileID: 1200717562}
   - component: {fileID: 1200717561}
+  - component: {fileID: 1200717564}
   - component: {fileID: 1200717565}
   m_Layer: 0
   m_Name: Main Camera
@@ -7914,6 +7915,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1269046303}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1200717564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200717560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ed85b4bd0f48442b336fabe5a083ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Camera
+  vitesseCam: 1
 --- !u!114 &1200717565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13156,6 +13170,7 @@ GameObject:
   - component: {fileID: 1958163658}
   - component: {fileID: 1958163662}
   - component: {fileID: 1958163661}
+  - component: {fileID: 1958163660}
   - component: {fileID: 1958163659}
   m_Layer: 0
   m_Name: CameraCinematique
@@ -13197,6 +13212,19 @@ MonoBehaviour:
     m_Bits: 64
   transparence: 0
   vitesse: 5
+--- !u!114 &1958163660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958163657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ed85b4bd0f48442b336fabe5a083ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Camera
+  vitesseCam: 1
 --- !u!81 &1958163661
 AudioListener:
   m_ObjectHideFlags: 0
