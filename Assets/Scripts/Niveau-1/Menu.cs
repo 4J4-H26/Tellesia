@@ -1,3 +1,10 @@
+// script pour controler le menu accueil
+// auteur : sammuel
+// date : 14-15 avril 2026
+
+// desc : ** menu
+//           **
+
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -8,6 +15,8 @@ public class Menu : MonoBehaviour
     public GameObject canvas2;
 
     private VideoPlayer videoPlayer;
+
+    public GameObject environnement;
 
     void Start()
     {
@@ -22,8 +31,8 @@ public class Menu : MonoBehaviour
     public void Commencer()
     {
         canvas.SetActive(false);
+        environnement.SetActive(false);
         video.SetActive(true);
-
         videoPlayer.Prepare();
         videoPlayer.prepareCompleted += PlayVideo;
     }
@@ -36,15 +45,17 @@ public class Menu : MonoBehaviour
     }
 
     void FinVideo(VideoPlayer vp)
-    {
+    { 
+        
         video.SetActive(false);
-
+       
         Invoke("Delai", 0.5f);
-
     }
 
     void Delai()
     {
+        environnement.SetActive(true);
         canvas2.SetActive(true);
+        
     }
 }
