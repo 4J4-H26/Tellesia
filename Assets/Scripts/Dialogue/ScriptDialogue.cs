@@ -88,6 +88,9 @@ public class ScriptDialogue : MonoBehaviour
     public GameObject LevierDeCommande2;
     public GameObject LevierDeCommande3;
 
+    [Header("INTERFACES")]
+    public GameObject interface1;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -310,11 +313,18 @@ public class ScriptDialogue : MonoBehaviour
 
         } while (string.IsNullOrWhiteSpace(lines[index].text));
 
-        if (oldIndex == 7) // ***********************************************************************************************************************************
-        {
-            StartCoroutine(AttendreLeviers());
-            return;
-        }
+        if (oldIndex == 5) // ***********************************************************************************************************************************
+  
+            {
+
+                if (interface1 != null)
+                {
+                    interface1.SetActive(true);
+                }
+
+                StartCoroutine(AttendreLeviers());
+                return;
+            }
 
         if (TryGetPause(oldIndex, out float duree))
         {

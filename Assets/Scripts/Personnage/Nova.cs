@@ -54,6 +54,7 @@ public class Nova : MonoBehaviour
     [Header("Le son de la porte")]
     public AudioSource sonPorte;
 
+
     void Start()
     {
         anim = GetComponent<Animator>();

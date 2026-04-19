@@ -17,6 +17,10 @@ TagManager:
   - ZoneLevierDeCommande3
   - ZoneLevierDeCommande
   - porte-niveau1-anim
+  - interface1
+  - interface2
+  - Cube1
+  - Cube2
   layers:
   - Default
   - TransparentFX
@@ -28,7 +32,7 @@ TagManager:
   - Ground
   - Ignore-Light
   - Personnage
-  - 
+  - vide
   - 
   - 
   - 
