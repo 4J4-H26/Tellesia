@@ -91,6 +91,10 @@ public class ScriptDialogue : MonoBehaviour
     [Header("INTERFACES")]
     public GameObject interface1;
 
+    [Header("Les sons")]
+    public AudioSource sonPersonneQuiParle;
+    public AudioSource sonOuvertureDuUI;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

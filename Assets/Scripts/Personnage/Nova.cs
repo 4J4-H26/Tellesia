@@ -51,8 +51,9 @@ public class Nova : MonoBehaviour
     private bool porteOuverte = false;
     private bool enSortie = false;
 
-    [Header("Le son de la porte")]
+    [Header("Les sons")]
     public AudioSource sonPorte;
+    public AudioSource sonMarche;
 
 
     void Start()
@@ -128,6 +129,8 @@ public class Nova : MonoBehaviour
                 vitesseRotation * Time.deltaTime
             );
         }
+
+        GererSonMarche(estEnMarche);
     }
     void FixedUpdate()
 
@@ -228,6 +231,24 @@ public class Nova : MonoBehaviour
     public void ResetToucher()
     {
         animationToucherTerminee = false;
+    }
+
+    void GererSonMarche(bool estEnMarche)
+    {
+        if (sonMarche == null) return;
+
+        if (estEnMarche)
+        {
+            sonMarche.pitch = 1.5f;
+
+            if (!sonMarche.isPlaying)
+                sonMarche.Play();
+        }
+        else
+        {
+            if (sonMarche.isPlaying)
+                sonMarche.Stop();
+        }
     }
 
 }
