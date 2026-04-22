@@ -55,7 +55,7 @@ public class Nova : MonoBehaviour
     public AudioSource sonPorte;
     public AudioSource sonMarche;
 
-
+    private bool forceStopMove = false;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -77,11 +77,10 @@ public class Nova : MonoBehaviour
     {
         if (enSortie) return;
 
-
         bool tousReussis =
-           LevierDeCommande1.CompareTag("reussit") &&
-           LevierDeCommande2.CompareTag("reussit") &&
-           LevierDeCommande3.CompareTag("reussit");
+            LevierDeCommande1.CompareTag("reussit") &&
+            LevierDeCommande2.CompareTag("reussit") &&
+            LevierDeCommande3.CompareTag("reussit");
 
         if (tousReussis && !porteOuverte && porteAnim != null)
         {
@@ -92,13 +91,14 @@ public class Nova : MonoBehaviour
                 sonPorte.Play();
         }
 
-
         bool estEnTrainDeToucher = anim.GetCurrentAnimatorStateInfo(0).IsName("toucher");
 
         if (!canMove || estEnTrainDeToucher)
         {
+            forceStopMove = true;
             anim.SetBool("enMarche", false);
             direction = Vector3.zero;
+            GererSonMarche(false);
             return;
         }
 
@@ -116,7 +116,12 @@ public class Nova : MonoBehaviour
 
         direction = (forward * vertical + right * horizontal).normalized;
 
-        bool estEnMarche = direction.sqrMagnitude > 0.01f;
+        forceStopMove = false;
+
+        bool peutBouger = canMove && !estEnTrainDeToucher;
+
+        bool estEnMarche = peutBouger && direction.sqrMagnitude > 0.01f;
+
         anim.SetBool("enMarche", estEnMarche);
 
         if (estEnMarche)
@@ -130,12 +135,24 @@ public class Nova : MonoBehaviour
             );
         }
 
-        GererSonMarche(estEnMarche);
+        bool canPlayFootstep =
+            canMove &&
+            !estEnTrainDeToucher &&
+            direction.sqrMagnitude > 0.01f;
+
+        GererSonMarche(canPlayFootstep);
     }
+
+    bool EstBloqueParAnimation()
+    {
+        return anim.GetCurrentAnimatorStateInfo(0).IsName("toucher");
+    }
+
     void FixedUpdate()
 
     {
-        bool estEnTrainDeToucher = anim.GetCurrentAnimatorStateInfo(0).IsName("toucher");
+
+        bool estEnTrainDeToucher = EstBloqueParAnimation();
 
         if (estEnTrainDeToucher) return;
 
@@ -237,18 +254,17 @@ public class Nova : MonoBehaviour
     {
         if (sonMarche == null) return;
 
-        if (estEnMarche)
-        {
-            sonMarche.pitch = 1.5f;
-
-            if (!sonMarche.isPlaying)
-                sonMarche.Play();
-        }
-        else
+        if (!estEnMarche || forceStopMove)
         {
             if (sonMarche.isPlaying)
                 sonMarche.Stop();
-        }
-    }
 
+            return;
+        }
+
+        sonMarche.pitch = 1.5f;
+
+        if (!sonMarche.isPlaying)
+            sonMarche.Play();
+    }
 }

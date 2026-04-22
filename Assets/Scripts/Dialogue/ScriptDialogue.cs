@@ -92,7 +92,8 @@ public class ScriptDialogue : MonoBehaviour
     public GameObject interface1;
 
     [Header("Les sons")]
-    public AudioSource sonPersonneQuiParle;
+    public AudioSource sonNova;
+    public AudioSource sonElla;
     public AudioSource sonOuvertureDuUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -100,6 +101,10 @@ public class ScriptDialogue : MonoBehaviour
     {
         textComponent.text = string.Empty;
         dialogueCanvas.SetActive(true);
+        if (sonOuvertureDuUI != null)
+        {
+            sonOuvertureDuUI.Play();
+        }
         if (nova != null) nova.SetCanMove(false);
         StartDialogue();
         buttonNext.onClick.AddListener(NextButtonClicked);
@@ -116,6 +121,8 @@ public class ScriptDialogue : MonoBehaviour
 
     void StopTyping()
     {
+        StopAllDialogueSounds();
+
         if (typeLineCoroutine != null)
         {
             StopCoroutine(typeLineCoroutine);
@@ -210,11 +217,20 @@ public class ScriptDialogue : MonoBehaviour
     //------------------------------------------*
     IEnumerator TypeLine()
     {
+        StopAllDialogueSounds();
+
         if (nova != null)
             nova.SetCanMove(false);
 
         string currentText = lines[index].text;
         QuiParle currentSpeaker = lines[index].speaker;
+
+        AudioSource voice = null;
+
+        if (currentSpeaker == QuiParle.Nova)
+            voice = sonNova;
+        else if (currentSpeaker == QuiParle.Ella)
+            voice = sonElla;
 
         UpdateImage(lines[index].image);
 
@@ -243,13 +259,37 @@ public class ScriptDialogue : MonoBehaviour
 
         isTyping = true;
 
+        float soundTimer = 0f;
+        float soundInterval = 0.08f;
+
         foreach (char c in currentText.ToCharArray())
         {
             textComponent.text += c;
+
+            soundTimer += textSpeed;
+
+            if (soundTimer >= soundInterval)
+            {
+                soundTimer = 0f;
+
+                if (voice != null)
+                {
+                    voice.Stop();
+
+                    voice.pitch = Random.Range(0.95f, 1.05f);
+                    voice.Play();
+                }
+            }
+
             yield return new WaitForSeconds(textSpeed);
         }
 
         isTyping = false;
+
+        if (voice != null)
+        {
+            voice.Stop();
+        }
 
         if (autoNext && delaisParLigne != null && index < delaisParLigne.Length)
         {
@@ -298,6 +338,8 @@ public class ScriptDialogue : MonoBehaviour
     //------------------------------------------*
     void NextLine()
     {
+
+        StopAllDialogueSounds();
 
         if (isPaused) return;
 
@@ -380,6 +422,7 @@ public class ScriptDialogue : MonoBehaviour
         }
     }
 
+
     bool TryGetPause(int previousIndex, out float duree)
     {
         if (pauses != null)
@@ -432,11 +475,17 @@ public class ScriptDialogue : MonoBehaviour
 
         dialogueActif = false;
 
+        StopAllDialogueSounds();
+
         if (nova != null)
             nova.SetCanMove(true);
 
         if (dialogueCanvas != null)
             dialogueCanvas.SetActive(false);
     }
-
+    void StopAllDialogueSounds()
+    {
+        if (sonNova != null) sonNova.Stop();
+        if (sonElla != null) sonElla.Stop();
+    }
 }

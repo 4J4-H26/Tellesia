@@ -10,13 +10,18 @@ using UnityEngine.Video;
 
 public class Menu : MonoBehaviour
 {
+    [Header("Affichage")]
     public GameObject video;
     public GameObject canvas;
     public GameObject canvas2;
 
     private VideoPlayer videoPlayer;
 
+    [Header("Camera Rendering")]
     public GameObject environnement;
+
+    [Header("Son fond")]
+    public AudioSource sonFond;
 
     void Start()
     {
@@ -54,8 +59,16 @@ public class Menu : MonoBehaviour
 
     void Delai()
     {
+        ActiverEnvironnement();
+    }
+
+    void ActiverEnvironnement()
+    {
         environnement.SetActive(true);
+
+        if (sonFond != null && !sonFond.isPlaying)
+            sonFond.Play();
+
         canvas2.SetActive(true);
-        
     }
 }

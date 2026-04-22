@@ -28,6 +28,9 @@ public class LevierDeCommande : MonoBehaviour
     private bool enAttenteOuverture;
     private bool animationDejaTraitee;
 
+    [Header("Les sons")]
+    public AudioSource sonOuvertureDuUI;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -105,6 +108,11 @@ public class LevierDeCommande : MonoBehaviour
     private void OuvrirCanvas()
     {
         Canvas.SetActive(true);
+
+        if (sonOuvertureDuUI != null)
+        {
+            sonOuvertureDuUI.Play();
+        }
 
         if (nova != null)
             nova.SetCanMove(false);
