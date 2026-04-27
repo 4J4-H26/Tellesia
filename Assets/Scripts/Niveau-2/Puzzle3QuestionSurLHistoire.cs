@@ -9,51 +9,96 @@
 //        et si c'est la bonne réponse = le joueur passe au niveau suivant
 //        si réponse pas bonne = le niveau est réinitialisé **
 
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+
+[System.Serializable]
+public class QuestionHistoire
+{
+    [TextArea(2, 5)]
+    public string question;
+
+    public string[] reponses;
+
+    public int bonneReponse;
+}
 
 public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 {
+    [Header("Questions du niveau 2")]
+    public QuestionHistoire[] questions;
 
-    // ** on déclare les variables **
+    [Header("UI Canvas")]
+    public TextMeshProUGUI texteQuestion;
+    public TextMeshProUGUI[] textesReponses;
 
-        // c, la 3ème porte est la bonne
-       // public enum Lettre { A, B, C }
+    private int questionActuelle = 0;
 
-        //[Header("qd c'est la bonne réponse du puzzle")]
-       //  public Lettre bonneReponse = Lettre.C;
+    [Header("Images des réponses")]
+    public GameObject[] imagesReponses;
 
-        //[Header("réf aux portes")]
-       //  public GameObject porteA;
-        // public GameObject porteB;
-      //  public GameObject porteC;
+    private int mauvaisesReponses = 0;
 
-
-    public void ChoisirReponseQH1(string reponseChoisieQH1)
+    void Start()
     {
-        //switch (reponseChoisieQH1)
-     //   {
-      //      case "A":
-           //     porteA.SetActive(false);
-            //    break;
-          //  case "B":
-           //     porteB.SetActive(false);
-           //     break;
-          //  case "C":
-             //   porteC.SetActive(false);
-             //   break;
-       // }
+        AfficherQuestion();
+    }
 
-        // ** on charge le niveau suivant si on obtient la bonne réponse **
-       // if (reponseChoisieQH1 == bonneReponse.ToString())
-        //{
-      //      SceneManager.LoadScene("Niveau3");
-       // }
-       // else
-        //{
-            // ** on recharge le niv 2 en cas d'échec... **
-         //   SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-       // }
+    void AfficherQuestion()
+    {
+        QuestionHistoire q = questions[questionActuelle];
+
+        texteQuestion.text = q.question;
+
+        for (int i = 0; i < textesReponses.Length; i++)
+        {
+            textesReponses[i].text = q.reponses[i];
+        }
+    }
+
+    public void ChoisirReponse(int indexChoisi)
+    {
+        QuestionHistoire q = questions[questionActuelle];
+
+        for (int i = 0; i < imagesReponses.Length; i++)
+        {
+            imagesReponses[i].SetActive(false);
+        }
+
+        imagesReponses[indexChoisi].SetActive(true);
+
+        if (indexChoisi == q.bonneReponse)
+        {
+            Debug.Log("bonne rép");
+
+            Invoke("ChargerNiveauSuivant", 1.5f);
+        }
+        else
+        {
+            Debug.Log("mauvaise rép");
+
+            mauvaisesReponses++;
+
+            if (mauvaisesReponses >= 2)
+            {
+                Debug.Log("erreurs, on recommence");
+                Invoke("RechargerScene", 1.5f);
+            }
+            else
+            {
+                //
+            }
+        }
+    }
+
+    void ChargerNiveauSuivant()
+    {
+        SceneManager.LoadScene("Niveau3");
+    }
+
+    void RechargerScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

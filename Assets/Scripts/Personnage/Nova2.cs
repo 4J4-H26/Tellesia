@@ -22,6 +22,11 @@ public class Nova2 : MonoBehaviour
 
     private bool autoMove = false;
 
+    [Header("Canvas Question sur l'histoire")]
+    public GameObject CanvasQuestion;
+
+    private bool dejaActive = false;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -100,5 +105,20 @@ public class Nova2 : MonoBehaviour
         autoMove = true;
         anim.SetTrigger("Sortie");
         FindFirstObjectByType<ChangementCam>().ActiverCameraCinematique();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Speaker") && !dejaActive)
+        {
+            SetCanMove(false);
+            Invoke("OuvrirLeCanvas", 0.5f);
+        }
+    }
+
+    void OuvrirLeCanvas()
+    {
+        dejaActive = true;
+        CanvasQuestion.SetActive(true);
     }
 }

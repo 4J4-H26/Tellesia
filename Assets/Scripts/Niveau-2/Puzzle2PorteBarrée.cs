@@ -5,7 +5,6 @@
 // desc : ** le joueur avance, récupère la clé qui disparaît de la scène,
 //        ce qui déclenche l’ouverture de la porte et fait apparaître une question historique **
 
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Puzzle2PorteBarrée : MonoBehaviour

@@ -21,6 +21,7 @@ TagManager:
   - interface2
   - Cube1
   - Cube2
+  - Speaker
   layers:
   - Default
   - TransparentFX
