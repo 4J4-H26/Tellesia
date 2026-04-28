@@ -40,6 +40,16 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 
     private int mauvaisesReponses = 0;
 
+    [Header("les portes")]
+    public GameObject porteA;
+    public GameObject porteB;
+    public GameObject porteC;
+
+    [Header("Animators des portes")]
+    public Animator animPorteA;
+    public Animator animPorteB;
+    public Animator animPorteC;
+
     void Start()
     {
         AfficherQuestion();
@@ -72,7 +82,7 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         {
             Debug.Log("bonne rép");
 
-            Invoke("ChargerNiveauSuivant", 1.5f);
+            OuvrirPorte(indexChoisi);
         }
         else
         {
@@ -92,9 +102,20 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         }
     }
 
-    void ChargerNiveauSuivant()
+    void OuvrirPorte(int index)
     {
-        SceneManager.LoadScene("Niveau3");
+        if (index == 0 && animPorteA != null)
+        {
+            animPorteA.SetTrigger("Ouvrir");
+        }
+        else if (index == 1 && animPorteB != null)
+        {
+            animPorteB.SetTrigger("Ouvrir");
+        }
+        else if (index == 2 && animPorteC != null)
+        {
+            animPorteC.SetTrigger("Ouvrir");
+        }
     }
 
     void RechargerScene()

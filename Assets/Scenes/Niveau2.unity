@@ -12500,6 +12500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091091611}
+  - component: {fileID: 1091091612}
   m_Layer: 6
   m_Name: Porte3
   m_TagString: Untagged
@@ -12523,6 +12524,28 @@ Transform:
   - {fileID: 1815549378}
   m_Father: {fileID: 1790183529}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &1091091612
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091091610}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70b821fc10b86fb4bb8735ff8ed2f163, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1100869673
 GameObject:
   m_ObjectHideFlags: 0
@@ -12777,6 +12800,9 @@ MonoBehaviour:
   - {fileID: 1825156170}
   - {fileID: 1901290039}
   - {fileID: 2057590873}
+  porteA: {fileID: 1511736441}
+  porteB: {fileID: 1665529537}
+  porteC: {fileID: 1091091610}
 --- !u!1 &1110850821
 GameObject:
   m_ObjectHideFlags: 0
@@ -16616,6 +16642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1511736442}
+  - component: {fileID: 1511736443}
   m_Layer: 6
   m_Name: Porte1
   m_TagString: Untagged
@@ -16639,6 +16666,28 @@ Transform:
   - {fileID: 1086303721}
   m_Father: {fileID: 1790183529}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &1511736443
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511736441}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0d37009c9c8b0b48917a19ca9e6121d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1517535985
 GameObject:
   m_ObjectHideFlags: 0
@@ -17890,6 +17939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665529538}
+  - component: {fileID: 1665529539}
   m_Layer: 6
   m_Name: Porte2
   m_TagString: Untagged
@@ -17913,6 +17963,28 @@ Transform:
   - {fileID: 316444953}
   m_Father: {fileID: 1790183529}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &1665529539
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665529537}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6beb8c5126aff834db8784d1939a19af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1672064603
 GameObject:
   m_ObjectHideFlags: 0
@@ -18968,6 +19040,50 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &1819628960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819628961}
+  - component: {fileID: 1819628962}
+  m_Layer: 0
+  m_Name: PuzzleCle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819628961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819628960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.22896, y: 2.14408, z: -3.94085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1819628962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819628960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c454415986afea4685a65f6096210ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: "Assembly-CSharp::Puzzle2PorteBarr\xE9e"
 --- !u!1001 &1821406389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22943,6 +23059,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 969279260}
+  - {fileID: 1819628961}
   - {fileID: 1109067976}
   - {fileID: 583763992}
   - {fileID: 574007158}
