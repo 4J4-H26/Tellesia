@@ -22,6 +22,9 @@ TagManager:
   - Cube1
   - Cube2
   - Speaker
+  - PorteA
+  - PorteB
+  - PorteC
   layers:
   - Default
   - TransparentFX

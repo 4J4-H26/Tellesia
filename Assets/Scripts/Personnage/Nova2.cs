@@ -111,7 +111,7 @@ public class Nova2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Speaker") && !dejaActive)
         {
-            SetCanMove(false);
+           SetCanMove(false);
             Invoke("OuvrirLeCanvas", 0.5f);
         }
     }

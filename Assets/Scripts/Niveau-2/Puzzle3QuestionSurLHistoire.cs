@@ -50,9 +50,24 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
     public Animator animPorteB;
     public Animator animPorteC;
 
+    [Header("Canvas du puzzle")]
+    public GameObject canvasPuzzle;
+
+    [Header("Nova")]
+    public Nova2 nova;
+
+
     void Start()
     {
         AfficherQuestion();
+
+        GameObject test = GameObject.FindGameObjectWithTag("PorteA");
+
+        if (test == null)
+            Debug.LogError("OBJET INTROUVABLE AVEC TAG PorteA");
+        else
+            Debug.Log("Objet trouvé : " + test.name);
+
     }
 
     void AfficherQuestion()
@@ -82,7 +97,19 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         {
             Debug.Log("bonne rép");
 
-            OuvrirPorte(indexChoisi);
+            if (canvasPuzzle != null)
+                canvasPuzzle.SetActive(false);
+
+            if (nova != null)
+                nova.SetCanMove(true);
+
+            string tag = "";
+
+            if (indexChoisi == 0) tag = "PorteA";
+            else if (indexChoisi == 1) tag = "PorteB";
+            else if (indexChoisi == 2) tag = "PorteC";
+
+            OuvrirPorteAvecTag(tag);
         }
         else
         {
@@ -102,20 +129,35 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         }
     }
 
-    void OuvrirPorte(int index)
+    void OuvrirPorteAvecTag(string tag)
     {
-        if (index == 0 && animPorteA != null)
+        Animator anim = TrouverAnimatorParTag(tag);
+
+        if (anim != null)
         {
-            animPorteA.SetTrigger("Ouvrir");
+            Debug.Log("Trigger envoyé à : " + tag);
+            anim.SetTrigger("Ouvrir");
         }
-        else if (index == 1 && animPorteB != null)
+        else
         {
-            animPorteB.SetTrigger("Ouvrir");
+            Debug.LogError("Animator introuvable pour : " + tag);
         }
-        else if (index == 2 && animPorteC != null)
+    }
+
+    Animator TrouverAnimatorParTag(string tag)
+    {
+        GameObject obj = GameObject.FindGameObjectWithTag(tag);
+
+        if (obj != null)
         {
-            animPorteC.SetTrigger("Ouvrir");
+            Animator anim = obj.GetComponentInChildren<Animator>();
+
+            if (anim != null)
+                return anim;
         }
+
+        Debug.LogError("Animator introuvable pour : " + tag);
+        return null;
     }
 
     void RechargerScene()
