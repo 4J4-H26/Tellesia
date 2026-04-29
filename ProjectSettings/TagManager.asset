@@ -25,6 +25,7 @@ TagManager:
   - PorteA
   - PorteB
   - PorteC
+  - PorteCle
   layers:
   - Default
   - TransparentFX

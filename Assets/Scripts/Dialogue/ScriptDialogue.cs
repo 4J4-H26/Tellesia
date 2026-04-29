@@ -244,11 +244,11 @@ public class ScriptDialogue : MonoBehaviour
 
         if (currentSpeaker == QuiParle.Ella)
         {
-            pos.x = 70.1f;
+            pos.x = 120f;
         }
         else if (currentSpeaker == QuiParle.Nova)
         {
-            pos.x = 49.7f;
+            pos.x = 74f;
         }
 
 

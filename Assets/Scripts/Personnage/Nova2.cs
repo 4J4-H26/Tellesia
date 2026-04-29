@@ -27,16 +27,46 @@ public class Nova2 : MonoBehaviour
 
     private bool dejaActive = false;
 
+    [Header("LaPorte")]
+    public GameObject Porte;
+    public Animator porteAnim;
+
+    private bool porteOuverte = false;
+
+    //[Header("Les sons")]
+    //public AudioSource sonPorte;
+    // public AudioSource sonMarche;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         cam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
         anim.applyRootMotion = false;
+
+
+        if (porteAnim == null)
+        {
+            Porte = GameObject.FindGameObjectWithTag("PorteA");
+
+            if (Porte != null)
+            {
+                porteAnim = Porte.GetComponent<Animator>();
+            }
+        }
     }
 
     void Update()
     {
+        if (!porteOuverte && porteAnim != null)
+        {
+            porteOuverte = true;
+            porteAnim.SetTrigger("Ouvrir");
+
+            //if (sonPorte != null)
+             //   sonPorte.Play();
+        }
+
         if (!canMove)
         {
             anim.SetBool("enMarche", false);

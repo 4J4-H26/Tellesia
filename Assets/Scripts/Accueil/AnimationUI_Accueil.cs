@@ -9,7 +9,7 @@ public class AnimationUI_Accueil : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+      //  LeanTween(800);
     }
 
     // Update is called once per frame

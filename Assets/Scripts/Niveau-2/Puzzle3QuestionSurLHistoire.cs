@@ -60,14 +60,6 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
     void Start()
     {
         AfficherQuestion();
-
-        GameObject test = GameObject.FindGameObjectWithTag("PorteA");
-
-        if (test == null)
-            Debug.LogError("OBJET INTROUVABLE AVEC TAG PorteA");
-        else
-            Debug.Log("Objet trouvé : " + test.name);
-
     }
 
     void AfficherQuestion()
@@ -119,7 +111,6 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 
             if (mauvaisesReponses >= 2)
             {
-                Debug.Log("erreurs, on recommence");
                 Invoke("RechargerScene", 1.5f);
             }
             else
@@ -150,7 +141,7 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 
         if (obj != null)
         {
-            Animator anim = obj.GetComponentInChildren<Animator>();
+            Animator anim = obj.GetComponent<Animator>();
 
             if (anim != null)
                 return anim;
