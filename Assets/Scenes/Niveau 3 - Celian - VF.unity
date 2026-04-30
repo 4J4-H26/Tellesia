@@ -7438,6 +7438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plafond
       objectReference: {fileID: 0}
+    - target: {fileID: 5367156578932469896, guid: cf23d8b90d1675044ae93e70fab72e55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
