@@ -12,6 +12,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Experimental.GlobalIllumination;
 
 [System.Serializable]
 public class QuestionHistoire
@@ -56,9 +57,24 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
     [Header("Nova")]
     public Nova2 nova;
 
+    [Header("Lumieres")]
+    public GameObject pointlight;
+    public GameObject spotlight;
+    public GameObject spotlight2;
 
     void Start()
     {
+        canvasPuzzle.SetActive(false);
+
+        if (!Puzzle2Cle.cleRamassee)
+        {
+            Debug.Log("Bloqué : pas de clé");
+            nova.puzzleActif = false;
+            return;
+        }
+
+        nova.puzzleActif = Puzzle2Cle.cleRamassee;
+        canvasPuzzle.SetActive(true);
         AfficherQuestion();
     }
 
@@ -95,13 +111,19 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
             if (nova != null)
                 nova.SetCanMove(true);
 
-            string tag = "";
-
-            if (indexChoisi == 0) tag = "PorteA";
-            else if (indexChoisi == 1) tag = "PorteB";
-            else if (indexChoisi == 2) tag = "PorteC";
-
-            OuvrirPorteAvecTag(tag);
+            if (indexChoisi == 0 && animPorteA != null)
+            {
+                animPorteA.SetTrigger("Ouvrir");
+                ActiverLumieres();
+            }
+            else if (indexChoisi == 1 && animPorteB != null)
+            {
+                animPorteB.SetTrigger("Ouvrir");
+            }
+            else if (indexChoisi == 2 && animPorteC != null)
+            {
+                animPorteC.SetTrigger("Ouvrir");
+            }
         }
         else
         {
@@ -120,39 +142,20 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         }
     }
 
-    void OuvrirPorteAvecTag(string tag)
-    {
-        Animator anim = TrouverAnimatorParTag(tag);
-
-        if (anim != null)
-        {
-            Debug.Log("Trigger envoyé à : " + tag);
-            anim.SetTrigger("Ouvrir");
-        }
-        else
-        {
-            Debug.LogError("Animator introuvable pour : " + tag);
-        }
-    }
-
-    Animator TrouverAnimatorParTag(string tag)
-    {
-        GameObject obj = GameObject.FindGameObjectWithTag(tag);
-
-        if (obj != null)
-        {
-            Animator anim = obj.GetComponent<Animator>();
-
-            if (anim != null)
-                return anim;
-        }
-
-        Debug.LogError("Animator introuvable pour : " + tag);
-        return null;
-    }
-
     void RechargerScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void ActiverLumieres()
+    {
+        if (pointlight != null)
+            pointlight.SetActive(true);
+
+        if (spotlight != null)
+            spotlight.SetActive(true);
+
+        if (spotlight2 != null)
+            spotlight2.SetActive(true);
     }
 }

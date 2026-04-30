@@ -31,11 +31,11 @@ public class Nova2 : MonoBehaviour
     public GameObject Porte;
     public Animator porteAnim;
 
-    private bool porteOuverte = false;
-
     //[Header("Les sons")]
     //public AudioSource sonPorte;
     // public AudioSource sonMarche;
+
+    public bool puzzleActif = false;
 
     void Start()
     {
@@ -58,13 +58,9 @@ public class Nova2 : MonoBehaviour
 
     void Update()
     {
-        if (!porteOuverte && porteAnim != null)
+        if (Puzzle2Cle.cleRamassee)
         {
-            porteOuverte = true;
-            porteAnim.SetTrigger("Ouvrir");
-
-            //if (sonPorte != null)
-             //   sonPorte.Play();
+            puzzleActif = true;
         }
 
         if (!canMove)
@@ -139,9 +135,9 @@ public class Nova2 : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Speaker") && !dejaActive)
+        if (collision.gameObject.CompareTag("Speaker") && !dejaActive && puzzleActif && Puzzle2Cle.cleRamassee)
         {
-           SetCanMove(false);
+            SetCanMove(false);
             Invoke("OuvrirLeCanvas", 0.5f);
         }
     }

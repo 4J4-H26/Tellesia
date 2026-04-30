@@ -26,6 +26,7 @@ TagManager:
   - PorteB
   - PorteC
   - PorteCle
+  - boutonCle
   layers:
   - Default
   - TransparentFX
