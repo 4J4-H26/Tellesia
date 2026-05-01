@@ -9,13 +9,22 @@ using UnityEngine;
 
 public class Puzzle2Bouton : MonoBehaviour
 {
+    [Header("Porte")]
     public Animator porteAnim;
+
+    [Header("LeBouton du niv 2 son animation")]
+    public Animator leBouton;
 
     void OnTriggerEnter(Collider objet)
     {
         if (objet.CompareTag("Nova"))
         {
-            porteAnim.SetTrigger("Ouvrir");
+            if (porteAnim != null)
+                porteAnim.SetTrigger("Ouvrir");
+
+            if (leBouton != null)
+                leBouton.SetTrigger("Show");
         }
     }
+
 }

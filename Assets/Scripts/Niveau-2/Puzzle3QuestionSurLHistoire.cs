@@ -12,7 +12,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.Experimental.GlobalIllumination;
 
 [System.Serializable]
 public class QuestionHistoire
@@ -39,8 +38,6 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
     [Header("Images des réponses")]
     public GameObject[] imagesReponses;
 
-    private int mauvaisesReponses = 0;
-
     [Header("les portes")]
     public GameObject porteA;
     public GameObject porteB;
@@ -62,9 +59,18 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
     public GameObject spotlight;
     public GameObject spotlight2;
 
+    private bool puzzleBloque = false;
+    private static bool puzzleEchoueGlobal = false;
+
     void Start()
     {
         canvasPuzzle.SetActive(false);
+
+        if (puzzleEchoueGlobal)
+        {
+            Debug.Log("Puzzle déjà échoué globalement");
+            return;
+        }
 
         if (!Puzzle2Cle.cleRamassee)
         {
@@ -73,13 +79,20 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
             return;
         }
 
-        nova.puzzleActif = Puzzle2Cle.cleRamassee;
+        nova.puzzleActif = true;
+
         canvasPuzzle.SetActive(true);
         AfficherQuestion();
     }
 
     void AfficherQuestion()
     {
+        if (puzzleBloque)
+        {
+            canvasPuzzle.SetActive(false);
+            return;
+        }
+
         QuestionHistoire q = questions[questionActuelle];
 
         texteQuestion.text = q.question;
@@ -99,46 +112,35 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
             imagesReponses[i].SetActive(false);
         }
 
-        imagesReponses[indexChoisi].SetActive(true);
+        if (canvasPuzzle != null)
+            canvasPuzzle.SetActive(false);
+
+        if (indexChoisi == 0 && animPorteC != null)
+        {
+            animPorteC.SetTrigger("Ouvrir");
+        }
+        else if (indexChoisi == 1 && animPorteB != null)
+        {
+            animPorteB.SetTrigger("Ouvrir");
+        }
+        else if (indexChoisi == 2 && animPorteA != null)
+        {
+            animPorteA.SetTrigger("Ouvrir");
+        }
 
         if (indexChoisi == q.bonneReponse)
         {
-            Debug.Log("bonne rép");
-
-            if (canvasPuzzle != null)
-                canvasPuzzle.SetActive(false);
+            Debug.Log("bonne réponse");
 
             if (nova != null)
                 nova.SetCanMove(true);
 
-            if (indexChoisi == 0 && animPorteA != null)
-            {
-                animPorteA.SetTrigger("Ouvrir");
-                ActiverLumieres();
-            }
-            else if (indexChoisi == 1 && animPorteB != null)
-            {
-                animPorteB.SetTrigger("Ouvrir");
-            }
-            else if (indexChoisi == 2 && animPorteC != null)
-            {
-                animPorteC.SetTrigger("Ouvrir");
-            }
+            ActiverLumieres();
         }
         else
         {
-            Debug.Log("mauvaise rép");
-
-            mauvaisesReponses++;
-
-            if (mauvaisesReponses >= 2)
-            {
-                Invoke("RechargerScene", 1.5f);
-            }
-            else
-            {
-                //
-            }
+            puzzleEchoueGlobal = true;
+            Invoke("RechargerScene", 3.5f);
         }
     }
 
