@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - SkyboxCamera
+  - porte-niveau1
+  - ZoneLevierDeCommande3
+  - ZoneLevierDeCommande2
+  - ZoneLevierDeCommande1
+  - porte-niveau1-anim
   layers:
   - Default
   - TransparentFX
