@@ -33,9 +33,11 @@ public class Nova2 : MonoBehaviour
 
     //[Header("Les sons")]
     //public AudioSource sonPorte;
-    // public AudioSource sonMarche;
+    public AudioSource sonMarche;
 
     public bool puzzleActif = false;
+    private bool forceStopMove = false;
+    private bool enSortie = false;
 
     void Start()
     {
@@ -58,6 +60,8 @@ public class Nova2 : MonoBehaviour
 
     void Update()
     {
+        if (enSortie) return;
+
         if (Puzzle2Cle.cleRamassee)
         {
             puzzleActif = true;
@@ -97,6 +101,12 @@ public class Nova2 : MonoBehaviour
                 vitesseRotation * Time.deltaTime
             );
         }
+
+        bool canPlayFootstep =
+          canMove &&
+          direction.sqrMagnitude > 0.01f;
+
+        GererSonMarche(canPlayFootstep);
     }
 
     void FixedUpdate()
@@ -142,9 +152,39 @@ public class Nova2 : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("porte-niveau2")) return;
+
+        enSortie = true;
+
+    }
+
     void OuvrirLeCanvas()
     {
         dejaActive = true;
         CanvasQuestion.SetActive(true);
+        if (sonMarche != null && sonMarche.isPlaying)
+        {
+            sonMarche.Stop();
+        }
+    }
+
+    void GererSonMarche(bool estEnMarche)
+    {
+        if (sonMarche == null) return;
+
+        if (!estEnMarche || forceStopMove)
+        {
+            if (sonMarche.isPlaying)
+                sonMarche.Stop();
+
+            return;
+        }
+
+        sonMarche.pitch = 1.5f;
+
+        if (!sonMarche.isPlaying)
+            sonMarche.Play();
     }
 }

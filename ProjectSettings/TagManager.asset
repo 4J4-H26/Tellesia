@@ -28,6 +28,7 @@ TagManager:
   - PorteCle
   - boutonCle
   - bouton-niveau2
+  - porte-niveau2
   layers:
   - Default
   - TransparentFX

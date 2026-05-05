@@ -62,6 +62,11 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
     private bool puzzleBloque = false;
     private static bool puzzleEchoueGlobal = false;
 
+    public int choixJoueur = -1;
+
+    [Header("script dialogue")]
+    public ScriptDialogue2 dialogue;
+
     void Start()
     {
         canvasPuzzle.SetActive(false);
@@ -105,6 +110,14 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 
     public void ChoisirReponse(int indexChoisi)
     {
+
+        choixJoueur = indexChoisi;
+
+        if (dialogue != null)
+        {
+            dialogue.LancerDialogueApresChoix();
+        }
+
         QuestionHistoire q = questions[questionActuelle];
 
         for (int i = 0; i < imagesReponses.Length; i++)
@@ -112,8 +125,8 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
             imagesReponses[i].SetActive(false);
         }
 
-        if (canvasPuzzle != null)
-            canvasPuzzle.SetActive(false);
+         if (canvasPuzzle != null)
+           canvasPuzzle.SetActive(false);
 
         if (indexChoisi == 0 && animPorteC != null)
         {
@@ -140,7 +153,7 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         else
         {
             puzzleEchoueGlobal = true;
-            Invoke("RechargerScene", 3.5f);
+            Invoke("RechargerScene", 20f);
         }
     }
 
