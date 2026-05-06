@@ -10,6 +10,7 @@ TagManager:
   - Piece4
   - Piece5
   - Piece6
+  - FilRouge
   layers:
   - Default
   - TransparentFX
