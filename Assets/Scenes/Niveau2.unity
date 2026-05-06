@@ -9350,54 +9350,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739103706}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &750902314
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 750902315}
-  - component: {fileID: 750902316}
-  m_Layer: 0
-  m_Name: Tuto
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &750902315
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750902314}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.07782841, y: 0.9212198, z: -0.24684015, w: 0.2904595}
-  m_LocalPosition: {x: 18.429886, y: -20.785696, z: -3.9671745}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1517535987}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &750902316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750902314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e8827883b86f7a48924f6c7e97d64a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ResultatTutoriel
-  LevierDeCommande1: {fileID: 0}
-  LevierDeCommande2: {fileID: 0}
-  LevierDeCommande3: {fileID: 0}
-  porteActive: 0
 --- !u!1 &753120935
 GameObject:
   m_ObjectHideFlags: 0
@@ -18325,7 +18277,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 632748380}
-  - {fileID: 750902315}
   m_Father: {fileID: 969279260}
   m_LocalEulerAnglesHint: {x: 30, y: -145, z: 0}
 --- !u!1 &1523260080

@@ -73,13 +73,13 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 
         if (puzzleEchoueGlobal)
         {
-            Debug.Log("Puzzle déjà échoué globalement");
+
             return;
         }
 
         if (!Puzzle2Cle.cleRamassee)
         {
-            Debug.Log("Bloqué : pas de clé");
+
             nova.puzzleActif = false;
             return;
         }
@@ -143,7 +143,7 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 
         if (indexChoisi == q.bonneReponse)
         {
-            Debug.Log("bonne réponse");
+           // Debug.Log("bonne réponse");
 
             if (nova != null)
                 nova.SetCanMove(true);
