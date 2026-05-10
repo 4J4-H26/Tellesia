@@ -36,7 +36,7 @@ public class AnimationUI_Accueil : MonoBehaviour
 
     public void BougerMenu()
     {
-        LeanTween.moveX(Menu, MenuReference.position.x, 2f).setEase(easetype);
+        LeanTween.moveX(Menu, MenuReference.position.x, 1f).setEase(easetype);
     }
 
     //public void BougerMenuReglages()
