@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Puzzle9Jigsaw : MonoBehaviour
+public class Nova4 : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
