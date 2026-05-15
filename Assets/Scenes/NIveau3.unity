@@ -16205,12 +16205,12 @@ MonoBehaviour:
   - speaker: 0
     text: Oui, on peut continuer maintenant ?
     image: 3
-  - speaker: 0
-    text: Uh oh
-    image: 4
   - speaker: 1
     text: "Attention d\u2019\xE9viter la cam\xE9ra de surveillance !"
     image: 1
+  - speaker: 0
+    text: Uh oh
+    image: 4
   - speaker: 1
     text: 'Nova regarde ! '
     image: 1
@@ -21097,9 +21097,9 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 957150049}
   - {fileID: 1707566198}
   - {fileID: 1212484242}
-  - {fileID: 957150049}
   - {fileID: 208562148}
   - {fileID: 1231653406}
   - {fileID: 1670400963}
