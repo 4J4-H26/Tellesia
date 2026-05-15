@@ -10,6 +10,7 @@ TagManager:
   - ZoneLevierDeCommande2
   - ZoneLevierDeCommande1
   - porte-niveau1-anim
+  - allie
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Light-Murs-A-Ignoner
   - personnage
   - Boutton
-  - 
+  - Light-Planchers-A-Ignorer
   - 
   - 
   - 
