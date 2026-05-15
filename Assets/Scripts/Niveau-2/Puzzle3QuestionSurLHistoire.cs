@@ -173,4 +173,5 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         if (spotlight2 != null)
             spotlight2.SetActive(true);
     }
+
 }
