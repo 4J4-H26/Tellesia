@@ -143,7 +143,6 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 
         if (indexChoisi == q.bonneReponse)
         {
-           // Debug.Log("bonne réponse");
 
             if (nova != null)
                 nova.SetCanMove(true);
