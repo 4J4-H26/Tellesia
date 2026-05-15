@@ -3730,7 +3730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &602377502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16142,7 +16142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2016668933
 Transform:
   m_ObjectHideFlags: 0
@@ -16206,9 +16206,6 @@ MonoBehaviour:
     text: Oui, on peut continuer maintenant ?
     image: 3
   - speaker: 0
-    text: Oui, on peut continuer maintenant ?
-    image: 3
-  - speaker: 0
     text: Uh oh
     image: 4
   - speaker: 1
@@ -16226,15 +16223,6 @@ MonoBehaviour:
   - speaker: 1
     text: " Nova a vraiment besoin de passer pour sauver sa m\xE8re.  "
     image: 0
-  - speaker: 0
-    text: Beep Boop?
-    image: 3
-  - speaker: 1
-    text: "Bon. Pas de r\xE9ponse de sa part, on va devoir le d\xE9sactiver de force\u2026 "
-    image: 0
-  - speaker: 0
-    text: "Bon, le robot devrait \xEAtre hors du chemin maintenant ?"
-    image: 3
   - speaker: 1
     text: "On devrait pouvoir \xE9teindre le robot maintenant"
     image: 0
@@ -16249,14 +16237,10 @@ MonoBehaviour:
   - 10
   - 10
   - 10
-  - 10
-  - 10
-  - 10
-  - 10
   textSpeed: 0
   buttonNext: {fileID: 643714550}
   nom: {fileID: 1872030359}
-  nova: {fileID: 0}
+  nova: {fileID: 1231653413}
   autoNext: 1
   ImageSpriteElla1: {fileID: 1725998535}
   ImageSpriteNova1: {fileID: 1284030128}

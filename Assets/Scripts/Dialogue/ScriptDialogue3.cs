@@ -57,7 +57,7 @@ public class ScriptDialogue3 : MonoBehaviour
 
     public TextMeshProUGUI nom;
 
-    public Nova2 nova;
+    public Nova3 nova;
 
     private bool dialogueActif = false;
 
@@ -310,12 +310,9 @@ public class ScriptDialogue3 : MonoBehaviour
 
         int oldIndex = index;
 
-        int safety = 0; 
-
         do
         {
             index++;
-            safety++;
 
             if (index >= lines.Length)
             {
@@ -323,7 +320,7 @@ public class ScriptDialogue3 : MonoBehaviour
                 return;
             }
 
-        } while (safety < 20);
+        } while (string.IsNullOrWhiteSpace(lines[index].text));
 
         if (TryGetPause(oldIndex, out float duree))
         {

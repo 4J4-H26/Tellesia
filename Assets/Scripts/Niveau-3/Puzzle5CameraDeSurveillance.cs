@@ -36,7 +36,7 @@
 //}
 
 
-using UnityEditor.AdaptivePerformance.Editor;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
