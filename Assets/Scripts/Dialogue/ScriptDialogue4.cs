@@ -57,7 +57,7 @@ public class ScriptDialogue4 : MonoBehaviour
 
     public TextMeshProUGUI nom;
 
-    public Nova2 nova;
+    public Nova4 nova;
 
     private bool dialogueActif = false;
 

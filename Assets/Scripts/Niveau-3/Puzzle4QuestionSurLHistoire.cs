@@ -49,6 +49,9 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
     [Header("Porte du puzzle")]
     public GameObject portePuzzle4;
 
+    [Header("Animator de la porte")]
+    public Animator porteAnim;
+
     void Start()
     {
         canvasPuzzle.SetActive(false);
@@ -120,9 +123,9 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
 
     void DebarrerPorte()
     {
-        if (portePuzzle4 != null)
+        if (porteAnim != null)
         {
-            portePuzzle4.SetActive(false);
+            porteAnim.SetTrigger("Ouvrir");
         }
     }
 

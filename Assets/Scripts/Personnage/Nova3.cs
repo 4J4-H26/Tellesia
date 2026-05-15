@@ -145,7 +145,7 @@ public class Nova3 : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Speaker") && !dejaActive && puzzleActif && Puzzle2Cle.cleRamassee)
+        if (collision.gameObject.CompareTag("Speaker"))
         {
             SetCanMove(false);
             Invoke("OuvrirLeCanvas", 0.5f);
@@ -154,7 +154,7 @@ public class Nova3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("porte-niveau3")) return;
+        if (!other.CompareTag("portesortieniveau3")) return;
 
         enSortie = true;
 

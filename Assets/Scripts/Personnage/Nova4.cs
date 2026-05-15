@@ -1,16 +1,167 @@
+// script pour le perso de Nova niveau 3
+// auteur : sammuel
+// date : 15 Mai 2026
+
+// desc : ** Nova **
+
 using UnityEngine;
 
 public class Nova4 : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Déplacement")]
+    public float vitesse = 2f;
+
+    [Header("Rotation")]
+    public float vitesseRotation = 360f;
+
+    private bool canMove = true;
+    private Vector3 direction;
+    private Animator anim;
+    private Transform cam;
+    private Rigidbody rb;
+
+    private bool autoMove = false;
+
+    private bool dejaActive = false;
+
+    [Header("LaPorte")]
+    // public GameObject Porte;
+    // public Animator porteAnim;
+
+    //[Header("Les sons")]
+    //public AudioSource sonPorte;
+    public AudioSource sonMarche;
+
+    public bool puzzleActif = false;
+    private bool forceStopMove = false;
+    private bool enSortie = false;
+
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
+        cam = Camera.main.transform;
+        rb = GetComponent<Rigidbody>();
+        anim.applyRootMotion = false;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (enSortie) return;
+
+        if (Puzzle2Cle.cleRamassee)
+        {
+            puzzleActif = true;
+        }
+
+        if (!canMove)
+        {
+            anim.SetBool("enMarche", false);
+            direction = Vector3.zero;
+            return;
+        }
+
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 forward = cam.forward;
+        Vector3 right = cam.right;
+
+        forward.y = 0;
+        right.y = 0;
+
+        forward.Normalize();
+        right.Normalize();
+
+        direction = (forward * vertical + right * horizontal).normalized;
+
+        bool estEnMarche = direction.sqrMagnitude > 0.01f;
+        anim.SetBool("enMarche", estEnMarche);
+
+        if (estEnMarche)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                vitesseRotation * Time.deltaTime
+            );
+        }
+
+        bool canPlayFootstep =
+          canMove &&
+          direction.sqrMagnitude > 0.01f;
+
+        GererSonMarche(canPlayFootstep);
+    }
+
+    void FixedUpdate()
+    {
+        if (autoMove)
+        {
+            Vector3 move = transform.forward * vitesse * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + move);
+            anim.SetBool("enMarche", true);
+            return;
+        }
+
+        if (!canMove) return;
+
+        Vector3 moveNormal = direction * vitesse * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + new Vector3(moveNormal.x, 0, moveNormal.z));
+    }
+
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
+    }
+
+    public bool IsMovementLocked()
+    {
+        return !canMove;
+    }
+
+    public void ActiverAutoMove()
+    {
+        canMove = false;
+        autoMove = true;
+        anim.SetTrigger("Sortie");
+        FindFirstObjectByType<ChangementCam>().ActiverCameraCinematique();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        //if (collision.gameObject.CompareTag("Speaker") && !dejaActive && puzzleActif && Puzzle2Cle.cleRamassee)
+        //{
+        //    SetCanMove(false);
+        //    Invoke("OuvrirLeCanvas", 0.5f);
+        //}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+     //   if (!other.CompareTag("porte-niveau3")) return;
+
+        enSortie = true;
+
+    }
+
+    void GererSonMarche(bool estEnMarche)
+    {
+        if (sonMarche == null) return;
+
+        if (!estEnMarche || forceStopMove)
+        {
+            if (sonMarche.isPlaying)
+                sonMarche.Stop();
+
+            return;
+        }
+
+        sonMarche.pitch = 1.5f;
+
+        if (!sonMarche.isPlaying)
+            sonMarche.Play();
     }
 }
