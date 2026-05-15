@@ -7189,6 +7189,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1212484242}
     m_Modifications:
+    - target: {fileID: -9087115326192199600, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.44269755
+      objectReference: {fileID: 0}
+    - target: {fileID: -9087115326192199600, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.046373166
+      objectReference: {fileID: 0}
+    - target: {fileID: -9087115326192199600, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.8905982
+      objectReference: {fileID: 0}
+    - target: {fileID: -9087115326192199600, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.093291365
+      objectReference: {fileID: 0}
+    - target: {fileID: -9087115326192199600, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 11.96
+      objectReference: {fileID: 0}
+    - target: {fileID: -9087115326192199600, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 127.138
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.0540602
@@ -7818,13 +7842,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137757355}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.005677819, y: 0.8762083, z: -0.48178846, w: 0.010325967}
-  m_LocalPosition: {x: -0.011168605, y: 4.2870803, z: -2.767614}
+  m_LocalRotation: {x: 0.005836937, y: 0.8685712, z: -0.4954244, w: 0.010233238}
+  m_LocalPosition: {x: 0.03, y: 1.45, z: -4.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1040597656}
-  m_LocalEulerAnglesHint: {x: 57.609, y: 178.65, z: 0}
+  m_LocalEulerAnglesHint: {x: 59.4, y: 178.65, z: 0}
 --- !u!108 &1137757357
 Light:
   m_ObjectHideFlags: 0
@@ -7836,7 +7860,7 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 7.06
+  m_Intensity: 4.54
   m_Range: 10
   m_SpotAngle: 23.2
   m_InnerSpotAngle: 8.3
@@ -7923,10 +7947,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.3
-  m_Height: 14.756936
+  m_Radius: 1.93
+  m_Height: 14.547863
   m_Direction: 1
-  m_Center: {x: 0.000042141928, y: 1.2543842, z: 5.624121}
+  m_Center: {x: -1.9224983, y: 1.1498692, z: 5.624155}
 --- !u!1 &1142217875
 GameObject:
   m_ObjectHideFlags: 0
