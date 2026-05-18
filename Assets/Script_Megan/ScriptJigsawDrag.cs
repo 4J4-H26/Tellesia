@@ -1,6 +1,7 @@
 //------------------------------------------*
 // Author : Megan Desjardins
-// Description : Ce script permet de déplacer les pièces du puzzle jisaw avec la souris
+// Description : Ce script permet de déplacer les pièces 
+// du puzzle jisaw avec la souris
 // https://youtube.com/watch?v=o_qEXZhQR-M&source_ve_path=MjM4NTE&embeds_referring_euri=https%3A%2F%2Fchatgpt.com%2F
 //------------------------------------------*
 
@@ -48,7 +49,11 @@ public class ScriptJigsawDrag : MonoBehaviour
         }
     }
 
-    //Suivre la souris
+    //------------------------------------------*
+    // Fonction GetMouseWorldPos
+    // Description : Cette fonction permet de prendre la position
+    // de la souris pour que la pièce suive cette position
+    //------------------------------------------*
     Vector3 GetMouseWorldPos()
     {
         Vector3 mouse = Input.mousePosition;

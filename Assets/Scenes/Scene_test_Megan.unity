@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 254251132}
   - component: {fileID: 254251135}
   - component: {fileID: 254251134}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bas gauche
   m_TagString: Piece6
   m_Icon: {fileID: 0}
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 519768391}
   - component: {fileID: 519768394}
   - component: {fileID: 519768393}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bas droite
   m_TagString: Piece5
   m_Icon: {fileID: 0}
@@ -1136,7 +1136,7 @@ GameObject:
   - component: {fileID: 816107981}
   - component: {fileID: 816107984}
   - component: {fileID: 816107983}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Millieu gauche
   m_TagString: Piece4
   m_Icon: {fileID: 0}
@@ -1152,7 +1152,7 @@ Transform:
   m_GameObject: {fileID: 816107979}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -92.32, y: 379.22, z: -3175.6838}
+  m_LocalPosition: {x: -89.91, y: 379.86, z: -3175.6838}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1530,7 +1530,7 @@ GameObject:
   - component: {fileID: 1067906223}
   - component: {fileID: 1067906226}
   - component: {fileID: 1067906225}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Haut gauche
   m_TagString: Piece1
   m_Icon: {fileID: 0}
@@ -1670,7 +1670,7 @@ GameObject:
   - component: {fileID: 1254524547}
   - component: {fileID: 1254524550}
   - component: {fileID: 1254524549}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Millieu droite
   m_TagString: Piece3
   m_Icon: {fileID: 0}
@@ -1924,8 +1924,8 @@ Transform:
   m_GameObject: {fileID: 1448219099}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 919.3395, y: -0.00001, z: 2346.3838}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 928.13, y: -33.398, z: 2629.1}
+  m_LocalScale: {x: 1.0884, y: 1.0884, z: 1.0884}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 426173164}
@@ -2185,7 +2185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2031116552}
   - component: {fileID: 2031116553}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pieces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2227,6 +2227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScriptJigsawFin
   totalPieces: 6
   jigsawPieces: {fileID: 2031116551}
+  jigsawEmplacements: {fileID: 1448219099}
   finalImage: {fileID: 448181371}
 --- !u!1 &2035383267
 GameObject:
@@ -2241,7 +2242,7 @@ GameObject:
   - component: {fileID: 2035383269}
   - component: {fileID: 2035383272}
   - component: {fileID: 2035383271}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Haute droite
   m_TagString: Piece2
   m_Icon: {fileID: 0}
