@@ -13,6 +13,7 @@ public enum QuiParle5
 {
     Nova,
     Ella,
+    Kardia,
 }
 
 public enum ImagePerso5
@@ -23,15 +24,18 @@ public enum ImagePerso5
     Nova1,
     Nova2,
     Nova3,
+    Kardia1,
+    Kardia2,
+    Kardia3,
     None
 }
 
 [System.Serializable]
 public class LignesDialogue5
 {
-    public QuiParle speaker;
+    public QuiParle5 speaker;
     public string text;
-    public ImagePerso image;
+    public ImagePerso5 image;
 }
 
 [System.Serializable]
@@ -48,7 +52,7 @@ public class ScriptDialogue5 : MonoBehaviour
     //------------------------------------------*
     public GameObject dialogueCanvas;
     public TextMeshProUGUI textComponent;
-    public LignesDialogue[] lines;
+    public LignesDialogue5[] lines;
     public float[] delaisParLigne;
     public float textSpeed;
     public Button buttonNext;
@@ -57,7 +61,7 @@ public class ScriptDialogue5 : MonoBehaviour
 
     public TextMeshProUGUI nom;
 
-    public Nova2 nova;
+    public Nova5 nova;
 
     private bool dialogueActif = false;
 
@@ -67,17 +71,21 @@ public class ScriptDialogue5 : MonoBehaviour
     [Header("Images des Sprites pour qui qui parle")]
     public GameObject ImageSpriteElla1;
     public GameObject ImageSpriteNova1;
+    public GameObject ImageSpriteKardia1;
 
     public GameObject ImageSpriteElla2;
     public GameObject ImageSpriteNova2;
+    public GameObject ImageSpriteKardia2;
 
     public GameObject ImageSpriteElla3;
     public GameObject ImageSpriteNova3;
+    public GameObject ImageSpriteKardia3;
 
-    private ImagePerso currentImage = ImagePerso.None;
+
+    private ImagePerso5 currentImage = ImagePerso5.None;
 
     [Header("Pauses entre lignes")]
-    public PauseEntreLignes[] pauses;
+    public PauseEntreLignes5[] pauses;
 
     private Coroutine typeLineCoroutine;
     private bool isPaused = false;
@@ -85,6 +93,7 @@ public class ScriptDialogue5 : MonoBehaviour
     [Header("Les sons")]
     public AudioSource sonNova;
     public AudioSource sonElla;
+    public AudioSource sonKardia;
     public AudioSource sonOuvertureDuUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -144,7 +153,7 @@ public class ScriptDialogue5 : MonoBehaviour
     // à la ligne actuelle. Elle évite aussi de rejouer inutilement le changement
     // si l’image demandée est déjà affichée.
     //------------------------------------------*
-    void UpdateImage(ImagePerso img)
+    void UpdateImage(ImagePerso5 img)
     {
         if (img == currentImage)
             return;
@@ -159,28 +168,42 @@ public class ScriptDialogue5 : MonoBehaviour
         ImageSpriteNova2.SetActive(false);
         ImageSpriteNova3.SetActive(false);
 
+        ImageSpriteKardia1.SetActive(false);
+        ImageSpriteKardia2.SetActive(false);
+        ImageSpriteKardia3.SetActive(false);
+
         GameObject target = null;
 
         switch (img)
         {
-            case ImagePerso.Ella1:
+            case ImagePerso5.Ella1:
                 target = ImageSpriteElla1;
                 break;
-            case ImagePerso.Ella2:
+            case ImagePerso5.Ella2:
                 target = ImageSpriteElla2;
                 break;
-            case ImagePerso.Ella3:
+            case ImagePerso5.Ella3:
                 target = ImageSpriteElla3;
                 break;
 
-            case ImagePerso.Nova1:
+            case ImagePerso5.Nova1:
                 target = ImageSpriteNova1;
                 break;
-            case ImagePerso.Nova2:
+            case ImagePerso5.Nova2:
                 target = ImageSpriteNova2;
                 break;
-            case ImagePerso.Nova3:
+            case ImagePerso5.Nova3:
                 target = ImageSpriteNova3;
+                break;
+
+            case ImagePerso5.Kardia1:
+                target = ImageSpriteKardia1;
+                break;
+            case ImagePerso5.Kardia2:
+                target = ImageSpriteKardia1;
+                break;
+            case ImagePerso5.Kardia3:
+                target = ImageSpriteKardia1;
                 break;
         }
 
@@ -220,14 +243,16 @@ public class ScriptDialogue5 : MonoBehaviour
             nova.SetCanMove(false);
 
         string currentText = lines[index].text;
-        QuiParle currentSpeaker = lines[index].speaker;
+        QuiParle5 currentSpeaker = lines[index].speaker;
 
         AudioSource voice = null;
 
-        if (currentSpeaker == QuiParle.Nova)
+        if (currentSpeaker == QuiParle5.Nova)
             voice = sonNova;
-        else if (currentSpeaker == QuiParle.Ella)
+        else if (currentSpeaker == QuiParle5.Ella)
             voice = sonElla;
+        else if (currentSpeaker == QuiParle5.Kardia)
+            voice = sonKardia;
 
         UpdateImage(lines[index].image);
 
@@ -239,11 +264,15 @@ public class ScriptDialogue5 : MonoBehaviour
         RectTransform nomRect = nom.GetComponent<RectTransform>();
         Vector2 pos = nomRect.anchoredPosition;
 
-        if (currentSpeaker == QuiParle.Ella)
+        if (currentSpeaker == QuiParle5.Ella)
         {
             pos.x = 120f;
         }
-        else if (currentSpeaker == QuiParle.Nova)
+        else if (currentSpeaker == QuiParle5.Kardia)
+        {
+            pos.x = 50f;
+        }
+        else if (currentSpeaker == QuiParle5.Nova)
         {
             pos.x = 74f;
         }
@@ -357,7 +386,7 @@ public class ScriptDialogue5 : MonoBehaviour
             return; 
         }
 
-        LignesDialogue currentLine = lines[index];
+        LignesDialogue5 currentLine = lines[index];
 
 
         if (textComponent.text == currentLine.text)
@@ -439,5 +468,6 @@ public class ScriptDialogue5 : MonoBehaviour
     {
         if (sonNova != null) sonNova.Stop();
         if (sonElla != null) sonElla.Stop();
+        if (sonKardia != null) sonKardia.Stop();
     }
 }
