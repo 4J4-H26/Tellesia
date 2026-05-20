@@ -634,7 +634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &158513497
 Transform:
   m_ObjectHideFlags: 0
@@ -1115,7 +1115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 83c435030fb02ab4097e08cc72014d89, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 83c435030fb02ab4097e08cc72014d89, type: 3}
       propertyPath: m_TagString
@@ -2014,7 +2014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &361910959
 Transform:
   m_ObjectHideFlags: 0
@@ -2049,10 +2049,10 @@ MonoBehaviour:
   Chiffre2Cube3: {fileID: 992113887}
   ChiffreCube4: {fileID: 800704429}
   Chiffre2Cube4: {fileID: 1218510149}
+  Chiffre7Cube3: {fileID: 992113887}
+  Chiffre7Cube4: {fileID: 1218510149}
   Cube3: {fileID: 816039322}
   Cube4: {fileID: 694271778}
-  CubeGris1: {fileID: 1155774003}
-  CubeGris2: {fileID: 1224352816}
   AnimationCube3: {fileID: 2130169557}
   AnimationCube4: {fileID: 1782384862}
 --- !u!1 &364439754
@@ -2366,7 +2366,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 361910960}
         m_TargetAssemblyTypeName: Puzzle8DuCode, Assembly-CSharp
-        m_MethodName: CliquerCubeGris1
+        m_MethodName: CliquerChiffre7Cube3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3590,7 +3590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &992113888
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3797,7 +3797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1155774004
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3928,7 +3928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1218510150
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4004,7 +4004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1224352817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4135,7 +4135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1227731011
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4939,7 +4939,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 361910960}
         m_TargetAssemblyTypeName: Puzzle8DuCode, Assembly-CSharp
-        m_MethodName: CliquerCubeGris2
+        m_MethodName: CliquerChiffre7Cube4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5928,7 +5928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1094944257823405499, guid: e7ecf05726cbe134487b230f28d9da10, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1094944257823405499, guid: e7ecf05726cbe134487b230f28d9da10, type: 3}
       propertyPath: m_TagString

@@ -23,15 +23,15 @@ public class Puzzle8DuCode : MonoBehaviour
     public GameObject ChiffreCube4;
     public GameObject Chiffre2Cube4;
 
+    [Header("Boutons cliquables")]
+    public GameObject Chiffre7Cube3;
+    public GameObject Chiffre7Cube4;
+
     [Header("Image Cube 3")]
     public GameObject Cube3;
 
     [Header("Image Cube 4")]
     public GameObject Cube4;
-
-    [Header("Cubes gris")]
-    public GameObject CubeGris1;
-    public GameObject CubeGris2;
 
     [Header("Animation cube")]
     public GameObject AnimationCube3;
@@ -49,10 +49,7 @@ public class Puzzle8DuCode : MonoBehaviour
         Cube4.SetActive(false);
 
         ChiffreCube3.SetActive(false);
-        Chiffre2Cube3.SetActive(false);
-
         ChiffreCube4.SetActive(false);
-        Chiffre2Cube4.SetActive(false);
 
         AnimationCube3.SetActive(false);
         AnimationCube4.SetActive(false);
@@ -75,24 +72,38 @@ public class Puzzle8DuCode : MonoBehaviour
         poolCube2 = new List<GameObject>(baseCube2);
     }
 
-    public void CliquerCubeGris1()
+    public void CliquerChiffre7Cube3()
     {
-        StartCoroutine(PigerCube(CubeGris1, AnimationCube3, poolCube1, baseCube1));
+        StartCoroutine(
+            PigerCube(
+                Chiffre7Cube3,
+                AnimationCube3,
+                poolCube1,
+                baseCube1
+            )
+        );
     }
 
-    public void CliquerCubeGris2()
+    public void CliquerChiffre7Cube4()
     {
-        StartCoroutine(PigerCube(CubeGris2, AnimationCube4, poolCube2, baseCube2));
+        StartCoroutine(
+            PigerCube(
+                Chiffre7Cube4,
+                AnimationCube4,
+                poolCube2,
+                baseCube2
+            )
+        );
     }
 
     IEnumerator PigerCube(
-        GameObject cubeGris,
+        GameObject boutonClique,
         GameObject animationCube,
         List<GameObject> pool,
         List<GameObject> baseList
     )
     {
-        cubeGris.SetActive(false);
+        boutonClique.SetActive(false);
 
         animationCube.SetActive(true);
 
@@ -109,12 +120,9 @@ public class Puzzle8DuCode : MonoBehaviour
         }
 
         if (pool.Count == 0)
-        {
             yield break;
-        }
 
         int index = Random.Range(0, pool.Count);
-
         GameObject result = pool[index];
 
         if (result != null)
@@ -141,6 +149,10 @@ public class Puzzle8DuCode : MonoBehaviour
         if (cube3Visible && cube4Visible && chiffresInvisible)
         {
             Debug.Log("reussi");
+
+            Chiffre7Cube3.SetActive(false);
+            Chiffre7Cube4.SetActive(false);
+
             Invoke("FermerCanvas", 3f);
         }
     }
