@@ -153,7 +153,7 @@ public class Puzzle8DuCode : MonoBehaviour
             Chiffre7Cube3.SetActive(false);
             Chiffre7Cube4.SetActive(false);
 
-            Invoke("FermerCanvas", 3f);
+            //Invoke("FermerCanvas", 3f);
         }
     }
 

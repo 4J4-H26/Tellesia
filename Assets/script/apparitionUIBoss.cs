@@ -36,6 +36,8 @@ public class testApparaitreUi : MonoBehaviour
             UIouvert = true;
             UICode.SetActive(true);
         }
+
+        Debug.Log("code ouvert)");
     }
 
     public void OuvrirLeviers()
