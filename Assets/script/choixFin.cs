@@ -1,3 +1,10 @@
+//------------------------------------------*
+// Author : Stella Roy
+// Description : Ce script permet de changer la scène d'une de nos 2 cinématiques dépendamment du choix du joueur en cliquant sur l'option correspondnates
+// Date: 
+//------------------------------------------*
+
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
