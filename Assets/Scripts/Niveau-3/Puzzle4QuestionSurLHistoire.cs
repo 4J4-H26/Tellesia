@@ -96,6 +96,11 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
     {
         choixJoueur = indexChoisi;
 
+        Debug.Log(
+    "Index : " + indexChoisi +
+    " | Réponse : " + q.reponses[indexChoisi]
+);
+
         QuestionHistoire2 q = questions[questionActuelle];
 
         for (int i = 0; i < imagesReponses.Length; i++)
@@ -120,7 +125,6 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
             Invoke("RechargerScene", 20f);
         }
     }
-
     void DebarrerPorte()
     {
         if (porteAnim != null)
