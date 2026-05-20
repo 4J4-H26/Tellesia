@@ -1,6 +1,7 @@
 //------------------------------------------*
 // Author : Stella Roy
-// Description : Ce script permet d'apparaître et faire disparaître le UI avec input de la touche E
+// Description : Ce script permet de faire apparaître les puzzles à résoudre pour battre Kardia en cliquant sur l'icone correspondante
+// Date: je sais pu j'avais juste oublié de faire les commentaires
 //------------------------------------------*
 
 using System;

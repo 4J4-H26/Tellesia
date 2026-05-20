@@ -1,3 +1,7 @@
+// script pour gérer la question sur l'histoire niveau 2
+// auteur : stella & david
+// date : 20 mai 2026
+
 using System;
 using TMPro;
 using UnityEngine;

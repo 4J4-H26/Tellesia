@@ -1,3 +1,9 @@
+//------------------------------------------*
+// Author : Stella Roy
+// Description : Ce script permet de faire réduire la barre de vie à Kardia lorsque les puzzles sont réussi
+// Date: 
+//------------------------------------------*
+
 using UnityEngine;
 using UnityEngine.UI;
 
