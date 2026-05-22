@@ -15,11 +15,16 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI TimerNombre;
 
     [SerializeField] private Image vieNova;
+    public int maxVie = 100;
+    public int currentVie = 100;
+
+
     public Canvas canva;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        vieNova.fillAmount = maxVie;
     }
 
     // Update is called once per frame
@@ -53,8 +58,9 @@ public class Timer : MonoBehaviour
 
     void prendreDegats()
     {
-        vieNova.fillAmount -= 0.1f;
+        vieNova.fillAmount -= 50f;
         Invoke("Reset", 0f);
+        Debug.Log(vieNova.fillAmount);
     }
 
     private void Reset()
