@@ -8211,9 +8211,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -988506798408561025, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
       propertyPath: m_Name
       value: CameraDeSurveillance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023905755613981727, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687159680169550500, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 20507436f41abb54ea69ba941cdad8a2, type: 2}
+    - target: {fileID: 1687159680169550500, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 20507436f41abb54ea69ba941cdad8a2, type: 2}
+    - target: {fileID: 4587124136858292125, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091937519273929458, guid: 0225b52d1bc8ad348980ed96e81eeb15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

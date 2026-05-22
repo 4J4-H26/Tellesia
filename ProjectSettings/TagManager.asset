@@ -45,11 +45,11 @@ TagManager:
   - Personnage
   - vide
   - Boutons
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Elements-Important
+  - Light-Murs-A-Ignorer
+  - Ignore-Point-Light
+  - Light-Planchers-A-Ignorer
+  - Robot
   - 
   - 
   - 
