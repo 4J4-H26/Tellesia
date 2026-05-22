@@ -9,7 +9,7 @@ using UnityEngine;
 public class Nova3 : MonoBehaviour
 {
     [Header("Déplacement")]
-    public float vitesse = 2f;
+    public float vitesse = 3.2f;
 
     [Header("Rotation")]
     public float vitesseRotation = 360f;
@@ -25,7 +25,7 @@ public class Nova3 : MonoBehaviour
     [Header("Canvas Question sur l'histoire")]
      public GameObject CanvasQuestion;
 
-    private bool dejaActive = false;
+    // private bool dejaActive = false;
 
     [Header("LaPorte")]
     // public GameObject Porte;
@@ -38,6 +38,9 @@ public class Nova3 : MonoBehaviour
     public bool puzzleActif = false;
     private bool forceStopMove = false;
     private bool enSortie = false;
+
+
+    public Puzzle4QuestionSurLHistoire puzzle;
 
     void Start()
     {
@@ -61,11 +64,6 @@ public class Nova3 : MonoBehaviour
     void Update()
     {
         if (enSortie) return;
-
-        if (Puzzle2Cle.cleRamassee)
-        {
-            puzzleActif = true;
-        }
 
         if (!canMove)
         {
@@ -162,13 +160,14 @@ public class Nova3 : MonoBehaviour
 
     void OuvrirLeCanvas()
     {
-        dejaActive = true;
-        CanvasQuestion.SetActive(true);
+
+        if (puzzle != null)
+            puzzle.OuvrirPuzzle();
+
         if (sonMarche != null && sonMarche.isPlaying)
-        {
             sonMarche.Stop();
-        }
     }
+
 
     void GererSonMarche(bool estEnMarche)
     {

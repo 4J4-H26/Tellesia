@@ -31,13 +31,18 @@ public class Nova2 : MonoBehaviour
     public GameObject Porte;
     public Animator porteAnim;
 
-    //[Header("Les sons")]
-    //public AudioSource sonPorte;
+    [Header("Les sons")]
+   
     public AudioSource sonMarche;
 
     public bool puzzleActif = false;
     private bool forceStopMove = false;
     private bool enSortie = false;
+
+    [Header("Question sur Histoire Niv2 ")]
+    public Puzzle3QuestionSurLHistoire puzzle;
+
+    private bool peutInteragir = false;
 
     void Start()
     {
@@ -54,6 +59,7 @@ public class Nova2 : MonoBehaviour
             if (Porte != null)
             {
                 porteAnim = Porte.GetComponent<Animator>();
+              
             }
         }
     }
@@ -107,6 +113,14 @@ public class Nova2 : MonoBehaviour
           direction.sqrMagnitude > 0.01f;
 
         GererSonMarche(canPlayFootstep);
+
+        if (peutInteragir && Input.GetKeyDown(KeyCode.E) && !dejaActive)
+        {
+            SetCanMove(false);
+            OuvrirLeCanvas();
+        }
+
+
     }
 
     void FixedUpdate()
@@ -143,12 +157,19 @@ public class Nova2 : MonoBehaviour
         FindFirstObjectByType<ChangementCam>().ActiverCameraCinematique();
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Speaker") && !dejaActive && puzzleActif && Puzzle2Cle.cleRamassee)
         {
-            SetCanMove(false);
-            Invoke("OuvrirLeCanvas", 0.5f);
+            peutInteragir = true;
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Speaker"))
+        {
+            peutInteragir = false;
         }
     }
 
@@ -163,11 +184,13 @@ public class Nova2 : MonoBehaviour
     void OuvrirLeCanvas()
     {
         dejaActive = true;
-        CanvasQuestion.SetActive(true);
+        peutInteragir = false; 
+
+        if (puzzle != null)
+            puzzle.OuvrirPuzzle();
+
         if (sonMarche != null && sonMarche.isPlaying)
-        {
             sonMarche.Stop();
-        }
     }
 
     void GererSonMarche(bool estEnMarche)

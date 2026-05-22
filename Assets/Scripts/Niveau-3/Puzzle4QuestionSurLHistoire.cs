@@ -52,25 +52,25 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
     [Header("Animator de la porte")]
     public Animator porteAnim;
 
+    [Header("Les sons")]
+    public AudioSource sonPorte;
+
+
     void Start()
     {
-        canvasPuzzle.SetActive(false);
+        if (canvasPuzzle != null)
+            canvasPuzzle.SetActive(false);
 
         if (puzzleEchoueGlobal)
-        {
             return;
-        }
 
-        if (!Puzzle2Cle.cleRamassee)
-        {
-            nova.puzzleActif = false;
-            return;
-        }
+        if (nova != null)
+            nova.puzzleActif = true;
+    }
 
-        nova.puzzleActif = true;
-
+    public void OuvrirPuzzle()
+    {
         canvasPuzzle.SetActive(true);
-
         AfficherQuestion();
     }
 
@@ -94,12 +94,9 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
 
     public void ChoisirReponse(int indexChoisi)
     {
-        choixJoueur = indexChoisi;
+        Debug.Log("Bouton cliqué : " + indexChoisi);
 
-        Debug.Log(
-    "Index : " + indexChoisi +
-    " | Réponse : " + q.reponses[indexChoisi]
-);
+        choixJoueur = indexChoisi;
 
         QuestionHistoire2 q = questions[questionActuelle];
 
@@ -122,7 +119,7 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
         {
             puzzleEchoueGlobal = true;
 
-            Invoke("RechargerScene", 20f);
+            Invoke("RechargerScene", 0.5f);
         }
     }
     void DebarrerPorte()
@@ -131,6 +128,11 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
         {
             porteAnim.SetTrigger("Ouvrir");
         }
+        if (sonPorte != null)
+        {
+            sonPorte.Play();
+        }
+
     }
 
     void RechargerScene()

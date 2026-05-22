@@ -13,7 +13,7 @@ public class Nova : MonoBehaviour
     public bool contientLaCarte = false;
 
     [Header("Déplacement")]
-    public float vitesse = 2f;
+    public float vitesse = 3.2f;
 
     [Header("UI Puzzle")]
 
@@ -56,6 +56,9 @@ public class Nova : MonoBehaviour
     public AudioSource sonMarche;
 
     private bool forceStopMove = false;
+
+    public bool toucherActive = false;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -240,10 +243,8 @@ public class Nova : MonoBehaviour
 
     void TriggerTouch()
     {
-        animationToucherTerminee = false;
-        anim.SetTrigger("toucher");
+        return;
     }
-
 
     public void ResetToucher()
     {

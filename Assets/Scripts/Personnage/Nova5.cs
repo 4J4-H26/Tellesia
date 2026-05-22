@@ -9,7 +9,7 @@ using UnityEngine;
 public class Nova5 : MonoBehaviour
 {
     [Header("Déplacement")]
-    public float vitesse = 2f;
+    public float vitesse = 3.2f;
 
     [Header("Rotation")]
     public float vitesseRotation = 360f;
@@ -22,7 +22,7 @@ public class Nova5 : MonoBehaviour
 
     private bool autoMove = false;
 
-    private bool dejaActive = false;
+    // private bool dejaActive = false;
 
     [Header("LaPorte")]
     // public GameObject Porte;
@@ -115,6 +115,22 @@ public class Nova5 : MonoBehaviour
     public void SetCanMove(bool value)
     {
         canMove = value;
+
+        if (value)
+        {
+            autoMove = false;
+            enSortie = false;
+        }
+        else
+        {
+            direction = Vector3.zero;
+
+            if (rb != null)
+                rb.linearVelocity = Vector3.zero;
+        }
+
+        if (anim != null)
+            anim.SetBool("enMarche", false);
     }
 
     public bool IsMovementLocked()

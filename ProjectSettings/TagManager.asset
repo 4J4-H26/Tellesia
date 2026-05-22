@@ -30,6 +30,8 @@ TagManager:
   - bouton-niveau2
   - porte-niveau2
   - portesortieniveau3
+  - ZoneSalle
+  - ZonePorteNiv2
   layers:
   - Default
   - TransparentFX

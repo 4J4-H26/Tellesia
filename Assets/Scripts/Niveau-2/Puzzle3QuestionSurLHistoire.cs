@@ -67,6 +67,9 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
     [Header("script dialogue")]
     public ScriptDialogue2 dialogue;
 
+    [Header("Les sons")]
+    public AudioSource sonPorte;
+
     void Start()
     {
         canvasPuzzle.SetActive(false);
@@ -86,6 +89,11 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 
         nova.puzzleActif = true;
 
+        OuvrirPuzzle();
+    }
+
+    public void OuvrirPuzzle()
+    {
         canvasPuzzle.SetActive(true);
         AfficherQuestion();
     }
@@ -131,14 +139,23 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         if (indexChoisi == 0 && animPorteC != null)
         {
             animPorteC.SetTrigger("Ouvrir");
+
+            if (sonPorte != null)
+                sonPorte.Play();
         }
         else if (indexChoisi == 1 && animPorteB != null)
         {
             animPorteB.SetTrigger("Ouvrir");
+
+            if (sonPorte != null)
+                sonPorte.Play();
         }
         else if (indexChoisi == 2 && animPorteA != null)
         {
             animPorteA.SetTrigger("Ouvrir");
+
+            if (sonPorte != null)
+                sonPorte.Play();
         }
 
         if (indexChoisi == q.bonneReponse)
@@ -152,7 +169,7 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         else
         {
             puzzleEchoueGlobal = true;
-            Invoke("RechargerScene", 20f);
+            Invoke("RechargerScene", 7f);
         }
     }
 

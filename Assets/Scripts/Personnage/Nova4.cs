@@ -22,7 +22,7 @@ public class Nova4 : MonoBehaviour
 
     private bool autoMove = false;
 
-    private bool dejaActive = false;
+// private bool dejaActive = false;
 
     [Header("LaPorte")]
     // public GameObject Porte;

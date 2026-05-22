@@ -29,9 +29,9 @@ public enum ImagePerso3
 [System.Serializable]
 public class LignesDialogue3
 {
-    public QuiParle speaker;
+    public QuiParle3 speaker;
     public string text;
-    public ImagePerso image;
+    public ImagePerso3 image;
 }
 
 [System.Serializable]
@@ -48,7 +48,7 @@ public class ScriptDialogue3 : MonoBehaviour
     //------------------------------------------*
     public GameObject dialogueCanvas;
     public TextMeshProUGUI textComponent;
-    public LignesDialogue[] lines;
+    public LignesDialogue3[] lines;
     public float[] delaisParLigne;
     public float textSpeed;
     public Button buttonNext;
@@ -74,10 +74,10 @@ public class ScriptDialogue3 : MonoBehaviour
     public GameObject ImageSpriteElla3;
     public GameObject ImageSpriteNova3;
 
-    private ImagePerso currentImage = ImagePerso.None;
+    private ImagePerso3 currentImage = ImagePerso3.None;
 
     [Header("Pauses entre lignes")]
-    public PauseEntreLignes[] pauses;
+    public PauseEntreLignes3[] pauses;
 
     private Coroutine typeLineCoroutine;
     private bool isPaused = false;
@@ -144,7 +144,7 @@ public class ScriptDialogue3 : MonoBehaviour
     // à la ligne actuelle. Elle évite aussi de rejouer inutilement le changement
     // si l’image demandée est déjà affichée.
     //------------------------------------------*
-    void UpdateImage(ImagePerso img)
+    void UpdateImage(ImagePerso3 img)
     {
         if (img == currentImage)
             return;
@@ -163,23 +163,23 @@ public class ScriptDialogue3 : MonoBehaviour
 
         switch (img)
         {
-            case ImagePerso.Ella1:
+            case ImagePerso3.Ella1:
                 target = ImageSpriteElla1;
                 break;
-            case ImagePerso.Ella2:
+            case ImagePerso3.Ella2:
                 target = ImageSpriteElla2;
                 break;
-            case ImagePerso.Ella3:
+            case ImagePerso3.Ella3:
                 target = ImageSpriteElla3;
                 break;
 
-            case ImagePerso.Nova1:
+            case ImagePerso3.Nova1:
                 target = ImageSpriteNova1;
                 break;
-            case ImagePerso.Nova2:
+            case ImagePerso3.Nova2:
                 target = ImageSpriteNova2;
                 break;
-            case ImagePerso.Nova3:
+            case ImagePerso3.Nova3:
                 target = ImageSpriteNova3;
                 break;
         }
@@ -220,13 +220,13 @@ public class ScriptDialogue3 : MonoBehaviour
             nova.SetCanMove(false);
 
         string currentText = lines[index].text;
-        QuiParle currentSpeaker = lines[index].speaker;
+        QuiParle3 currentSpeaker = lines[index].speaker;
 
         AudioSource voice = null;
 
-        if (currentSpeaker == QuiParle.Nova)
+        if (currentSpeaker == QuiParle3.Nova)
             voice = sonNova;
-        else if (currentSpeaker == QuiParle.Ella)
+        else if (currentSpeaker == QuiParle3.Ella)
             voice = sonElla;
 
         UpdateImage(lines[index].image);
@@ -239,11 +239,11 @@ public class ScriptDialogue3 : MonoBehaviour
         RectTransform nomRect = nom.GetComponent<RectTransform>();
         Vector2 pos = nomRect.anchoredPosition;
 
-        if (currentSpeaker == QuiParle.Ella)
+        if (currentSpeaker == QuiParle3.Ella)
         {
             pos.x = 120f;
         }
-        else if (currentSpeaker == QuiParle.Nova)
+        else if (currentSpeaker == QuiParle3.Nova)
         {
             pos.x = 74f;
         }
@@ -354,7 +354,7 @@ public class ScriptDialogue3 : MonoBehaviour
             return; 
         }
 
-        LignesDialogue currentLine = lines[index];
+        LignesDialogue3 currentLine = lines[index];
 
 
         if (textComponent.text == currentLine.text)

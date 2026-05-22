@@ -96,6 +96,8 @@ public class ScriptDialogue5 : MonoBehaviour
     public AudioSource sonKardia;
     public AudioSource sonOuvertureDuUI;
 
+    private bool attendreZoneSalle = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -131,6 +133,30 @@ public class ScriptDialogue5 : MonoBehaviour
         NextLine(); 
     }
 
+    public void ReprendreDialogueDepuisZoneSalle()
+    {
+        if (!attendreZoneSalle)
+            return;
+
+        attendreZoneSalle = false;
+
+        StopTyping();
+        StopAllDialogueSounds();
+
+        index = 2;
+        dialogueActif = true;
+        isPaused = false;
+        isTyping = false;
+
+        if (dialogueCanvas != null)
+            dialogueCanvas.SetActive(true);
+
+        if (nova != null)
+            nova.SetCanMove(false);
+
+        typeLineCoroutine = StartCoroutine(TypeLine());
+    }
+
     void StopTyping()
     {
         StopAllDialogueSounds();
@@ -140,6 +166,8 @@ public class ScriptDialogue5 : MonoBehaviour
             StopCoroutine(typeLineCoroutine);
             typeLineCoroutine = null;
         }
+
+        isTyping = false;
     }
 
     //------------------------------------------*
@@ -200,10 +228,11 @@ public class ScriptDialogue5 : MonoBehaviour
                 target = ImageSpriteKardia1;
                 break;
             case ImagePerso5.Kardia2:
-                target = ImageSpriteKardia1;
+                target = ImageSpriteKardia2;
                 break;
+
             case ImagePerso5.Kardia3:
-                target = ImageSpriteKardia1;
+                target = ImageSpriteKardia3;
                 break;
         }
 
@@ -337,32 +366,31 @@ public class ScriptDialogue5 : MonoBehaviour
 
         StopTyping();
 
-        int oldIndex = index;
 
-        int safety = 0; 
-
-        do
+        if (index == 1)
         {
-            index++;
-            safety++;
+            attendreZoneSalle = true;
+            dialogueActif = false;
 
-            if (index >= lines.Length)
-            {
-                EndDialogue();
-                return;
-            }
+            if (dialogueCanvas != null)
+                dialogueCanvas.SetActive(false);
 
-        } while (safety < 20);
+            if (nova != null)
+                nova.SetCanMove(true);
 
-        if (TryGetPause(oldIndex, out float duree))
+            return;
+        }
+
+        index++;
+
+        if (index >= lines.Length)
         {
-            StartCoroutine(PauseDialogue(duree));
+            EndDialogue();
             return;
         }
 
         typeLineCoroutine = StartCoroutine(TypeLine());
     }
-
     //------------------------------------------*
     // Fonction NextButtonClicked()
     // Description : Cette fonction permet de détecter le click du bouton et de
@@ -451,10 +479,13 @@ public class ScriptDialogue5 : MonoBehaviour
     //------------------------------------------
     void EndDialogue()
     {
-
         if (isPaused) return;
 
+        StopTyping(); 
+
         dialogueActif = false;
+        attendreZoneSalle = false;
+        isTyping = false;
 
         StopAllDialogueSounds();
 
