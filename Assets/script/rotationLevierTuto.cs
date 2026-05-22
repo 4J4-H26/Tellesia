@@ -12,6 +12,11 @@ public class rotationLevierTUto : MonoBehaviour
     public Button levierTuto;
     public Animator animRotation;
 
+    public GameObject levierActif;
+
+    [Header("Le son")]
+    public AudioSource sonLevier;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,5 +27,15 @@ public class rotationLevierTUto : MonoBehaviour
     public void clickRotation()
     {
         animRotation.enabled = true;
+
+        if (sonLevier != null)
+            sonLevier.Play();
+        Invoke("StopSon", 0.6f);
+
+        levierActif.tag = "reussit";
+
+        levierTuto.tag = "reussit";
+
+        canvaLevierTuto.tag = "reussit";
     }
 }

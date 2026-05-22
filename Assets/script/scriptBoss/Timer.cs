@@ -6,7 +6,6 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using System.Threading;
 
 public class Timer : MonoBehaviour
@@ -15,6 +14,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI TimerNombre;
 
     [SerializeField] private Image vieNova;
+    [SerializeField] private Image vieKardia;
     public int maxVie = 100;
     public int currentVie = 100;
 
@@ -41,6 +41,12 @@ public class Timer : MonoBehaviour
         if(TempsTimer <= 0){
             TempsTimer = 0f;
             Invoke("fermerUI", 1f);
+            Invoke("prendreDegats", 2f);
+        }
+
+        if(canva.tag == "reussit")
+        {
+            Invoke("faireDegats", 1f);
         }
 
     }
@@ -53,12 +59,11 @@ public class Timer : MonoBehaviour
     void fermerUI()
     {
         canva.enabled = false;
-        Invoke("prendreDegats", 1f);
     }
 
     void prendreDegats()
     {
-        vieNova.fillAmount -= 50f;
+        vieNova.fillAmount -= 0.1f;
         Invoke("Reset", 0f);
         Debug.Log(vieNova.fillAmount);
     }
@@ -66,5 +71,12 @@ public class Timer : MonoBehaviour
     private void Reset()
     {
         Debug.Log("RESET");
+    }
+
+    void faireDegats()
+    {
+        vieKardia.fillAmount -= 0.1f;
+        Invoke("Reset", 0f);
+        Debug.Log(vieNova.fillAmount);
     }
 }
