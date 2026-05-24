@@ -25,22 +25,18 @@ public class Nova3 : MonoBehaviour
     [Header("Canvas Question sur l'histoire")]
      public GameObject CanvasQuestion;
 
-    // private bool dejaActive = false;
-
     [Header("LaPorte")]
-    // public GameObject Porte;
-    // public Animator porteAnim;
-
-    //[Header("Les sons")]
-    //public AudioSource sonPorte;
     public AudioSource sonMarche;
 
     public bool puzzleActif = false;
     private bool forceStopMove = false;
     private bool enSortie = false;
 
-
+    [Header("Puzzle 4")]
     public Puzzle4QuestionSurLHistoire puzzle;
+
+    [Header("Levier")]
+    public ScriptRobotLevier scriptLevier;
 
     void Start()
     {
@@ -49,16 +45,6 @@ public class Nova3 : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim.applyRootMotion = false;
 
-
-        // if (porteAnim == null)
-        // {
-        //    Porte = GameObject.FindGameObjectWithTag("PorteA");
-
-        //    if (Porte != null)
-        //    {
-        //        porteAnim = Porte.GetComponent<Animator>();
-        //    }
-        // }
     }
 
     void Update()
@@ -152,10 +138,13 @@ public class Nova3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("portesortieniveau3")) return;
+        if (!other.CompareTag("portesortieniveau3"))
+            return;
+
+        if (scriptLevier == null || !scriptLevier.animationTerminee)
+            return;
 
         enSortie = true;
-
     }
 
     void OuvrirLeCanvas()

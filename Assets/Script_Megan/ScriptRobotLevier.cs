@@ -5,6 +5,7 @@
 //------------------------------------------*
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class ScriptRobotLevier : MonoBehaviour
 {
@@ -22,6 +23,14 @@ public class ScriptRobotLevier : MonoBehaviour
 
     [Header("Canvas")]
     public GameObject CanvasDuLevierRobot;
+
+    [Header("Référence Trigger")]
+    public ZoneLevierRobotTrigger zoneTrigger;
+
+    [Header("Porte fin niveau")]
+    public PorteFinNiveau3 porteFin;
+
+    public bool animationTerminee = false;
 
     //------------------------------------------*
     // FONCTIONS
@@ -58,6 +67,25 @@ public class ScriptRobotLevier : MonoBehaviour
     {
         animTranslation.enabled = true;
         robot.transform.position = positionRobotApresLevier.transform.position;
+
+        StartCoroutine(AttendreFinAnimation());
+    }
+
+    private IEnumerator AttendreFinAnimation()
+    {
+        yield return null;
+
+        yield return new WaitUntil(() =>
+            animTranslation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f
+            && !animTranslation.IsInTransition(0));
+
+        animationTerminee = true;
+
+        if (zoneTrigger != null)
+            zoneTrigger.FermerCanvas2();
+
+        if (porteFin != null)
+            porteFin.enabled = true;
     }
 
     //------------------------------------------*

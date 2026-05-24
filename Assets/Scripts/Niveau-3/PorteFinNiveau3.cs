@@ -16,6 +16,11 @@ public class PorteFinNiveau3 : MonoBehaviour
 
     public CameraQuiSuitNova cam;
 
+    void Start()
+    {
+        enabled = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Nova")

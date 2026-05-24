@@ -11,7 +11,6 @@ public class ZoneLevierRobotTrigger : MonoBehaviour
     private bool canInteract = false;
 
     private Coroutine routine;
-    private Coroutine canvas2Routine;
 
     private bool canvas1Used = false;
     private bool canvas2Used = false;
@@ -55,13 +54,21 @@ public class ZoneLevierRobotTrigger : MonoBehaviour
         {
             if (!canvas2Used)
             {
-                if (canvas2Routine != null)
-                    StopCoroutine(canvas2Routine);
+                if (canvas2 != null)
+                    canvas2.SetActive(true);
 
-                canvas2Routine = StartCoroutine(ShowCanvas2Temporarily());
-                canvas2Used = true; 
+                canvas2Used = true;
             }
         }
+    }
+
+    public void FermerCanvas2()
+    {
+        if (canvas2 != null)
+            canvas2.SetActive(false);
+
+        if (ZonePermission != null)
+            ZonePermission.SetActive(false);
     }
 
     private IEnumerator ShowCanvas1Temporarily()
@@ -71,26 +78,13 @@ public class ZoneLevierRobotTrigger : MonoBehaviour
         if (canvas1 != null)
             canvas1.SetActive(true);
 
-        canInteract = false;
+        canInteract = false; 
 
         yield return new WaitForSeconds(3f);
 
         if (canvas1 != null)
             canvas1.SetActive(false);
 
-        canInteract = true;
-    }
-    private IEnumerator ShowCanvas2Temporarily()
-    {
-        if (canvas2 != null)
-            canvas2.SetActive(true);
-
-        yield return new WaitForSeconds(7f);
-
-        if (canvas2 != null)
-            canvas2.SetActive(false);
-
-        if (ZonePermission != null)
-            ZonePermission.SetActive(false);
+        canInteract = true; 
     }
 }

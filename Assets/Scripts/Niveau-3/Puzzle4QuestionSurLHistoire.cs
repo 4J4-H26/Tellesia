@@ -55,6 +55,7 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
     [Header("Les sons")]
     public AudioSource sonPorte;
 
+    private bool puzzleTermine = false;
 
     void Start()
     {
@@ -70,17 +71,20 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
 
     public void OuvrirPuzzle()
     {
+        if (puzzleTermine) return; 
+
         canvasPuzzle.SetActive(true);
         AfficherQuestion();
     }
 
     void AfficherQuestion()
     {
-        if (puzzleBloque)
+        if (puzzleBloque || puzzleTermine)
         {
             canvasPuzzle.SetActive(false);
             return;
         }
+
 
         QuestionHistoire2 q = questions[questionActuelle];
 
@@ -110,6 +114,8 @@ public class Puzzle4QuestionSurLHistoire : MonoBehaviour
 
         if (indexChoisi == q.bonneReponse)
         {
+            puzzleTermine = true;
+
             if (nova != null)
                 nova.SetCanMove(true);
 
