@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        vieNova.fillAmount = maxVie;
+        vieNova.fillAmount = 100;
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
         if(TempsTimer >0)
         {
             TempsTimer -= Time.deltaTime;
-            TempsTimer = Mathf.Round(TempsTimer * 100.0f) * 0.01f;
+            //TempsTimer = Mathf.Round(TempsTimer * 100.0f) * 0.01f;
 
         }
         if(TempsTimer <= 0){
@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour
 
     void prendreDegats()
     {
-        vieNova.fillAmount -= 0.1f;
+        vieNova.fillAmount -= 0.5f;
         Invoke("Reset", 0f);
         Debug.Log(vieNova.fillAmount);
     }
