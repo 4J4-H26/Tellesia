@@ -51,51 +51,14 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
     [Header("Canvas du puzzle")]
     public GameObject canvasPuzzle;
 
-    [Header("Nova")]
-    public Nova2 nova;
-
-    [Header("Lumieres")]
-    public GameObject pointlight;
-    public GameObject spotlight;
-    public GameObject spotlight2;
-
     private bool puzzleBloque = false;
     private static bool puzzleEchoueGlobal = false;
 
     public int choixJoueur = -1;
 
-    [Header("script dialogue")]
-    public ScriptDialogue2 dialogue;
-
-    [Header("Les sons")]
-    public AudioSource sonPorte;
-
     void Start()
     {
-        canvasPuzzle.SetActive(false);
 
-        if (puzzleEchoueGlobal)
-        {
-
-            return;
-        }
-
-        if (!Puzzle2Cle.cleRamassee)
-        {
-
-            nova.puzzleActif = false;
-            return;
-        }
-
-        nova.puzzleActif = true;
-
-        OuvrirPuzzle();
-    }
-
-    public void OuvrirPuzzle()
-    {
-        canvasPuzzle.SetActive(true);
-        AfficherQuestion();
     }
 
     void AfficherQuestion()
@@ -121,11 +84,6 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
 
         choixJoueur = indexChoisi;
 
-        if (dialogue != null)
-        {
-            dialogue.LancerDialogueApresChoix();
-        }
-
         QuestionHistoire q = questions[questionActuelle];
 
         for (int i = 0; i < imagesReponses.Length; i++)
@@ -139,55 +97,30 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         if (indexChoisi == 0 && animPorteC != null)
         {
             animPorteC.SetTrigger("Ouvrir");
-
-            if (sonPorte != null)
-                sonPorte.Play();
         }
         else if (indexChoisi == 1 && animPorteB != null)
         {
             animPorteB.SetTrigger("Ouvrir");
-
-            if (sonPorte != null)
-                sonPorte.Play();
         }
         else if (indexChoisi == 2 && animPorteA != null)
         {
             animPorteA.SetTrigger("Ouvrir");
-
-            if (sonPorte != null)
-                sonPorte.Play();
         }
 
         if (indexChoisi == q.bonneReponse)
         {
 
-            if (nova != null)
-                nova.SetCanMove(true);
-
-            ActiverLumieres();
         }
         else
         {
             puzzleEchoueGlobal = true;
-            Invoke("RechargerScene", 3f);
+            Invoke("RechargerScene", 20f);
         }
     }
 
     void RechargerScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    void ActiverLumieres()
-    {
-        if (pointlight != null)
-            pointlight.SetActive(true);
-
-        if (spotlight != null)
-            spotlight.SetActive(true);
-
-        if (spotlight2 != null)
-            spotlight2.SetActive(true);
     }
 
 }
