@@ -34,11 +34,11 @@ public class choixFin : MonoBehaviour
 
     void DelaiDetruire()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Cinematique1");
     }
 
     void delaiPasDrtuire()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Cinematique2");
     }
 }

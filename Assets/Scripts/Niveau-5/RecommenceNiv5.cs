@@ -7,6 +7,6 @@ public class RecommenceNiv5 : MonoBehaviour
 
     public void LoadScene() 
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("Niveau5_UI_boss");
     }
 }

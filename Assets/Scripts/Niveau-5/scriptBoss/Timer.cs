@@ -9,7 +9,6 @@ using UnityEngine.UI;
 using System.Threading;
 using Microsoft.Win32.SafeHandles;
 using UnityEngine.SceneManagement;
-using UnityEditor.Build.Content;
 
 public class Timer : MonoBehaviour
 {
@@ -98,7 +97,7 @@ public class Timer : MonoBehaviour
 
     void chargerSceneMort()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Scene_Mort");
     }
 
     public void faireDegats()
