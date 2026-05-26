@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Niveau5_UI_boss.unity
     guid: 950f6aaa9f7056d44953d33a3548a6bd
+  - enabled: 1
+    path: Assets/Scenes/SceneDebut.unity
+    guid: a33735cd408a5ee4983470d0948478d7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
