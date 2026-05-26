@@ -13,6 +13,7 @@ public class LeRayCast : MonoBehaviour
     [Header("Références")]
     public Transform Nova;
     public LayerMask Murs;
+    public LayerMask CubeNoir;
 
     [Header("Réglages")]
     [Range(0f, 1f)] public float transparence = 0f;
