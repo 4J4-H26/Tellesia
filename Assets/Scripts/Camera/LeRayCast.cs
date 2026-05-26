@@ -2,8 +2,8 @@
 // auteur : sammuel
 // date : 10 avril 2026
 
-// desc : ** Pour voir à travers les murs, lorsque nova se déplace..
-//           **
+// desc : ** Pour voir à travers les murs + cubes, lorsque nova se déplace..
+//           **
 
 using UnityEngine;
 using System.Collections.Generic;
@@ -30,11 +30,13 @@ public class LeRayCast : MonoBehaviour
         Vector3 direction = Nova.position - transform.position;
         float distance = direction.magnitude;
 
+        LayerMask layersDetectees = Murs | CubeNoir;
+
         RaycastHit[] hits = Physics.RaycastAll(
-            transform.position,
-            direction.normalized,
-            distance,
-            Murs
+        transform.position,
+        direction.normalized,
+        distance,
+        layersDetectees
         );
 
         HashSet<Renderer> mursActuels = new HashSet<Renderer>();
@@ -42,7 +44,8 @@ public class LeRayCast : MonoBehaviour
         foreach (RaycastHit hit in hits)
         {
 
-            if (((1 << hit.collider.gameObject.layer) & Murs) == 0)
+            if ((((1 << hit.collider.gameObject.layer) & Murs) == 0) &&
+            (((1 << hit.collider.gameObject.layer) & CubeNoir) == 0))
                 continue;
 
             Renderer r = hit.collider.GetComponentInChildren<Renderer>();
@@ -81,7 +84,6 @@ public class LeRayCast : MonoBehaviour
                 mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
                 mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
                 mat.SetInt("_ZWrite", 0);
-
                 mat.EnableKeyword("_ALPHABLEND_ON");
                 mat.renderQueue = 3000;
             }

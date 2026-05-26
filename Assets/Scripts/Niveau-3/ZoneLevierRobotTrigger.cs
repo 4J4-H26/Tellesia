@@ -54,6 +54,10 @@ public class ZoneLevierRobotTrigger : MonoBehaviour
         {
             if (!canvas2Used)
             {
+           
+                if (canvas1 != null)
+                    canvas1.SetActive(false);
+
                 if (canvas2 != null)
                     canvas2.SetActive(true);
 
@@ -61,7 +65,6 @@ public class ZoneLevierRobotTrigger : MonoBehaviour
             }
         }
     }
-
     public void FermerCanvas2()
     {
         if (canvas2 != null)

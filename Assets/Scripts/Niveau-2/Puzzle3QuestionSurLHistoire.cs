@@ -169,7 +169,7 @@ public class Puzzle3QuestionSurLHistoire : MonoBehaviour
         else
         {
             puzzleEchoueGlobal = true;
-            Invoke("RechargerScene", 7f);
+            Invoke("RechargerScene", 3f);
         }
     }
 

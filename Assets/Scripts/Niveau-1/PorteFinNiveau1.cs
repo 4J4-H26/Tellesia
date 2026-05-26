@@ -49,6 +49,6 @@ public class PorteFinNiveau1 : MonoBehaviour
 
     void chargerScene()
     {
-        SceneManager.LoadScene("Niveau2");
+        SceneManager.LoadScene("NiveauLoading");
     }
 }

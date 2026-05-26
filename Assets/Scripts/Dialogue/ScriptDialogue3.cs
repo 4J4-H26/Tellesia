@@ -90,6 +90,8 @@ public class ScriptDialogue3 : MonoBehaviour
     private bool modeMortCamera = false;
     private bool dialogueStopDefinitif = false;
 
+    private bool attendreZoneElement5 = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -241,6 +243,26 @@ public class ScriptDialogue3 : MonoBehaviour
             dialogueCanvas.SetActive(false);
     }
 
+    public void ReprendreDepuisElement5()
+    {
+        if (dialogueStopDefinitif)
+            return;
+
+        StopTyping();
+        StopAllDialogueSounds();
+
+        dialogueCanvas.SetActive(true);
+
+        dialogueActif = true;
+
+        if (nova != null)
+            nova.SetCanMove(false);
+
+        index = 5;
+
+        typeLineCoroutine = StartCoroutine(TypeLine());
+    }
+
     //------------------------------------------*
     // Fonction TypeLine()
     // Description : Cette fonction permet d'écrire le texte progressivement 
@@ -357,7 +379,14 @@ public class ScriptDialogue3 : MonoBehaviour
 
             if (!modeMortCamera && index == 4)
             {
-                index++;
+                attendreZoneElement5 = true;
+
+                dialogueCanvas.SetActive(false);
+
+                if (nova != null)
+                    nova.SetCanMove(true);
+
+                return;
             }
 
             if (index >= lines.Length)

@@ -38,6 +38,8 @@ public class Nova3 : MonoBehaviour
     [Header("Levier")]
     public ScriptRobotLevier scriptLevier;
 
+    private bool procheSpeaker = false;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -50,6 +52,13 @@ public class Nova3 : MonoBehaviour
     void Update()
     {
         if (enSortie) return;
+
+        if (procheSpeaker && Input.GetKeyDown(KeyCode.E))
+        {
+            SetCanMove(false);
+            Invoke("OuvrirLeCanvas", 0.5f);
+        }
+
 
         if (!canMove)
         {
@@ -127,15 +136,22 @@ public class Nova3 : MonoBehaviour
         FindFirstObjectByType<ChangementCam>().ActiverCameraCinematique();
     }
 
-    void OnCollisionEnter(Collision collision)
+
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Speaker"))
         {
-            SetCanMove(false);
-            Invoke("OuvrirLeCanvas", 0.5f);
+            procheSpeaker = true;
         }
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Speaker"))
+        {
+            procheSpeaker = false;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("portesortieniveau3"))
