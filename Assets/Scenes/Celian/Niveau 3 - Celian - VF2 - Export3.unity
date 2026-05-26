@@ -16441,6 +16441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::evitementCamera
   sonAttraperCam: {fileID: 0}
   nova: {fileID: 1231653413}
+  dialogue: {fileID: 2016668936}
 --- !u!136 &1137757359
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -28702,7 +28703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2016668933
 Transform:
   m_ObjectHideFlags: 0
@@ -28808,7 +28809,9 @@ MonoBehaviour:
   ImageSpriteNova2: {fileID: 1971092629}
   ImageSpriteElla3: {fileID: 1719999107}
   ImageSpriteNova3: {fileID: 1805630532}
-  pauses: []
+  pauses:
+  - entreElement: 3
+    duree: 20
   sonNova: {fileID: 1353525359}
   sonElla: {fileID: 1353525359}
   sonOuvertureDuUI: {fileID: 1873143100}

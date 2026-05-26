@@ -43,30 +43,48 @@ using UnityEngine.SceneManagement;
 public class Puzzle5CameraDeSurveillance : MonoBehaviour
 {
     public AudioClip sonAttraperCam;
-    AudioSource AudioSource;
+    private AudioSource audioSource;
 
     [Header("Nova")]
     public Nova3 nova;
 
+    [Header("Dialogue")]
+    public ScriptDialogue3 dialogue;
+
+    private bool dejaAttrape = false;
 
     private void Start()
     {
-        AudioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
-    public void OnTriggerEnter(Collider Nova)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (Nova.gameObject.tag == "Nova")
+        if (dejaAttrape) return;
+
+        if (other.CompareTag("Nova"))
         {
-            Debug.Log("AHSJDHA)");
-            AudioSource.PlayOneShot(sonAttraperCam, 1f);
-            Invoke("ReloadScene", 1f);
+            dejaAttrape = true;
+
             if (nova != null)
                 nova.SetCanMove(false);
+
+            if (audioSource != null)
+                audioSource.PlayOneShot(sonAttraperCam, 1f);
+
+            StartCoroutine(CameraCaughtSequence());
         }
     }
 
-    public void ReloadScene()
+    private System.Collections.IEnumerator CameraCaughtSequence()
     {
+        if (dialogue != null)
+        {
+            dialogue.JouerElement4Temporaire(5f);
+        }
+
+        yield return new WaitForSeconds(5f);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

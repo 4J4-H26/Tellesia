@@ -87,6 +87,9 @@ public class ScriptDialogue3 : MonoBehaviour
     public AudioSource sonElla;
     public AudioSource sonOuvertureDuUI;
 
+    private bool modeMortCamera = false;
+    private bool dialogueStopDefinitif = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -190,8 +193,6 @@ public class ScriptDialogue3 : MonoBehaviour
         }
     }
 
-
-    
     //------------------------------------------*
     // Fonction StartDialogue
     // Description : Cette fonction permet de commencer la fonction 
@@ -207,6 +208,39 @@ public class ScriptDialogue3 : MonoBehaviour
         typeLineCoroutine = StartCoroutine(TypeLine());
     }
 
+
+    public void JouerElement4Temporaire(float duree)
+    {
+        modeMortCamera = true;
+        dialogueStopDefinitif = true;
+
+        StopTyping();
+        StopAllDialogueSounds();
+
+        if (nova != null)
+            nova.SetCanMove(false);
+
+        dialogueActif = false;
+
+        dialogueCanvas.SetActive(true);
+
+        index = 4;
+
+        UpdateImage(lines[index].image);
+
+        nom.text = lines[index].speaker.ToString();
+        textComponent.text = lines[index].text;
+
+        StartCoroutine(CacherDialogueTemporaire(duree));
+    }
+    private IEnumerator CacherDialogueTemporaire(float duree)
+    {
+        yield return new WaitForSeconds(duree);
+
+        if (dialogueCanvas != null)
+            dialogueCanvas.SetActive(false);
+    }
+
     //------------------------------------------*
     // Fonction TypeLine()
     // Description : Cette fonction permet d'écrire le texte progressivement 
@@ -214,6 +248,9 @@ public class ScriptDialogue3 : MonoBehaviour
     //------------------------------------------*
     IEnumerator TypeLine()
     {
+        if (dialogueStopDefinitif)
+            yield break;
+
         StopAllDialogueSounds();
 
         if (nova != null)
@@ -287,8 +324,10 @@ public class ScriptDialogue3 : MonoBehaviour
         {
             voice.Stop();
         }
-
-        if (autoNext && delaisParLigne != null && index < delaisParLigne.Length)
+        if (!dialogueStopDefinitif &&
+    autoNext &&
+    delaisParLigne != null &&
+    index < delaisParLigne.Length)
         {
             yield return new WaitForSeconds(delaisParLigne[index]);
             NextLine();
@@ -302,6 +341,8 @@ public class ScriptDialogue3 : MonoBehaviour
     //------------------------------------------*
     void NextLine()
     {
+        if (dialogueStopDefinitif) return;
+
         StopAllDialogueSounds();
 
         if (isPaused) return;
@@ -313,6 +354,11 @@ public class ScriptDialogue3 : MonoBehaviour
         do
         {
             index++;
+
+            if (!modeMortCamera && index == 4)
+            {
+                index++;
+            }
 
             if (index >= lines.Length)
             {
@@ -337,8 +383,9 @@ public class ScriptDialogue3 : MonoBehaviour
     // lancer la fonction NextLine ou de finir d'écrire le texte qui est entrain de s'écrire
     //------------------------------------------*
     void NextButtonClicked()
-
     {
+        if (dialogueStopDefinitif) return;
+
         if (isPaused) return;
 
         if (index >= lines.Length) return;
@@ -349,13 +396,13 @@ public class ScriptDialogue3 : MonoBehaviour
             {
                 StopTyping();
             }
+
             textComponent.text = lines[index].text;
             isTyping = false;
-            return; 
+            return;
         }
 
         LignesDialogue3 currentLine = lines[index];
-
 
         if (textComponent.text == currentLine.text)
         {
@@ -367,6 +414,7 @@ public class ScriptDialogue3 : MonoBehaviour
             {
                 StopTyping();
             }
+
             textComponent.text = currentLine.text;
         }
     }
