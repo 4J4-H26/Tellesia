@@ -6,7 +6,7 @@
 using UnityEngine;
 using TMPro;
 
-public class DisplayManager : MonoBehaviour
+public class GestionPleinEcran : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown DropdownModeEcran;
 
