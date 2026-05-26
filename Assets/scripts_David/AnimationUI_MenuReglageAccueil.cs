@@ -1,3 +1,8 @@
+//------------------------------------------*
+// Auteur : David Phung
+// Description : Script qui gère l'animation du menu de réglage du menu d'accueil du jeu
+//------------------------------------------*
+
 using UnityEngine;
 
 public class AnimationUI_MenuReglageAccueil : MonoBehaviour

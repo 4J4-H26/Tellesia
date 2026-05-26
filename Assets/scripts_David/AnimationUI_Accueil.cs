@@ -1,4 +1,7 @@
-﻿
+﻿//------------------------------------------*
+// Auteur : David Phung
+// Description : Script qui gère l'animation du menu de bouttons sur l'écran d'accueil du jeu
+//------------------------------------------*
 using UnityEngine;
 
 

@@ -1,16 +1,11 @@
-//------------------------------------------*
-// Auteur : David Phung
-// Description : Script qui gère l'animation du menu de pause du jeu
-
 using UnityEngine;
 
-public class AnimationUI_MenuPause : MonoBehaviour
+public class AnimationUI_MenuReglagesPause : MonoBehaviour
 {
     public GameObject Menu;
     public Transform MenuPosition;
     public Transform MenuReferenceOuvert;
     public Transform MenuReferenceFerme;
-    public GameObject FondFade;
     [SerializeField] LeanTweenType easetype;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,19 +16,18 @@ public class AnimationUI_MenuPause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             bougerMenuPause();
         }
     }
 
-    void bougerMenuPause()
+    public void bougerMenuPause()
     {
         if (MenuPosition.position.x == MenuReferenceFerme.position.x)
         {
             LeanTween.moveX(Menu, MenuReferenceOuvert.position.x, 0.2f).setEase(easetype);
             LeanTween.moveY(Menu, MenuReferenceOuvert.position.y, 0.2f).setEase(easetype);
-            LeanTween.alpha(FondFade, 100f, 0.2f).setEase(easetype);
 
         }
         
@@ -42,7 +36,7 @@ public class AnimationUI_MenuPause : MonoBehaviour
         {
             LeanTween.moveX(Menu, MenuReferenceFerme.position.x, 0.2f).setEase(easetype);
             LeanTween.moveY(Menu, MenuReferenceFerme.position.y, 0.2f).setEase(easetype);
-            LeanTween.alpha(FondFade, 0f, 0.2f).setEase(easetype);
+            
         }
     }
 }
