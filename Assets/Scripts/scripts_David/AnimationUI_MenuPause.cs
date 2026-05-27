@@ -1,3 +1,7 @@
+//------------------------------------------*
+// Auteur : David Phung
+// Description : Script qui gère l'animation du menu de pause du jeu
+
 using UnityEngine;
 
 public class AnimationUI_MenuPause : MonoBehaviour
