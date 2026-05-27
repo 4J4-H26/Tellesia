@@ -187,7 +187,7 @@ public class Nova2 : MonoBehaviour
         peutInteragir = false; 
 
         if (puzzle != null)
-            //puzzle.OuvrirPuzzle();
+            puzzle.OuvrirPuzzle();
 
         if (sonMarche != null && sonMarche.isPlaying)
             sonMarche.Stop();

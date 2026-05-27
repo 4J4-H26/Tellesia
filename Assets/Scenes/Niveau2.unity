@@ -8503,7 +8503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &602377502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16057,7 +16057,13 @@ MonoBehaviour:
   animPorteB: {fileID: 1903360663}
   animPorteC: {fileID: 850288008}
   canvasPuzzle: {fileID: 602377501}
+  nova: {fileID: 583763999}
+  pointlight: {fileID: 1003713004}
+  spotlight: {fileID: 1110850821}
+  spotlight2: {fileID: 1433641271}
   choixJoueur: -1
+  dialogue: {fileID: 1875159569}
+  sonPorte: {fileID: 1062625591}
 --- !u!1 &1110850821
 GameObject:
   m_ObjectHideFlags: 0
