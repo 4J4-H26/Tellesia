@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -32,6 +33,13 @@ public class Menu : MonoBehaviour
         video.SetActive(false);
         canvas.SetActive(true);
         canvas2.SetActive(false);
+    }
+    void Update()
+    {
+        if (canvas.activeSelf && Input.GetKeyDown(KeyCode.C))
+        {
+            SceneManager.LoadScene("credits");
+        }
     }
     public void Commencer()
     {
