@@ -111,7 +111,7 @@ public class Timer : MonoBehaviour
 
     void chargerSceneMort()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Scene_Mort");
     }
 
 
