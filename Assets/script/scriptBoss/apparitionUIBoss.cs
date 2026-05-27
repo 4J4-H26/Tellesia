@@ -8,7 +8,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class testApparaitreUi : MonoBehaviour
+public class apparitionUIBoss : MonoBehaviour
 {
     [SerializeField] public GameObject UICode;
     [SerializeField] public GameObject UILeviers;
@@ -53,6 +53,8 @@ public class testApparaitreUi : MonoBehaviour
             UIouvert = true;
             UILeviers.SetActive(true);
         }
+
+        Debug.Log("leviers ouvert)");
     }
 
     public void OuvrieQuestion()
@@ -67,6 +69,8 @@ public class testApparaitreUi : MonoBehaviour
             UIouvert = true;
             UIQuestion.SetActive(true);
         }
+
+        Debug.Log("question ouvert");
     }
 
     public void OuvrirJigsaw()
@@ -81,5 +85,12 @@ public class testApparaitreUi : MonoBehaviour
             UIouvert = true;
             UIJigsaw.SetActive(true);
         }
+
+        Debug.Log("jigsaw ouvert)");
+    }
+
+    public void Reset()
+    {
+        Debug.Log("reset");
     }
 }

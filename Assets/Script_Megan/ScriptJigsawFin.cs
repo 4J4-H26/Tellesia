@@ -5,6 +5,7 @@
 // le puzzle ensuite.
 //------------------------------------------*
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScriptJigsawFin : MonoBehaviour
@@ -18,6 +19,8 @@ public class ScriptJigsawFin : MonoBehaviour
     public GameObject jigsawPieces;
     public GameObject jigsawEmplacements;
     public GameObject finalImage;
+
+    public Canvas canva;
 
     //------------------------------------------*
     // FONCTIONS
@@ -51,6 +54,8 @@ public class ScriptJigsawFin : MonoBehaviour
         jigsawEmplacements.SetActive(false);
 
         finalImage.SetActive(true);
+
+        canva.tag = "reussit";
 
         Invoke("HideFinalImage", 3f);
     }

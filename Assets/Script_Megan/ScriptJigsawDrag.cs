@@ -6,6 +6,7 @@
 //------------------------------------------*
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScriptJigsawDrag : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class ScriptJigsawDrag : MonoBehaviour
     {
         offset = transform.position - GetMouseWorldPos();
         dragging = true;
+
+        Debug.Log("drag de piece");
     }
 
     //------------------------------------------*

@@ -65,11 +65,13 @@ public class Rotationleviertuto : MonoBehaviour
 
         if (sonLevier != null)
             sonLevier.Play();
-        Invoke("StopSon", 0.6f);
+        //Invoke("StopSon", 0.6f);
 
         levierActif.tag = "reussit";
 
         levierTuto.tag = "reussit";
+
+        canvaLevierTuto.tag = "reussit";
 
         //if (fleche1 != null)
         //    fleche1.SetActive(false);
@@ -95,8 +97,8 @@ public class Rotationleviertuto : MonoBehaviour
     //    if (nova != null)
     //        nova.SetCanMove(true);
     //}
-    void StopSon()
-    {
-        sonLevier.Stop();
-    }
+    //void StopSon()
+    //{
+    //    sonLevier.Stop();
+    //}
 }

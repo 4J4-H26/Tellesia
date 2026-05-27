@@ -8,6 +8,7 @@
 //------------------------------------------*
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScriptJigsawPieces : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class ScriptJigsawPieces : MonoBehaviour
             {
                 float distance = Vector2.Distance(transform.position, slot.transform.position);
 
-                if (distance < 1.5f)
+                if (distance < 3f)
                 {
                     SnapTo(slot.transform.position);
                     return;

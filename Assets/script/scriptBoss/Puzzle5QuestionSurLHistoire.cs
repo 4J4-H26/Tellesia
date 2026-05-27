@@ -1,6 +1,7 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 [System.Serializable]
 public class QuestionHistoire3
@@ -30,6 +31,8 @@ public class Puzzle5QuestionSurLHistoire : MonoBehaviour
     [Header("Canvas du puzzle")]
     public GameObject canvasPuzzle;
 
+    public Canvas canva;
+
     //[Header("Nova")]
     //public Nova5 nova;
 
@@ -37,7 +40,7 @@ public class Puzzle5QuestionSurLHistoire : MonoBehaviour
     private static bool puzzleEchoueGlobal = false;
 
     public int choixJoueur = -1;
-    private bool puzzleTermine = false;
+    //private bool puzzleTermine = false;
     void Start()
     {
         if (canvasPuzzle != null)
@@ -50,16 +53,16 @@ public class Puzzle5QuestionSurLHistoire : MonoBehaviour
         //    nova.puzzleActif = true;
     }
 
-    public void OuvrirPuzzle()
-    {
-        if (puzzleTermine) return;
-        canvasPuzzle.SetActive(true);
-        AfficherQuestion();
-    }
+    //public void OuvrirPuzzle()
+    //{
+    //    //if (puzzleTermine) return;
+    //    canvasPuzzle.SetActive(true);
+    //    AfficherQuestion();
+    //}
 
     void AfficherQuestion()
     {
-        if (puzzleBloque || puzzleTermine)
+        if (puzzleBloque)
         {
             canvasPuzzle.SetActive(false);
             return;
@@ -83,22 +86,25 @@ public class Puzzle5QuestionSurLHistoire : MonoBehaviour
 
         for (int i = 0; i < imagesReponses.Length; i++)
         {
-            imagesReponses[i].SetActive(false);
+            //imagesReponses[i].SetActive(false);
         }
 
         if (canvasPuzzle != null)
-            canvasPuzzle.SetActive(false);
+            //canvasPuzzle.SetActive(false);
 
         if (indexChoisi == q.bonneReponse)
         {
-            puzzleTermine = true;
+            //puzzleTermine = true;
             //if (nova != null)
             //    nova.SetCanMove(true);
+            //canvasPuzzle.tag = "reussit";
+            canva.tag = "reussit";
+            Debug.Log("reussit");
         }
         else
         {
             puzzleEchoueGlobal = true;
-            Invoke("RechargerScene", 0.5f);
+            //Invoke("RechargerScene", 0.5f);
         }
     }
 

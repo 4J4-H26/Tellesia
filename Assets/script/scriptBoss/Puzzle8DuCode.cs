@@ -6,9 +6,10 @@
 //           Nova doit faire apparaître Cube3 et Cube4
 //           en même temps pour réussir le puzzle. **
 
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class Puzzle8DuCode : MonoBehaviour
 {
@@ -153,7 +154,9 @@ public class Puzzle8DuCode : MonoBehaviour
             Chiffre7Cube3.SetActive(false);
             Chiffre7Cube4.SetActive(false);
 
-            //Invoke("FermerCanvas", 3f);
+            CanvasPuzzle8.tag = "reussit";
+
+            //Invoke("FermerCanvas", 1f);
         }
     }
 

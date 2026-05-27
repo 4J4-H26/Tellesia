@@ -12,7 +12,7 @@ public class rotationLevierTUto : MonoBehaviour
     public Button levierTuto;
     public Animator animRotation;
 
-    public GameObject levierActif;
+    //public GameObject levierActif;
 
     [Header("Le son")]
     public AudioSource sonLevier;
@@ -32,7 +32,7 @@ public class rotationLevierTUto : MonoBehaviour
             sonLevier.Play();
         Invoke("StopSon", 0.6f);
 
-        levierActif.tag = "reussit";
+        //levierActif.tag = "reussit";
 
         levierTuto.tag = "reussit";
 
