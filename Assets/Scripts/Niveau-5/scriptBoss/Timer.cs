@@ -1,6 +1,6 @@
-// script pour gérer la question sur l'histoire niveau 2
+// script pour gérer le timer, la barre de vie de Nova et la barre de vie de Kardia
 // auteur : stella & david
-// date : 20 mai 2026
+// date : 20 - 26 mai 2026
 
 using System;
 using TMPro;
@@ -13,11 +13,13 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     public float TempsTimer;
+    public float timer;
     public TextMeshProUGUI TimerNombre;
 
     public bool temps0;
 
-    public Canvas canva;
+    public GameObject gameObjectUI;
+    public Canvas canvasUI;
 
     public GameObject barreVieKardia;
     public GameObject barreVieNova;
@@ -27,30 +29,25 @@ public class Timer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        TempsTimer = timer;
         temps0 = false;
+        TimerNombre.text = Math.Round(TempsTimer, 2).ToString();
+        //TempsTimer = timerTest.tempsOriginal;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
-
-        if (TempsTimer >0)
+        if (TempsTimer > 0)
         {
             TempsTimer -= Time.deltaTime;
-
         }
-
         TimerUI();
-
-
     }
 
+    // fonction pour le timer
     void TimerUI()
     {
-        //TimerNombre.text = TempsTimer.ToString();
-        //TempsTimer = Mathf.Round(TempsTimer * 100f) * 0.01f;
         TimerNombre.text = Math.Round(TempsTimer, 2).ToString();
 
         if (TempsTimer <= 0 && !temps0)
@@ -62,26 +59,35 @@ public class Timer : MonoBehaviour
 
         }
 
-        if (canva.tag == "reussit" && !temps0)
+        if (gameObjectUI.tag == "reussit" && !temps0)
         {
-            
+
             temps0 = true;
-            Invoke("fermerUI", 1f);
+            Invoke("fermerUItoujours", 1f);
             Invoke("faireDegats", 2f);
         }
 
-        if(vieKardia.imgHealthbar.fillAmount <= 0.2)
+        // va laisser un petit montant de vie pour laisser le choix au joueur de la tuer ou de l'épargner
+        if (vieKardia.imgHealthbar.fillAmount <= 0.2)
         {
-            vieKardia.imgHealthbar.fillAmount = 0.1f;
+            vieKardia.imgHealthbar.fillAmount = 0.05f;
             Invoke("chargerSceneChoix", 2f);
         }
     }
-
+    // permet de fermer visuellement le UI, peut être réouvert par la suite
     void fermerUI()
     {
-        canva.enabled = false;
+        gameObjectUI.SetActive(false);
+        temps0 = false;
+    }
+    // permet de fermer complètement, de désactiver le UI, ne peut pas être réouvert par la suite
+    void fermerUItoujours()
+    {
+        canvasUI.enabled = false;
+
     }
 
+    //fonction pour que Nova prend des dégâts lorsqu'elle rate de réussir un puzzle, maximum de 4 chances
     public void prendreDegats()
     {
         vieNova.imgHealthbar.fillAmount -= 0.25f;
@@ -92,14 +98,10 @@ public class Timer : MonoBehaviour
             Invoke("chargerSceneMort", 2f);
         }
 
-        //Invoke("Reset", 0f);
+        Invoke("Reset", 0f);
     }
 
-    void chargerSceneMort()
-    {
-        SceneManager.LoadScene("Scene_Mort");
-    }
-
+    //fonction pour que Kardia prend des dégâts
     public void faireDegats()
     {
         vieKardia.imgHealthbar.fillAmount -= 0.25f;
@@ -107,14 +109,22 @@ public class Timer : MonoBehaviour
         Invoke("Reset", 0f);
     }
 
+    void chargerSceneMort()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+
     private void Reset()
     {
-
         Debug.Log("RESET");
+        TempsTimer = timer;
     }
 
     public void chargerSceneChoix()
     {
+
+        // va seulement désactiver le reste des UI et va aactiver le UI de choix de la fin de la cinématique
         UIchoixFin.active = true;
         barreVieKardia.active = false;
         barreVieNova.active = false;

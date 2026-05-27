@@ -2970,6 +2970,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc8c9fa43630f8c4aae83d4e0d7c119e, type: 3}
   m_PrefabInstance: {fileID: 739815651}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &399398230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2469864206338933169, guid: 5c4b6c17432112744a82887d7a6471a3, type: 3}
+  m_PrefabInstance: {fileID: 1448669095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &402992425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3584,9 +3589,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   TempsTimer: 15
+  timer: 15
   TimerNombre: {fileID: 467423247}
   temps0: 0
-  canva: {fileID: 215962607}
+  gameObjectUI: {fileID: 215962604}
+  canvasUI: {fileID: 215962607}
   barreVieKardia: {fileID: 1465782505}
   barreVieNova: {fileID: 1963005591}
   UIchoixFin: {fileID: 426784477}
@@ -7665,9 +7672,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   TempsTimer: 5
+  timer: 5
   TimerNombre: {fileID: 952160752}
   temps0: 0
-  canva: {fileID: 1322943513}
+  gameObjectUI: {fileID: 1322943510}
+  canvasUI: {fileID: 1322943513}
   barreVieKardia: {fileID: 1465782505}
   barreVieNova: {fileID: 1963005591}
   UIchoixFin: {fileID: 426784477}
@@ -9816,9 +9825,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   TempsTimer: 10
+  timer: 10
   TimerNombre: {fileID: 1087430096}
   temps0: 0
-  canva: {fileID: 1612274303}
+  gameObjectUI: {fileID: 1612274299}
+  canvasUI: {fileID: 1612274303}
   barreVieKardia: {fileID: 1465782505}
   barreVieNova: {fileID: 1963005591}
   UIchoixFin: {fileID: 426784477}
@@ -10229,9 +10240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   TempsTimer: 20
+  timer: 20
   TimerNombre: {fileID: 1109311482}
   temps0: 0
-  canva: {fileID: 2060240845}
+  gameObjectUI: {fileID: 399398230}
+  canvasUI: {fileID: 2060240845}
   barreVieKardia: {fileID: 1465782505}
   barreVieNova: {fileID: 1963005591}
   UIchoixFin: {fileID: 426784477}
